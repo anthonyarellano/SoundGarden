@@ -5,17 +5,21 @@ body, html {
     padding: 0px;
 }
 
-.splashPage {
-
+.splash-page {
+    display: flex;
     background-color: aquamarine;
     width: 100vw;
     height: 100vh;
     margin: 0px;
     padding: 0px;
+    justify-content: center;
+    align-items: center;
+} .splash-page-header {
+    font-family:'Interstate Black Cond';
+    font-size: 50px;
 }
 
-.pic {
-    /* width: 25vw; */
+/* .pic {
     width: 1000px;
     height: 1000px;
     border-radius: 100%;
@@ -24,10 +28,17 @@ body, html {
     top: 50%;
     margin: 0px;
     padding: 0px;
+  } */
+  .pic2 {
+      width: 725px;
+      height: 725px;
+      border-radius: 100%;
+      position: fixed;
+
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .pic {
+    .pic2 {
       animation: App-logo-spin infinite 20s linear;
     }
   }

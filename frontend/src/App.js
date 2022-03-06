@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { UploadPage } from "./components/UploadPage";
 import SplashPage from "./components/SplashPage";
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
