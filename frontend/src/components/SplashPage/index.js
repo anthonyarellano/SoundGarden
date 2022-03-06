@@ -6,13 +6,12 @@ const SplashPage = () => {
             <div className='splash-page-header'>
                 <h1>Soundgarden</h1>
             </div>
-            {/* <img
-                src={require("./style/splashRing.png")}
-                className="pic">
-            </img> */}
+            <div className='splash-page-text-container'>
+                <p id="splash-page-text">Local music lives here</p>
+            </div>
             <img
                 src={require("./style/splashRing.png")}
-                className="pic2">
+                className="splash-page-img">
             </img>
         </div>
     )

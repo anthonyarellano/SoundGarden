@@ -14,31 +14,32 @@ body, html {
     padding: 0px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+
 } .splash-page-header {
     font-family:'Interstate Black Cond';
     font-size: 50px;
-}
-
-/* .pic {
-    width: 1000px;
-    height: 1000px;
-    border-radius: 100%;
-    position: fixed;
-    right: 70%;
-    top: 50%;
     margin: 0px;
     padding: 0px;
-  } */
-  .pic2 {
-      width: 725px;
-      height: 725px;
-      border-radius: 100%;
-      position: fixed;
+    height: 150px;
+}
 
+.splash-page-img {
+    width: 740px;
+    height: 740px;
+    border-radius: 100%;
+    position: fixed;
+
+  } #splash-page-text {
+      font-family: 'Interstate Black Cond';
+      color: white;
+      font-size: 40px;
+  } .splash-page-text-container {
+      display: inline-block;
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .pic2 {
+    .splash-page-img {
       animation: App-logo-spin infinite 20s linear;
     }
   }
