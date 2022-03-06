@@ -18,6 +18,8 @@
     align-items: center;
     color: white;
     height: 22px;
+} .navbar-image {
+    height: 12px;
 }
 
 .navbar-link {

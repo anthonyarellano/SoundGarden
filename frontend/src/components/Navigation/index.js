@@ -11,8 +11,12 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
     <>
+        <NavLink to="/upload">
+          <img className='navbar-image'
+                src={require('./style/images/upload-image.png')}>
+          </img>
+        </NavLink>
         <ProfileButton user={sessionUser} />
-        <NavLink to="/upload">Upload</NavLink>
     </>
     );
   } else {
@@ -30,7 +34,12 @@ function Navigation({ isLoaded }){
             <p className='navbar-logo-text'>Soundgarden</p>
           </div>
           <div className='navbar-lower'>
-            <NavLink className='navbar-link' exact to="/">Home</NavLink>
+            <NavLink className='navbar-link' exact to="/">
+              <img
+                className='navbar-image'
+                src={require('./style/images/home-image.png')}>
+              </img>
+            </NavLink>
             {isLoaded && sessionLinks}
           </div>
         </div>
