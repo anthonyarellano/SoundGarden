@@ -34,8 +34,26 @@ body, html {
       font-family: 'Interstate Black Cond';
       color: white;
       font-size: 40px;
+      margin: 30px 0px 15px 0px;
+
   } .splash-page-text-container {
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .splash-page-button-container {
+      z-index: 1;
+  }
+
+  .splash-page-link {
+    font-family: 'Interstate Black Cond';
+    text-decoration: none;
+    color: black;
+  }
+  .splash-page-link:visited {
+    text-decoration: none;
+    color: black;
   }
 
   @media (prefers-reduced-motion: no-preference) {

@@ -25,12 +25,15 @@ function App() {
             <SplashPage />
           </Route>
           <Route path="/login">
+            <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
           </Route>
           <Route path="/signup">
+            <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
           </Route>
           <Route path="/upload">
+            <Navigation isLoaded={isLoaded} />
             <UploadPage />
           </Route>
         </Switch>
