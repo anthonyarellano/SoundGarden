@@ -1,0 +1,71 @@
+body, html {
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+}
+
+.splash-page {
+    display: flex;
+    background-color: aquamarine;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+} .splash-page-header {
+    font-family:'Interstate Black Cond';
+    font-size: 50px;
+    margin: 0px;
+    padding: 0px;
+    height: 150px;
+}
+
+.splash-page-img {
+    width: 740px;
+    height: 740px;
+    border-radius: 100%;
+    position: fixed;
+
+  } #splash-page-text {
+      font-family: 'Interstate Black Cond';
+      color: white;
+      font-size: 40px;
+      margin: 30px 0px 15px 0px;
+
+  } .splash-page-text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .splash-page-button-container {
+      z-index: 1;
+  }
+
+  .splash-page-link {
+    font-family: 'Interstate Black Cond';
+    text-decoration: none;
+    color: black;
+  }
+  .splash-page-link:visited {
+    text-decoration: none;
+    color: black;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .splash-page-img {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
