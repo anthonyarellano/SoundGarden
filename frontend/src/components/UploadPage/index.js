@@ -3,7 +3,6 @@ import AWS from 'aws-sdk'
 
 export const UploadPage = () => {
     const S3_BUCKET = process.env.REACT_APP_BUCKET;
-    console.log(process.env);
     const REGION = process.env.REACT_APP_REGION;
 
     AWS.config.update({
