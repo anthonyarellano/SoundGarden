@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/badjub1es/SoundGarden/issues"
   },
-  "homepage": "https://github.com/badjub1es/SoundGarden#readme"
+  "homepage": "https://github.com/badjub1es/SoundGarden#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1087.0",
+    "util": "^0.12.4"
+  }
 }
