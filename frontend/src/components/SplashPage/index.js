@@ -18,6 +18,7 @@ const SplashPage = () => {
                 src={require("./style/splashRing.png")}
                 className="splash-page-img">
             </img>
+            <p className='splash-page-link'>ReactJS - Redux - Express - PostgreSQL - Sequelize </p>
         </div>
     )
 };
