@@ -6,11 +6,36 @@ body, html {
 }
 
 .splashPage {
-    /* height: 100vh;
-    width: 100vw; */
+
     background-color: aquamarine;
     width: 100vw;
     height: 100vh;
     margin: 0px;
     padding: 0px;
 }
+
+.pic {
+    /* width: 25vw; */
+    width: 1000px;
+    height: 1000px;
+    border-radius: 100%;
+    position: fixed;
+    right: 70%;
+    top: 50%;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .pic {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
