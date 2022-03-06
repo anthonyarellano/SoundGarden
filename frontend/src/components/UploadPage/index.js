@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AWS from 'aws-sdk'
+import './style/upload-page.css';
 
 export const UploadPage = () => {
     const S3_BUCKET = process.env.REACT_APP_BUCKET;
@@ -35,22 +36,31 @@ export const UploadPage = () => {
             setProgress(Math.round((evt.loaded / evt.total) * 100))
           })
           .send((err, data) => {
-            if (err) console.log(err)
-            if (data) console.log(data);
+            if (err) return console.log(err);
+            if (data) {
+              const { Location, key } = data;
+              const song = {
+                url: Location,
+                awsKey: key
+              }
+              console.log(song);
+              setProgress(0);
+              setSelectedFile(null);
+            }
           })
         return;
       }
     }
     alert('File type not supported')
-    setSelectedFile(null);
     return;
   }
 
 
   return (
-    <div>
-      <div>Native SDK File Upload Progress is {progress}%</div>
+    <div className='upload-page-container'>
+      <div> Upload Progress is {progress}%</div>
       <input type="file" onChange={handleFileInput} />
+      <input type="text" />
       <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
     </div>
   )
