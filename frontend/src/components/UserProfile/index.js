@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUser } from "../../store/session";
 import { useEffect, useState } from "react";
@@ -15,7 +14,7 @@ const UserProfile = () => {
             setCurrentUser(userInfo)
         };
         retrive();
-    }, []);
+    }, [userId]);
 
     return (
         <>
