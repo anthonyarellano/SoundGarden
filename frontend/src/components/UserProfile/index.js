@@ -30,7 +30,7 @@ const UserProfile = () => {
     return (
         <>
             {currentUser &&
-            <h1>Welcome to user {currentUser.user.username}'s profile, </h1>}
+            <h1>Welcome to {currentUser.user.username}'s profile, </h1>}
             <div className="song-list-container">
              {songsList?.map((song)=> (
                  <div>
