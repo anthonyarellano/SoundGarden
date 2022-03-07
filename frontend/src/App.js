@@ -19,31 +19,36 @@ function App() {
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
-          <Route exact path="/">
-            <SplashPage />
-          </Route>
       {isLoaded && (
         <>
-          <Navigation isLoaded={isLoaded} />
           <Switch>
+            <Route exact path="/">
+              <SplashPage />
+            </Route>
             <Route path="/login">
+              <Navigation isLoaded={isLoaded} />
               <LoginFormPage />
             </Route>
             <Route path="/signup">
+              <Navigation isLoaded={isLoaded} />
               <SignupFormPage />
             </Route>
             <Route path="/upload">
+              <Navigation isLoaded={isLoaded} />
               <UploadPage />
             </Route>
             <Route path="/users/:userId">
               {/* todo ADD USER PROFILE COMPONENT*/}
+              <Navigation isLoaded={isLoaded} />
               <h1>Welcome to user profile</h1>
             </Route>
             <Route path="/discover">
               {/* todo ADD DISCOVER PAGE COMPONENT */}
+              <Navigation isLoaded={isLoaded} />
               <h1>Welcome to discover page</h1>
             </Route>
             <Route path="/">
+              <Navigation isLoaded={isLoaded} />
               <h1>404 page not found</h1>
               <img src={require("./404gif.gif")} ></img>
             </Route>
