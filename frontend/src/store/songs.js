@@ -1,13 +1,20 @@
 import { csrfFetch } from './csrf';
 
 const GET_SONGS = 'songs/getSongs'
-
+const ADD_SONG = 'songs/addSong'
 
 const loadSongs = (songs) => {
     return {
         type: GET_SONGS,
         songs
     };
+};
+
+const addSong = (song) => {
+    return {
+        type: ADD_SONG,
+        song
+    }
 };
 
 export const getSongs = (userId) => async (dispatch) => {
@@ -19,6 +26,23 @@ export const getSongs = (userId) => async (dispatch) => {
     return data;
 };
 
+export const uploadSong = (song) => async (dispatch) => {
+    console.log("in thunk", song);
+    const response = await csrfFetch('/api/songs', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({song})
+    });
+    if (response.ok) {
+        const song = response.json();
+        dispatch(addSong(song));
+        console.log("in thunk!", song);
+        return song;
+    }
+};
+
 const initialState = { songs: null };
 
 const sessionReducer = (state = initialState, action) => {
@@ -27,6 +51,11 @@ const sessionReducer = (state = initialState, action) => {
         case GET_SONGS: {
             const newState = {};
             action.songs.forEach((song) => (newState[song.id] = song));
+            return newState;
+        }
+        case ADD_SONG: {
+            const newState = {...state};
+            newState[action.song.id] = action.song;
             return newState;
         }
         default:

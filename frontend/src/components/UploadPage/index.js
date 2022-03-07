@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import AWS from 'aws-sdk'
 import './style/upload-page.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { uploadSong } from '../../store/songs';
+import { useHistory } from 'react-router-dom';
 
 export const UploadPage = () => {
     const S3_BUCKET = process.env.REACT_APP_BUCKET;
@@ -21,7 +24,11 @@ export const UploadPage = () => {
   const [title, setTitle] = useState(null);
   const [imgUrl, setImgUrl] = useState(null);
   const [errors, setErrors] = useState([]);
+  const sessionUser = useSelector((state) => state.session.user);
   const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g;
+  const { id } = sessionUser;
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const errors = [];
@@ -61,29 +68,34 @@ export const UploadPage = () => {
             if (data) {
               const { Location, key } = data;
               const song = {
+                userId: id,
+                title: title,
                 url: Location,
-                awsKey: key
-              }
+                imgUrl: imgUrl
+              };
               console.log(song);
+              dispatch(uploadSong(song));
+              // console.log("in component!", newSong);
               setProgress(0);
               setSelectedFile(null);
-            }
-          })
-          return;
-        }
-        return;
-      }
+              history.push(`/users/${id}`)
+            };
+          });
+        };
+      };
       return;
-    }
+    };
     return;
-  }
+  };
 
 
   return (
     <div className='upload-page-container'>
       {errors &&
       errors.map((error) => (
-        <p>{error}</p>
+        <p key={error}>
+          {error}
+        </p>
       ))}
       <div> Upload Progress is {progress}%</div>
       <input type="file" onChange={handleFileInput} />
