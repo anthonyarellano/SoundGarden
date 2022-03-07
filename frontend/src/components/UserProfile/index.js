@@ -13,6 +13,7 @@ const UserProfile = () => {
     const dispatch = useDispatch();
     const songsList = useSelector((state) => Object.values(state.songs));
     const { currentSong, setCurrentSong } = useSong();
+    const sessionUser = useSelector((state) => state.session.user);
 
     useEffect(() => {
        const retrive = async () => {
@@ -37,7 +38,16 @@ const UserProfile = () => {
                     <p>{song?.title}</p>
                     <img className="album-artwork" src={song?.imgUrl}></img>
                     <button
-                        onClick={() => setCurrentSong([song.title, song.url])}>Play</button>
+                        onClick={() => setCurrentSong([song.title, song.url])}
+                    >
+                        Play
+                    </button>
+                    {song?.userId === sessionUser?.id && (
+                        <div>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>)
+                    }
                 </div>
              ))};
              </div>
