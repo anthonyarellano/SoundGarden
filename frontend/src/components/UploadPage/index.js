@@ -21,11 +21,21 @@ export const UploadPage = () => {
   const [title, setTitle] = useState(null);
   const [imgUrl, setImgUrl] = useState(null);
   const [errors, setErrors] = useState([]);
+  const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g;
 
   useEffect(() => {
     const errors = [];
-    if (!title) errors.push('Please provide a value for Song Title.')
-    if (!imgUrl) errors.push('Please provide a value for Cover Art URL.')
+    if (!title) errors.push('Please provide a value for Song Title.');
+    if (!imgUrl) errors.push('Please provide a value for Cover Art URL.');
+    if (selectedFile) {
+      if (selectedFile.type !== "audio/wav" && selectedFile.type !== "audio/mpeg") {
+        errors.push('Unsupported file type.')
+      };
+    };
+    if (imgUrl) {
+      if (!imgUrl.match(urlRegex)) errors.push('Please provide a valid URL.');
+    };
+    setErrors(errors);
   }, [title, imgUrl]);
 
   const handleFileInput = (e) => {
@@ -33,14 +43,16 @@ export const UploadPage = () => {
   }
 
   const uploadFile = (file) => {
-    if (file) {
-      if (file.type === "audio/mpeg") {
-        const params = {
-          Body: file,
-          Bucket: S3_BUCKET,
-          Key: file.name
-        };
-        myBucket.upload(params)
+    if (errors.length === 0) {
+
+      if (file) {
+        if (file.type === "audio/wav" || file.type === "audio/mpeg") {
+          const params = {
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: file.name
+          };
+          myBucket.upload(params)
           .on('httpUploadProgress', (evt) => {
             setProgress(Math.round((evt.loaded / evt.total) * 100))
           })
@@ -57,16 +69,22 @@ export const UploadPage = () => {
               setSelectedFile(null);
             }
           })
+          return;
+        }
         return;
       }
+      return;
     }
-    alert('File type not supported')
     return;
   }
 
 
   return (
     <div className='upload-page-container'>
+      {errors &&
+      errors.map((error) => (
+        <p>{error}</p>
+      ))}
       <div> Upload Progress is {progress}%</div>
       <input type="file" onChange={handleFileInput} />
       <label htmlFor="title">Song Title</label>
