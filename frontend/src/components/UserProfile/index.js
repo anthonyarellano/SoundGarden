@@ -51,7 +51,10 @@ const UserProfile = () => {
                                     setShowEdit(!showEdit)
                                     setEditSong(song?.id)}}>Edit</button>
                             {showEdit && editSong === song?.id &&
-                                <input type="text"></input>
+                                <div>
+                                    <input type="text" value={song?.title} />
+                                    <button>Submit</button>
+                                </div>
                             }
                             <button>Delete</button>
                         </div>)
