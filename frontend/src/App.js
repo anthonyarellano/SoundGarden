@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import { UploadPage } from "./components/UploadPage";
 import SplashPage from "./components/SplashPage";
 import "./index.css";
+import UserProfile from "./components/UserProfile";
+import PageNotFound from "./components/404Page";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ function App() {
             <Route path="/users/:userId">
               {/* todo ADD USER PROFILE COMPONENT*/}
               <Navigation isLoaded={isLoaded} />
-              <h1>Welcome to user profile</h1>
+              <UserProfile />
             </Route>
             <Route path="/discover">
               {/* todo ADD DISCOVER PAGE COMPONENT */}
@@ -49,8 +51,7 @@ function App() {
             </Route>
             <Route path="/">
               <Navigation isLoaded={isLoaded} />
-              <h1>404 page not found</h1>
-              <img src={require("./404gif.gif")} ></img>
+              <PageNotFound />
             </Route>
           </Switch>
         </>
