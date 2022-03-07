@@ -10,6 +10,7 @@ import SplashPage from "./components/SplashPage";
 import "./index.css";
 import UserProfile from "./components/UserProfile";
 import PageNotFound from "./components/404Page";
+import Player from "./components/Player";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,11 +44,13 @@ function App() {
               {/* todo ADD USER PROFILE COMPONENT*/}
               <Navigation isLoaded={isLoaded} />
               <UserProfile />
+              <Player />
             </Route>
             <Route path="/discover">
               {/* todo ADD DISCOVER PAGE COMPONENT */}
               <Navigation isLoaded={isLoaded} />
               <h1>Welcome to discover page</h1>
+              <Player />
             </Route>
             <Route path="/">
               <Navigation isLoaded={isLoaded} />
