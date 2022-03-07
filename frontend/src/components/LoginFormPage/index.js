@@ -11,7 +11,7 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return (
-    <Redirect to="/upload" />
+    <Redirect to="/discover" />
   )
 
   const handleSubmit = (e) => {

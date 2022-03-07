@@ -35,6 +35,18 @@ function App() {
             <Route path="/upload">
               <UploadPage />
             </Route>
+            <Route path="/users/:userId">
+              {/* todo ADD USER PROFILE COMPONENT*/}
+              <h1>Welcome to user profile</h1>
+            </Route>
+            <Route path="/discover">
+              {/* todo ADD DISCOVER PAGE COMPONENT */}
+              <h1>Welcome to discover page</h1>
+            </Route>
+            <Route path="/">
+              <h1>404 page not found</h1>
+              <img src={require("./404gif.gif")} ></img>
+            </Route>
           </Switch>
         </>
       )}
