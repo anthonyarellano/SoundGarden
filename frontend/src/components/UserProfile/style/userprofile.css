@@ -1,0 +1,7 @@
+.album-artwork {
+    width: 200px;
+}
+
+.song-list-container {
+    display: flex;
+}

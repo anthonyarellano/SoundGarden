@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AWS from 'aws-sdk'
 import './style/upload-page.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { uploadSong } from '../../store/songs';
+import { useHistory, Redirect } from 'react-router-dom';
 
 export const UploadPage = () => {
     const S3_BUCKET = process.env.REACT_APP_BUCKET;
@@ -18,20 +21,44 @@ export const UploadPage = () => {
 
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [imgUrl, setImgUrl] = useState(null);
+  const sessionUser = useSelector((state) => state.session.user);
+  const [errors, setErrors] = useState([]);
+  const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const errors = [];
+    if (!title) errors.push('Please provide a value for Song Title.');
+    if (!imgUrl) errors.push('Please provide a value for Cover Art URL.');
+    if (selectedFile) {
+      if (selectedFile.type !== "audio/wav" && selectedFile.type !== "audio/mpeg") {
+        errors.push('Unsupported file type.')
+      };
+    };
+    if (imgUrl) {
+      if (!imgUrl.match(urlRegex)) errors.push('Please provide a valid URL.');
+    };
+    setErrors(errors);
+  }, [title, imgUrl]);
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
   }
 
   const uploadFile = (file) => {
-    if (file) {
-      if (file.type === "audio/wav" || file.type === "audio/mpeg") {
-        const params = {
-          Body: file,
-          Bucket: S3_BUCKET,
-          Key: file.name
-        };
-        myBucket.upload(params)
+    if (errors.length === 0) {
+
+      if (file) {
+        if (file.type === "audio/wav" || file.type === "audio/mpeg") {
+          const params = {
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: file.name
+          };
+          myBucket.upload(params)
           .on('httpUploadProgress', (evt) => {
             setProgress(Math.round((evt.loaded / evt.total) * 100))
           })
@@ -40,28 +67,43 @@ export const UploadPage = () => {
             if (data) {
               const { Location, key } = data;
               const song = {
+                userId: sessionUser.id,
+                title: title,
                 url: Location,
-                awsKey: key
-              }
+                imgUrl: imgUrl
+              };
               console.log(song);
+              dispatch(uploadSong(song));
               setProgress(0);
               setSelectedFile(null);
-            }
-          })
-        return;
-      }
-    }
-    alert('File type not supported')
+              history.push(`/users/${sessionUser.id}`)
+            };
+          });
+        };
+      };
+      return;
+    };
     return;
-  }
+  };
 
 
   return (
     <div className='upload-page-container'>
+      {!sessionUser &&
+      <Redirect to="/signup" />}
+      {errors &&
+      errors.map((error) => (
+        <p key={error}>
+          {error}
+        </p>
+      ))}
       <div> Upload Progress is {progress}%</div>
       <input type="file" onChange={handleFileInput} />
-      <input type="text" />
-      <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+      <label htmlFor="title">Song Title</label>
+      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)}/>
+      <label htmlFor="imgUrl">Cover Art URL</label>
+      <input type="text"name="imgUrl" onChange={(e) => setImgUrl(e.target.value)}></input>
+      <button onClick={() => uploadFile(selectedFile)}> Upload Song</button>
     </div>
   )
 
