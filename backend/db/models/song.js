@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const Song = sequelize.define('Song', {
     userId: DataTypes.INTEGER,
@@ -7,7 +8,14 @@ module.exports = (sequelize, DataTypes) => {
     imgUrl: DataTypes.STRING
   }, {});
   Song.associate = function(models) {
-    // associations can be defined here
+    Song.belongsTo(models.User, { foreignKey: 'userId' });
+    Song.hasMany(models.Comment, { foreignKey: 'songId' });
+    const columnMapping = {
+      through: 'SongPlaylistJoin',
+      otherKey: 'playlistId',
+      foreignKey: 'songId'
+    };
+    Song.belongsToMany(models.Playlist, columnMapping);
   };
   return Song;
 };
