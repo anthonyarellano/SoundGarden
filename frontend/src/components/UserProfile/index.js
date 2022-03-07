@@ -33,6 +33,7 @@ const UserProfile = () => {
                 <div>
                     <p>{song?.title}</p>
                     <img src={song?.imgUrl}></img>
+                    <button>Play</button>
                 </div>
              ))};
             {!currentUser &&
