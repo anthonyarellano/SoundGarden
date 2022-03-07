@@ -29,6 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
+    },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    bannerUrl: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {
@@ -47,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  User.prototype.toSafeObject = function() { 
+  User.prototype.toSafeObject = function() {
     const { id, username, email } = this; // context will be the User instance
     return { id, username, email };
   };

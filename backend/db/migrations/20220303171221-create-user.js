@@ -22,6 +22,14 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false
       },
+      imgUrl: {
+        type: Sequelize.STRING(256),
+        allowNull: false
+      },
+      bannerUrl: {
+        type: Sequelize.STRING(256),
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
