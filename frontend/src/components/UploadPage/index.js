@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AWS from 'aws-sdk'
 import './style/upload-page.css';
 
@@ -18,6 +18,15 @@ export const UploadPage = () => {
 
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [imgUrl, setImgUrl] = useState(null);
+  const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    const errors = [];
+    if (!title) errors.push('Please provide a value for Song Title.')
+    if (!imgUrl) errors.push('Please provide a value for Cover Art URL.')
+  }, [title, imgUrl]);
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -25,7 +34,7 @@ export const UploadPage = () => {
 
   const uploadFile = (file) => {
     if (file) {
-      if (file.type === "audio/wav" || file.type === "audio/mpeg") {
+      if (file.type === "audio/mpeg") {
         const params = {
           Body: file,
           Bucket: S3_BUCKET,
@@ -60,8 +69,11 @@ export const UploadPage = () => {
     <div className='upload-page-container'>
       <div> Upload Progress is {progress}%</div>
       <input type="file" onChange={handleFileInput} />
-      <input type="text" />
-      <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+      <label htmlFor="title">Song Title</label>
+      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)}/>
+      <label htmlFor="imgUrl">Cover Art URL</label>
+      <input type="text"name="imgUrl" onChange={(e) => setImgUrl(e.target.value)}></input>
+      <button onClick={() => uploadFile(selectedFile)}> Upload Song</button>
     </div>
   )
 
