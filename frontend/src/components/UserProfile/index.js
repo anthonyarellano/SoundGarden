@@ -16,6 +16,17 @@ const UserProfile = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
+    const [newTitle, setNewTitle] = useState(null);
+    const [errors, setErrors] = useState([]);
+
+    useEffect(() => {
+        const errors = [];
+        if (!newTitle) errors.push('Please provide a value for new Title.')
+        if (newTitle) {
+            if (newTitle.length > 100) errors.push('Please provide a Title less than 100 characters.');
+        };
+        setErrors(errors);
+    }, [newTitle]);
 
     useEffect(() => {
        const retrive = async () => {
@@ -29,6 +40,15 @@ const UserProfile = () => {
     useEffect(() => {
         dispatch(getSongs(userId));
     }, [dispatch]);
+
+    const handleEdit = (song) => {
+        console.log(song);
+        console.log(errors);
+        if (errors.length) {
+            return alert('Provide new Title less than 100 characters long.')
+        }
+        console.log("passed error!");
+    };
 
     return (
         <>
@@ -49,11 +69,15 @@ const UserProfile = () => {
                             <button id={song?.id}
                                 onClick={() => {
                                     setShowEdit(!showEdit)
-                                    setEditSong(song?.id)}}>Edit</button>
+                                    setEditSong(song?.id)
+                                    setNewTitle(song?.title)}}>Edit</button>
                             {showEdit && editSong === song?.id &&
                                 <div>
-                                    <input type="text" value={song?.title} />
-                                    <button>Submit</button>
+                                    <input
+                                        type="text"
+                                        value={newTitle}
+                                        onChange={(e) => setNewTitle(e.target.value)}/>
+                                    <button onClick={(e) => handleEdit(song)}>Submit</button>
                                 </div>
                             }
                             <button>Delete</button>
