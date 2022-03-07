@@ -14,6 +14,8 @@ const UserProfile = () => {
     const songsList = useSelector((state) => Object.values(state.songs));
     const { currentSong, setCurrentSong } = useSong();
     const sessionUser = useSelector((state) => state.session.user);
+    const [showEdit, setShowEdit] = useState(false);
+    const [editSong, setEditSong] = useState(null);
 
     useEffect(() => {
        const retrive = async () => {
@@ -44,7 +46,13 @@ const UserProfile = () => {
                     </button>
                     {song?.userId === sessionUser?.id && (
                         <div>
-                            <button>Edit</button>
+                            <button id={song?.id}
+                                onClick={() => {
+                                    setShowEdit(!showEdit)
+                                    setEditSong(song?.id)}}>Edit</button>
+                            {showEdit && editSong === song?.id &&
+                                <input type="text"></input>
+                            }
                             <button>Delete</button>
                         </div>)
                     }
