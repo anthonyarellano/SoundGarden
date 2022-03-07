@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
 import { useSong } from "../../Context/SongContext";
 import './style/userprofile.css';
+import { putSong } from "../../store/songs";
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -13,6 +14,20 @@ const UserProfile = () => {
     const dispatch = useDispatch();
     const songsList = useSelector((state) => Object.values(state.songs));
     const { currentSong, setCurrentSong } = useSong();
+    const sessionUser = useSelector((state) => state.session.user);
+    const [showEdit, setShowEdit] = useState(false);
+    const [editSong, setEditSong] = useState(null);
+    const [newTitle, setNewTitle] = useState(null);
+    const [errors, setErrors] = useState([]);
+
+    useEffect(() => {
+        const errors = [];
+        if (!newTitle) errors.push('Please provide a value for new Title.')
+        if (newTitle) {
+            if (newTitle.length > 100) errors.push('Please provide a Title less than 100 characters.');
+        };
+        setErrors(errors);
+    }, [newTitle]);
 
     useEffect(() => {
        const retrive = async () => {
@@ -27,6 +42,24 @@ const UserProfile = () => {
         dispatch(getSongs(userId));
     }, [dispatch]);
 
+    const handleEdit = (song) => {
+        if (errors.length) {
+            return alert('Provide new Title less than 100 characters long.')
+        };
+        const { userId, url, imgUrl, id } = song;
+        const newSong = {
+            id,
+            userId,
+            title: newTitle,
+            url,
+            imgUrl
+        };
+        console.log(newSong);
+        dispatch(putSong(newSong));
+        setShowEdit(false);
+        setNewTitle(null); 
+    };
+
     return (
         <>
             {currentUser &&
@@ -37,7 +70,29 @@ const UserProfile = () => {
                     <p>{song?.title}</p>
                     <img className="album-artwork" src={song?.imgUrl}></img>
                     <button
-                        onClick={() => setCurrentSong([song.title, song.url])}>Play</button>
+                        onClick={() => setCurrentSong([song.title, song.url])}
+                    >
+                        Play
+                    </button>
+                    {song?.userId === sessionUser?.id && (
+                        <div>
+                            <button id={song?.id}
+                                onClick={() => {
+                                    setShowEdit(!showEdit)
+                                    setEditSong(song?.id)
+                                    setNewTitle(song?.title)}}>Edit</button>
+                            {showEdit && editSong === song?.id &&
+                                <div>
+                                    <input
+                                        type="text"
+                                        value={newTitle}
+                                        onChange={(e) => setNewTitle(e.target.value)}/>
+                                    <button onClick={(e) => handleEdit(song)}>Submit</button>
+                                </div>
+                            }
+                            <button>Delete</button>
+                        </div>)
+                    }
                 </div>
              ))};
              </div>

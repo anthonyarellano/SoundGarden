@@ -36,6 +36,19 @@ router.post(
     })
 )
 
+router.put(
+    '/',
+    asyncHandler(async (req, res) => {
+        const { song } = req.body;
+        const { id, userId, title, url, imgUrl } = song;
+        const dbSong = await Song.findByPk(id);
+
+        if (dbSong) {
+            await dbSong.update({ title: title });
+            return res.json({ dbSong });
+        }
+    })
+)
 
 
 
