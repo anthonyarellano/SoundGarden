@@ -1,6 +1,6 @@
 .rhap_container {
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -11,6 +11,7 @@
     background-color: rgba(173, 173, 173, .5);
     box-shadow: 0 0 3px 0 rgba(255, 251, 21, 0.2);
     border: .5px solid #dadada;
+
   }
   .rhap_container:focus:not(:focus-visible) {
     outline: 0;

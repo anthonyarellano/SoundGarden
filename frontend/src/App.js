@@ -39,6 +39,7 @@ function App() {
             <Route path="/upload">
               <Navigation isLoaded={isLoaded} />
               <UploadPage />
+              <Player />
             </Route>
             <Route path="/users/:userId">
               {/* todo ADD USER PROFILE COMPONENT*/}

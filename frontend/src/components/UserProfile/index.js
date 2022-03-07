@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import PageNotFound from "../404Page";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
+import { useSong } from "../../Context/SongContext";
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
-    const [songs, setSongs] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
     const songsList = useSelector((state) => Object.values(state.songs));
+    const { currentSong, setCurrentSong } = useSong();
 
     useEffect(() => {
        const retrive = async () => {
@@ -33,7 +34,8 @@ const UserProfile = () => {
                 <div>
                     <p>{song?.title}</p>
                     <img src={song?.imgUrl}></img>
-                    <button>Play</button>
+                    <button
+                        onClick={() => setCurrentSong([song.title, song.url])}>Play</button>
                 </div>
              ))};
             {!currentUser &&
