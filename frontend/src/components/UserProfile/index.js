@@ -5,6 +5,7 @@ import PageNotFound from "../404Page";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
 import { useSong } from "../../Context/SongContext";
+import './style/userprofile.css';
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -30,14 +31,16 @@ const UserProfile = () => {
         <>
             {currentUser &&
             <h1>Welcome to user {currentUser.user.username}'s profile, </h1>}
+            <div className="song-list-container">
              {songsList?.map((song)=> (
-                <div>
+                 <div>
                     <p>{song?.title}</p>
-                    <img src={song?.imgUrl}></img>
+                    <img className="album-artwork" src={song?.imgUrl}></img>
                     <button
                         onClick={() => setCurrentSong([song.title, song.url])}>Play</button>
                 </div>
              ))};
+             </div>
             {!currentUser &&
             <PageNotFound />}
         </>
