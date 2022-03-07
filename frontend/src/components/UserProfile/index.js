@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
 import { useSong } from "../../Context/SongContext";
 import './style/userprofile.css';
+import { putSong } from "../../store/songs";
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -42,12 +43,21 @@ const UserProfile = () => {
     }, [dispatch]);
 
     const handleEdit = (song) => {
-        console.log(song);
-        console.log(errors);
         if (errors.length) {
             return alert('Provide new Title less than 100 characters long.')
-        }
-        console.log("passed error!");
+        };
+        const { userId, url, imgUrl, id } = song;
+        const newSong = {
+            id,
+            userId,
+            title: newTitle,
+            url,
+            imgUrl
+        };
+        console.log(newSong);
+        dispatch(putSong(newSong));
+        setShowEdit(false);
+        setNewTitle(null); 
     };
 
     return (
