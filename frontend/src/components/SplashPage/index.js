@@ -34,10 +34,6 @@ const SplashPage = () => {
             <div className='splash-page-text-container'>
                 <p id="splash-page-text">Local music lives here</p>
                 {sessionLinks}
-                {/* <div className='splash-page-button-container'>
-                    <NavLink className='splash-page-link' exact to='/login'>Login /</NavLink>
-                    <NavLink className='splash-page-link' exact to='/signup'> Sign up</NavLink>
-                </div> */}
             </div>
             <img
                 src={require("./style/splashRing.png")}
