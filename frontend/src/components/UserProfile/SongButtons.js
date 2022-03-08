@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { putSong, deleteSong } from "../../store/songs";
 import { useState, useEffect } from "react"
 
-const SongButtons = ({visible, id, hoveredSong, song}) => {
+const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
@@ -55,7 +55,7 @@ const SongButtons = ({visible, id, hoveredSong, song}) => {
                 <img
                     className="song-image"
                     src={require('./style/images/play-button.png')}
-                    onClick={() => setCurrentSong([song?.title, song?.url])}></img>
+                    onClick={() => setCurrentSong([song?.title, song?.url, currentUser?.user.username])}></img>
             </div>
             <div className="create-playlist-button">
                 <img

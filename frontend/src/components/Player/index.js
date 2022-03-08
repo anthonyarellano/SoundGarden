@@ -12,7 +12,7 @@ const Player = () => {
               src={currentSong && currentSong[1]}
               onPlay={e => console.log("onPlay")}
               // onEnded={playlist}
-              header={currentSong && currentSong[0]}
+              header={currentSong && `${currentSong[2]} - ${currentSong[0]}` }
               // onClickNext={playlist}
               showSkipControls={true}
             //   footer={

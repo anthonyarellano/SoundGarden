@@ -51,6 +51,7 @@ const SongContainer = () => {
                                     visible={visible}
                                     id={song?.id}
                                     hoveredSong={hoveredSong}
+                                    currentUser={currentUser}
                                 />
                             </div>
                         </div>

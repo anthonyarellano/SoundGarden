@@ -63,7 +63,7 @@ body {
 .song-button-container {
     padding: 5px;
     display: inline-block;
-    background-color: rgba(128, 128, 128, .3);
+    background-color: rgba(179, 177, 177, 0.3);
     box-shadow: 2px 5px 5px black;
     position: absolute;
     left: 0;
