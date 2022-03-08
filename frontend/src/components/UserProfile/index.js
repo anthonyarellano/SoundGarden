@@ -20,6 +20,7 @@ const UserProfile = () => {
     const [newTitle, setNewTitle] = useState(null);
     const [errors, setErrors] = useState([]);
 
+    console.log(songsList);
     useEffect(() => {
         const errors = [];
         if (!newTitle) errors.push('Please provide a value for new Title.')
@@ -36,11 +37,12 @@ const UserProfile = () => {
             setCurrentUser(userInfo)
         };
         retrive();
+        dispatch(getSongs(userId));
     }, [userId]);
 
     useEffect(() => {
         dispatch(getSongs(userId));
-    }, [dispatch]);
+    }, []);
 
     const handleEdit = (song) => {
         if (errors.length) {
