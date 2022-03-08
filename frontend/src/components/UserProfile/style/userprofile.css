@@ -38,3 +38,13 @@ body {
     font-family: 'Interstate Regular Italic';
     font-size: 50px;
 }
+
+.profile-nav-wrapper {
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-bottom: .5px solid #F2F2F2;
+    padding: 12px 0px 12px 0px;
+} .profile-nav-button {
+    margin-right: 20px;
+}

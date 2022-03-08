@@ -1,8 +1,12 @@
+import './style/userprofile.css';
 
 const ProfileNav = () => {
 
     return(
-        <h1>Profile Nav</h1>
+        <div className="profile-nav-wrapper">
+            <div className='profile-nav-button'>All Music</div>
+            <div className='profile-nav-button'>Playlists</div>
+        </div>
     )
 };
 
