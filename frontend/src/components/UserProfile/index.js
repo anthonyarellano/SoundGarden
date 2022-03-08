@@ -6,13 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
 import './style/userprofile.css';
 import ProfileBanner from "./ProfileBanner";
-import SongContainer from "./SongContainer";
 import ProfileNav from "./ProfileNav";
+
+
+
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+
 
     useEffect(() => {
         const retrive = async () => {
@@ -26,6 +29,7 @@ const UserProfile = () => {
 
     return (
         <>
+        <div>
             <div className="user-profile-container">
                 <ProfileBanner userProfile={currentUser}/>
                 <ProfileNav userId={userId} sessionUser={sessionUser}/>
@@ -36,7 +40,9 @@ const UserProfile = () => {
                     src={require("../SplashPage/style/splashRing.png")}
                     className="user-profile-spinning-img modal-img">
             </img>
+        </div>
         </>
+
     )
 };
 

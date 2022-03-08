@@ -95,17 +95,6 @@ body {
     height: 18px;
 }
 
-.playlist-modal {
-    background-color: aquamarine;
-    position: absolute;
-    top: 20%;
-    left: 40%;
-    right: 40%;
-    bottom: 20%;
-    border: none;
-    outline: none;
-    overflow: hidden;
-}
 
 .user-profile-spinning-img {
     position:absolute;
@@ -115,6 +104,12 @@ body {
     height: 1500px;
 }
 
+.playlist-entry {
+    margin-left: 10px;
+    position: absolute;
+    left: 22%;
+    font-family: 'Interstate Light Cond'
+}
 @media (prefers-reduced-motion: no-preference) {
     .modal-img {
       animation: App-logo-spin infinite 20s linear;

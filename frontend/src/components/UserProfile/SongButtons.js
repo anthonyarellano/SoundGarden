@@ -2,7 +2,6 @@ import { useSong } from "../../Context/SongContext";
 import { useDispatch, useSelector } from 'react-redux';
 import { putSong, deleteSong } from "../../store/songs";
 import { useState, useEffect } from "react";
-import Modal from 'react-modal';
 
 const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     const [showEdit, setShowEdit] = useState(false);
@@ -13,6 +12,7 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     const sessionUser = useSelector((state) => state.session.user);
     const { setCurrentSong } = useSong();
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         const errors = [];
@@ -48,31 +48,11 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
         }
     }
 
-    const openModal = () => {
-        setIsOpen(true);
-        return;
-    }
-
-    const closeModal = () => {
-        setIsOpen(false);
-        return
-    }
-
     return (
         <div
             id={id}
             className={visible && id === parseInt(hoveredSong) ? 'song-button-container' : 'hidden'}
         >
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                className="playlist-modal"
-            >
-                <img
-                    src={require("../SplashPage/style/splashRing.png")}
-                    className="modal-img">
-                </img>
-            </Modal>
             <div className="song-play-button">
                 <img
                     className="song-image"
@@ -83,7 +63,7 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                 <img
                     className="song-image playlist"
                     src={require('./style/images/playlist-button.png')}
-                    onClick={openModal}></img>
+                    ></img>
             </div>
             {song?.userId === sessionUser?.id &&
             <>
