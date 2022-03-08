@@ -1,16 +1,18 @@
 import { useSong } from "../../Context/SongContext";
 import { useDispatch, useSelector } from 'react-redux';
 import { putSong, deleteSong } from "../../store/songs";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
+    const [modalIsOpen, setIsOpen] = useState(false);
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
     const { setCurrentSong } = useSong();
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         const errors = [];
@@ -60,7 +62,8 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
             <div className="create-playlist-button">
                 <img
                     className="song-image playlist"
-                    src={require('./style/images/playlist-button.png')}></img>
+                    src={require('./style/images/playlist-button.png')}
+                    ></img>
             </div>
             {song?.userId === sessionUser?.id &&
             <>
