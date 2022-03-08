@@ -69,6 +69,7 @@ export const uploadSong = (song) => async (dispatch) => {
     if (response.ok) {
         const song = response.json();
         dispatch(addSong(song));
+        dispatch(getSongs(song.userId)); 
         console.log("in thunk!", song);
         return song;
     }
@@ -111,7 +112,7 @@ const sessionReducer = (state = initialState, action) => {
         case DELETE_SONG: {
             const newState = {...state};
             delete newState[action.songId];
-            return newState; 
+            return newState;
         }
         default:
             return state;
