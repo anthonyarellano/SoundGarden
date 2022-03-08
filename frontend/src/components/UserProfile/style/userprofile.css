@@ -58,6 +58,8 @@ body {
 .song-button-container {
     display: inline-block;
     background-color: rgba(128, 128, 128, .3);
+} .hidden {
+    display: none;
 }
 .song-image {
     height: 25px;

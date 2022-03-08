@@ -2,7 +2,6 @@ import './style/userprofile.css';
 import { useState } from 'react';
 import SongContainer from './SongContainer';
 import PlaylistContainer from './PlaylistContainer';
-import SongButtons from './SongButtons';
 
 const ProfileNav = ({userId, sessionUser}) => {
     const [allActive, setAllActive] = useState(true);
@@ -36,7 +35,6 @@ const ProfileNav = ({userId, sessionUser}) => {
                 <SongContainer /> :
                 <PlaylistContainer />
             }
-            <SongButtons />
         </>
     )
 };

@@ -6,6 +6,7 @@ import { getSongs } from '../../store/songs';
 import { useSong } from "../../Context/SongContext";
 import './style/userprofile.css';
 import { putSong, deleteSong } from "../../store/songs";
+import SongButtons from './SongButtons';
 
 const SongContainer = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -18,6 +19,8 @@ const SongContainer = () => {
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
     const [errors, setErrors] = useState([]);
+    const [visible, setVisible] = useState(false);
+    const [hoveredSong, setHoveredSong] = useState(null);
 
     useEffect(() => {
         const errors = [];
@@ -74,7 +77,17 @@ const SongContainer = () => {
                     <div>
                         <div>
                             <p>{song?.title}</p>
-                            <img className="album-artwork" src={song?.imgUrl}></img>
+                            <div>
+                                <img
+                                id={song?.id}
+                                className="album-artwork" src={song?.imgUrl}
+                                onMouseEnter={(e) => {
+                                    setVisible(true)
+                                    setHoveredSong(e.target.id)}}
+                                onMouseLeave={() => setVisible(false)}></img>
+                                <SongButtons visible={visible} id={song?.id} hoveredSong={hoveredSong}
+                                />
+                            </div>
                             <button
                                 onClick={() => setCurrentSong([song.title, song.url])}
                             >
