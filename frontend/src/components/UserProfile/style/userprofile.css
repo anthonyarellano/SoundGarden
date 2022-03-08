@@ -55,9 +55,15 @@ body {
     border-bottom: 1px solid black;
 }
 
+.image-button-container {
+    position: relative;
+}
 .song-button-container {
     display: inline-block;
     background-color: rgba(128, 128, 128, .3);
+    position: absolute;
+    left: 0;
+    
 } .hidden {
     display: none;
 }

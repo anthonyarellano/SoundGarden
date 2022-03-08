@@ -1,7 +1,10 @@
 const SongButtons = ({visible, id, hoveredSong}) => {
-    console.log(id, hoveredSong);
+
     return (
-        <div id={id} className={visible && id === parseInt(hoveredSong) ? 'song-button-container' : 'hidden'}>
+        <div
+            id={id}
+            className={visible && id === parseInt(hoveredSong) ? 'song-button-container' : 'hidden'}
+        >
             <div className="song-play-button">
                 <img
                     className="song-image"

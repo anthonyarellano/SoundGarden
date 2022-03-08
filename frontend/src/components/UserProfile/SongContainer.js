@@ -77,14 +77,14 @@ const SongContainer = () => {
                     <div>
                         <div>
                             <p>{song?.title}</p>
-                            <div>
+                            <div className="image-button-container">
                                 <img
                                 id={song?.id}
                                 className="album-artwork" src={song?.imgUrl}
                                 onMouseEnter={(e) => {
                                     setVisible(true)
                                     setHoveredSong(e.target.id)}}
-                                onMouseLeave={() => setVisible(false)}></img>
+                                ></img>
                                 <SongButtons visible={visible} id={song?.id} hoveredSong={hoveredSong}
                                 />
                             </div>
