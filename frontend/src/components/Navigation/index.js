@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import './style/navbar.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
 
   let sessionLinks;
   if (sessionUser) {
@@ -16,7 +16,8 @@ function Navigation({ isLoaded }){
                 src={require('./style/images/upload-image.png')}>
           </img>
         </NavLink>
-        <ProfileButton user={sessionUser} />
+        <button
+          onClick={() => history.push(`/users/${sessionUser.id}`)}>Profile</button>
     </>
     );
   } else {

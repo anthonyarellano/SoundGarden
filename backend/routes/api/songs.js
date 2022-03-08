@@ -50,6 +50,17 @@ router.put(
     })
 )
 
+router.delete(
+    '/',
+    asyncHandler(async (req, res) => {
+        const { songId } = req.body;
+        const song = await Song.findByPk(songId);
+        if (song) {
+            await song.destroy();
+            res.json({"response": "Success"})
+        }
+    })
+)
 
 
 
