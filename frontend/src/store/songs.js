@@ -58,7 +58,6 @@ export const getSongs = (userId) => async (dispatch) => {
 };
 
 export const uploadSong = (song) => async (dispatch) => {
-    console.log("in thunk", song);
     const response = await csrfFetch('/api/songs', {
         method: "POST",
         headers: {
@@ -68,11 +67,10 @@ export const uploadSong = (song) => async (dispatch) => {
     });
     if (response.ok) {
         const song = await response.json();
-        console.log(song);
-        dispatch(addSong(song));
-        return song;
+        console.log("----------------", song.createdSong);
+        dispatch(addSong(song.createdSong));
+        return song.createdSong;
         // dispatch(getSongs(song.userId));
-        // console.log("in thunk!", song);
     }
 };
 

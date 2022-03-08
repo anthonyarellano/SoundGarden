@@ -72,12 +72,12 @@ export const UploadPage = () => {
                 url: Location,
                 imgUrl: imgUrl
               };
-              console.log(song);
+              console.log("leaving component", song);
               dispatch(uploadSong(song));
               dispatch(getSongs(sessionUser.id))
               setProgress(0);
               setSelectedFile(null);
-              history.push(`/users/${sessionUser.id}`)
+              return history.push(`/users/${sessionUser.id}`)
             };
           });
         };
