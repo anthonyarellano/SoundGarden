@@ -59,22 +59,24 @@ body {
     position: relative;
 }
 .song-button-container {
+    padding: 5px;
     display: inline-block;
     background-color: rgba(128, 128, 128, .3);
     position: absolute;
     left: 0;
-    
+
 } .hidden {
     display: none;
 }
 .song-image {
-    height: 25px;
+    height: 15px;
+    cursor: pointer;
 }
 
 .edit {
-    height: 17px;
+    height: 15px;
 } .delete {
-    height: 22px;
+    height: 18px;
 } .playlist {
-    height: 23px;
+    height: 18px;
 }
