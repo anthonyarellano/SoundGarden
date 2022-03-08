@@ -25,12 +25,18 @@ const UserProfile = () => {
     }, [userId]);
 
     return (
-        <div className="user-profile-container">
-        <ProfileBanner userProfile={currentUser}/>
-        <ProfileNav userId={userId} sessionUser={sessionUser}/>
-            {!currentUser &&
-                <PageNotFound />}
-        </div>
+        <>
+            <div className="user-profile-container">
+                <ProfileBanner userProfile={currentUser}/>
+                <ProfileNav userId={userId} sessionUser={sessionUser}/>
+                    {!currentUser &&
+                        <PageNotFound />}
+            </div>
+            <img
+                    src={require("../SplashPage/style/splashRing.png")}
+                    className="user-profile-spinning-img modal-img">
+            </img>
+        </>
     )
 };
 

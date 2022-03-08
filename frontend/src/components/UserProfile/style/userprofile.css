@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-around;
     font-family: 'Interstate Light Cond';
+
 }
 
 .user-profile-container {
@@ -15,11 +16,19 @@
     margin-top: 2%;
     align-items: center;
     position: relative;
+    z-index: 1;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+
 }
 
 body {
     background-color: #F2F2F2;
     text-align: center;
+    overflow: hidden;
 }
 
 .profile-profile-pic {
@@ -46,11 +55,13 @@ body {
     margin-right: 10%;
     border-bottom: .5px solid #F2F2F2;
     padding: 12px 0px 12px 0px;
+    z-index: 2;
 } .profile-nav-button {
     margin-right: 20px;
     font-family: 'Interstate Light Cond';
     font-weight: bold;
     cursor: pointer;
+
 }
 
 .selected {
@@ -94,7 +105,16 @@ body {
     border: none;
     outline: none;
     overflow: hidden;
-} 
+}
+
+.user-profile-spinning-img {
+    position:absolute;
+    right: 70%;
+    top: 30%;
+    z-index: 0;
+    height: 1500px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .modal-img {
       animation: App-logo-spin infinite 20s linear;
