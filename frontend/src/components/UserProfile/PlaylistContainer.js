@@ -13,7 +13,11 @@ const PlaylistContainer = ({sessionUser}) => {
     return (
         <div>
             {playlists?.map((playlist) => (
-                <p>{playlist.title}</p>
+                <p
+                    id={playlist?.id}
+                >
+                    {playlist.title}
+                </p>
             ))}
         </div>
     )

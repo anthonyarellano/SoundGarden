@@ -2,7 +2,7 @@ import { useSong } from "../../Context/SongContext";
 import { useDispatch, useSelector } from 'react-redux';
 import { putSong, deleteSong } from "../../store/songs";
 import { useState, useEffect } from "react";
-import { getPlaylists } from '../../store/playlists';
+import { getPlaylists, addToPlaylist } from '../../store/playlists';
 
 const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     const [showEdit, setShowEdit] = useState(false);
@@ -51,7 +51,16 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
             dispatch(deleteSong(songId));
             return;
         }
-    }
+    };
+
+    const handlePlaylistAdd = (playlistId, songId) => {
+        const args = {
+            playlistId,
+            songId
+        };
+        dispatch(addToPlaylist(args));
+        return;
+    };
 
     return (
         <div
@@ -75,7 +84,9 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                     className={playlistsVisible ? "playlist-dropdown" : "hidden"}>
                     {playlists?.map((playlist) => (
                         <div
+                            id={playlist?.id}
                             className="playlist-title-container"
+                            onClick={() => handlePlaylistAdd(playlist?.id, song?.id)}
                         >{playlist?.title}
                         </div>
                     ))}

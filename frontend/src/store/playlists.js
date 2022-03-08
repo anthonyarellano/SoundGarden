@@ -22,10 +22,24 @@ export const getPlaylists = (userId) => async (dispatch) => {
     if (response.ok) {
         const playlists = await response.json();
         dispatch(loadPlaylists(playlists));
-        return playlists; 
+        return playlists;
     }
 }
 
+export const addToPlaylist = (args) => async (dispatch) => {
+    console.log(args);
+    const response = await csrfFetch('/api/playlists', {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({args})
+    })
+    if (response.ok) {
+        const join = await response.json();
+        console.log(join);
+    }
+}
 
 export const createPlaylist = (playlist) => async (dispatch) => {
     const response = await csrfFetch('/api/playlists', {
