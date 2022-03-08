@@ -70,7 +70,7 @@ const UserProfile = () => {
     }
 
     return (
-        <>
+        <div className="user-profile-container">
         <ProfileBanner userProfile={currentUser}/>
             {currentUser &&
                 <h1>Welcome to {currentUser.user.username}'s profile, </h1>}
@@ -113,7 +113,7 @@ const UserProfile = () => {
             </div>
             {!currentUser &&
                 <PageNotFound />}
-        </>
+        </div>
     )
 };
 

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import './style/userprofile.css';
 
 const ProfileBanner = ({userProfile}) => {
     let user;
@@ -9,8 +9,20 @@ const ProfileBanner = ({userProfile}) => {
 
     return (
         <div className='profile-banner-container'>
-            {user &&
-            <img src={user.bannerUrl}></img>}
+            <div className='profile-banner-img'>
+                {user &&
+                <>
+                    <img
+                        src={user.bannerUrl}></img>
+                    <div>
+                        <img
+                            src={user.imgUrl}
+                            className='profile-profile-pic'></img>
+                            <p className='profile-banner-name'>{user.username}</p>
+                    </div>
+                </>
+                }
+            </div>
         </div>
     )
 };
