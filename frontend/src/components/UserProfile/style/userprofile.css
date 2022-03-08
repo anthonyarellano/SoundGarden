@@ -4,6 +4,8 @@
 
 .song-list-container {
     display: flex;
+    justify-content: space-around;
+    font-family: 'Interstate Light Cond';
 }
 
 .user-profile-container {
@@ -36,4 +38,48 @@ body {
     color: white;
     font-family: 'Interstate Regular Italic';
     font-size: 50px;
+}
+
+.profile-nav-wrapper {
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-bottom: .5px solid #F2F2F2;
+    padding: 12px 0px 12px 0px;
+} .profile-nav-button {
+    margin-right: 20px;
+    font-family: 'Interstate Light Cond';
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.selected {
+    border-bottom: 1px solid black;
+}
+
+.image-button-container {
+    position: relative;
+}
+.song-button-container {
+    padding: 5px;
+    display: inline-block;
+    background-color: rgba(128, 128, 128, .3);
+    box-shadow: 2px 5px 5px black;
+    position: absolute;
+    left: 0;
+
+} .hidden {
+    display: none;
+}
+.song-image {
+    height: 15px;
+    cursor: pointer;
+}
+
+.edit {
+    height: 15px;
+} .delete {
+    height: 18px;
+} .playlist {
+    height: 18px;
 }
