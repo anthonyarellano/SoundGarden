@@ -3,7 +3,6 @@ import { getUser } from "../../store/session";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
-import { useSong } from "../../Context/SongContext";
 import './style/userprofile.css';
 import { putSong, deleteSong } from "../../store/songs";
 import SongButtons from './SongButtons';

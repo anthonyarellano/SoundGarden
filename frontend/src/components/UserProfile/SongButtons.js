@@ -1,10 +1,19 @@
 import { useSong } from "../../Context/SongContext";
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteSong } from "../../store/songs";
 
 const SongButtons = ({visible, id, hoveredSong, song}) => {
     const sessionUser = useSelector((state) => state.session.user);
     const { setCurrentSong } = useSong();
-    console.log(song);
+    const dispatch = useDispatch();
+
+    const handleDelete = (songId) => {
+        if (songId) {
+            dispatch(deleteSong(songId));
+            return;
+        }
+    }
+
     return (
         <div
             id={id}
@@ -30,8 +39,10 @@ const SongButtons = ({visible, id, hoveredSong, song}) => {
                 </div>
                 <div className="song-delete-button">
                     <img
+                        id={song?.id}
                         className="song-image delete"
-                        src={require('./style/images/delete-button.png')}></img>
+                        src={require('./style/images/delete-button.png')}
+                        onClick={(e) => handleDelete(e.target.id)}></img>
                 </div>
             </>
             }
