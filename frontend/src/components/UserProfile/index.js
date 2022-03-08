@@ -30,7 +30,7 @@ const UserProfile = () => {
     }, [newTitle]);
 
     useEffect(() => {
-       const retrive = async () => {
+        const retrive = async () => {
             const user = getUser(userId);
             const userInfo = await user();
             setCurrentUser(userInfo)
@@ -63,50 +63,53 @@ const UserProfile = () => {
     const handleDelete = (songId) => {
         if (songId) {
             dispatch(deleteSong(songId));
-            return; 
+            return;
         }
     }
 
     return (
         <>
             {currentUser &&
-            <h1>Welcome to {currentUser.user.username}'s profile, </h1>}
+                <h1>Welcome to {currentUser.user.username}'s profile, </h1>}
             <div className="song-list-container">
-             {songsList?.map((song)=> (
-                 <div>
-                    <p>{song?.title}</p>
-                    <img className="album-artwork" src={song?.imgUrl}></img>
-                    <button
-                        onClick={() => setCurrentSong([song.title, song.url])}
-                    >
-                        Play
-                    </button>
-                    {song?.userId === sessionUser?.id && (
+                {songsList?.map((song) => (
+                    <div>
                         <div>
-                            <button id={song?.id}
-                                onClick={() => {
-                                    setShowEdit(!showEdit)
-                                    setEditSong(song?.id)
-                                    setNewTitle(song?.title)}}>Edit</button>
-                            {showEdit && editSong === song?.id &&
-                                <div>
-                                    <input
-                                        type="text"
-                                        value={newTitle}
-                                        onChange={(e) => setNewTitle(e.target.value)}/>
-                                    <button onClick={(e) => handleEdit(song)}>Submit</button>
-                                </div>
-                            }
+                            <p>{song?.title}</p>
+                            <img className="album-artwork" src={song?.imgUrl}></img>
                             <button
-                                id={song?.id}
-                                onClick={(e) => handleDelete(e.target.id)}>Delete</button>
-                        </div>)
-                    }
-                </div>
-             ))};
-             </div>
+                                onClick={() => setCurrentSong([song.title, song.url])}
+                            >
+                                Play
+                            </button>
+                        </div>
+                        {song?.userId === sessionUser?.id && (
+                            <div>
+                                <button id={song?.id}
+                                    onClick={() => {
+                                        setShowEdit(!showEdit)
+                                        setEditSong(song?.id)
+                                        setNewTitle(song?.title)
+                                    }}>Edit</button>
+                                {showEdit && editSong === song?.id &&
+                                    <div>
+                                        <input
+                                            type="text"
+                                            value={newTitle}
+                                            onChange={(e) => setNewTitle(e.target.value)} />
+                                        <button onClick={(e) => handleEdit(song)}>Submit</button>
+                                    </div>
+                                }
+                                <button
+                                    id={song?.id}
+                                    onClick={(e) => handleDelete(e.target.id)}>Delete</button>
+                            </div>)
+                        }
+                    </div>
+                ))}
+            </div>
             {!currentUser &&
-            <PageNotFound />}
+                <PageNotFound />}
         </>
     )
 };
