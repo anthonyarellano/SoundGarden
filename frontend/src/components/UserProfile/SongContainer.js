@@ -6,7 +6,7 @@ import { getSongs } from '../../store/songs';
 import { useSong } from "../../Context/SongContext";
 import './style/userprofile.css';
 import { putSong, deleteSong } from "../../store/songs";
-
+import ProfileNav from "./ProfileNav";
 
 const SongContainer = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -69,6 +69,8 @@ const SongContainer = () => {
     }
 
     return (
+        <>
+        <ProfileNav />
         <div className="song-list-container">
                 {songsList?.map((song) => (
                     <div>
@@ -106,6 +108,7 @@ const SongContainer = () => {
                     </div>
                 ))}
             </div>
+        </>
     )
 };
 

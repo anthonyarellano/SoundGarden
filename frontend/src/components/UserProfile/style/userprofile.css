@@ -4,6 +4,7 @@
 
 .song-list-container {
     display: flex;
+    justify-content: center;
 }
 
 .user-profile-container {
