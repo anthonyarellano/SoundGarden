@@ -1,11 +1,18 @@
 import React from 'react';
 import { NavLink, useHistory, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './style/navbar.css';
+import * as sessionActions from '../../store/session';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(sessionActions.logout());
+    return;
+  }
 
   let sessionLinks;
   if (sessionUser) {
@@ -24,6 +31,13 @@ function Navigation({ isLoaded }){
             alt="profile-image">
           </img>
         </NavLink>
+        <div>
+          <img
+          className='navbar-image'
+          src={require('./style/images/logout-image.png')}
+          alt="logout-image"
+          onClick={logout}></img>
+        </div>
     </>
     );
   } else {

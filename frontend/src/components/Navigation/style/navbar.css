@@ -21,6 +21,8 @@
 } .navbar-image {
     height: 12px;
     margin-left: 10px;
+} .navbar-image:hover {
+    cursor: pointer;
 }
 
 .navbar-link {
@@ -28,7 +30,7 @@
  text-decoration: none;
  font-family: 'Interstate Black Cond';
  font-size: 15px;
- margin: 0 5px 0 5px;
+ margin-left: 10px;
 } .navbar-link:visited {
     text-decoration: none;
     color: white;
