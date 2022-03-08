@@ -72,8 +72,6 @@ const UserProfile = () => {
     return (
         <div className="user-profile-container">
         <ProfileBanner userProfile={currentUser}/>
-            {currentUser &&
-                <h1>Welcome to {currentUser.user.username}'s profile, </h1>}
             <div className="song-list-container">
                 {songsList?.map((song) => (
                     <div>

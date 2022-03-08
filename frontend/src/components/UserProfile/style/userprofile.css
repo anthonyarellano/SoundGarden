@@ -22,17 +22,18 @@ body {
 
 .profile-profile-pic {
     width: 150px;
+    height: 150px;
     border-radius: 100%;
     position: absolute;
-    top: 8%;
+    top: 10%;
     left: 5%
 }
 
 .profile-banner-name {
     position: absolute;
-    top: 6%;
+    top: 8%;
     left: 20%;
     color: white;
-    font-family: 'Interstate Black Cond';
+    font-family: 'Interstate Regular Italic';
     font-size: 50px;
 }
