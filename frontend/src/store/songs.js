@@ -68,10 +68,11 @@ export const uploadSong = (song) => async (dispatch) => {
     });
     if (response.ok) {
         const song = await response.json();
+        console.log(song);
         dispatch(addSong(song));
-        dispatch(getSongs(song.userId));
-        console.log("in thunk!", song);
         return song;
+        // dispatch(getSongs(song.userId));
+        // console.log("in thunk!", song);
     }
 };
 
