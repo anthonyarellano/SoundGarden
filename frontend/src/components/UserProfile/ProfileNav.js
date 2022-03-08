@@ -1,13 +1,20 @@
 import './style/userprofile.css';
+import { useState } from 'react';
+import SongContainer from './SongContainer';
+import PlaylistContainer from './PlaylistContainer';
 
 const ProfileNav = ({userId, sessionUser}) => {
-    console.log(sessionUser.id, userId);
+    const [allActive, setAllActive] = useState(true);
+
     let links;
     if (parseInt(userId) === sessionUser.id) {
         links = (
         <>
-            <div className='profile-nav-button'>All Music</div>
-            <div className='profile-nav-button'>Playlists</div>
+            <div
+                className={allActive ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => setAllActive(!allActive)}>All Music</div>
+            <div
+                className={!allActive ? 'profile-nav-button selected' : 'profile-nav-button'}>Playlists</div>
         </>
         )
     } else {
@@ -17,10 +24,17 @@ const ProfileNav = ({userId, sessionUser}) => {
         </>
         )
     }
+
     return(
-        <div className="profile-nav-wrapper">
-            {links}
-        </div>
+        <>
+            <div className="profile-nav-wrapper">
+                {links}
+            </div>
+            {allActive ?
+                <SongContainer /> :
+                <PlaylistContainer />
+            }
+        </>
     )
 };
 

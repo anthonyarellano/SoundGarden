@@ -49,3 +49,7 @@ body {
     margin-right: 20px;
     font-family: 'Interstate Light Cond'
 }
+
+.selected {
+    border-bottom: 1px solid black;
+}

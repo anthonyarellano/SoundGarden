@@ -2,16 +2,17 @@ import { useParams } from "react-router-dom";
 import { getUser } from "../../store/session";
 import { useEffect, useState } from "react";
 import PageNotFound from "../404Page";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
 import './style/userprofile.css';
 import ProfileBanner from "./ProfileBanner";
 import SongContainer from "./SongContainer";
-
+import ProfileNav from "./ProfileNav";
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
 
     useEffect(() => {
         const retrive = async () => {
@@ -26,7 +27,7 @@ const UserProfile = () => {
     return (
         <div className="user-profile-container">
         <ProfileBanner userProfile={currentUser}/>
-        <SongContainer />
+        <ProfileNav userId={userId} sessionUser={sessionUser}/>
             {!currentUser &&
                 <PageNotFound />}
         </div>
