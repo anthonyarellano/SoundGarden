@@ -72,7 +72,6 @@ export const UploadPage = () => {
                 url: Location,
                 imgUrl: imgUrl
               };
-              console.log("leaving component", song);
               dispatch(uploadSong(song));
               dispatch(getSongs(sessionUser.id))
               setProgress(0);

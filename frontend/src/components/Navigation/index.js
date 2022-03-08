@@ -13,11 +13,16 @@ function Navigation({ isLoaded }){
     <>
         <NavLink to="/upload">
           <img className='navbar-image'
-                src={require('./style/images/upload-image.png')}>
+                src={require('./style/images/upload-image.png')}
+                alt="upload-image">
           </img>
         </NavLink>
         <NavLink to={`/users/${sessionUser.id}`}>
-          Profile
+          <img
+            className='navbar-image'
+            src={require('./style/images/profile-image.png')}
+            alt="profile-image">
+          </img>
         </NavLink>
         {/* <button
           onClick={() => history.push(`/users/${sessionUser.id}`)}>Profile</button> */}
