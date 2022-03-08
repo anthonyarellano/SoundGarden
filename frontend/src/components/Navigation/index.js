@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import './style/navbar.css';
 
 function Navigation({ isLoaded }){
@@ -19,7 +18,6 @@ function Navigation({ isLoaded }){
         </NavLink>
         <button
           onClick={() => history.push(`/users/${sessionUser.id}`)}>Profile</button>
-        {/* <ProfileButton user={sessionUser} /> */}
     </>
     );
   } else {

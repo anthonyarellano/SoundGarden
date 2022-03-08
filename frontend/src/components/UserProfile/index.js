@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
 import { useSong } from "../../Context/SongContext";
 import './style/userprofile.css';
-import { putSong } from "../../store/songs";
+import { putSong, deleteSong } from "../../store/songs";
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -57,8 +57,15 @@ const UserProfile = () => {
         console.log(newSong);
         dispatch(putSong(newSong));
         setShowEdit(false);
-        setNewTitle(null); 
+        setNewTitle(null);
     };
+
+    const handleDelete = (songId) => {
+        if (songId) {
+            dispatch(deleteSong(songId));
+            return; 
+        }
+    }
 
     return (
         <>
@@ -90,7 +97,9 @@ const UserProfile = () => {
                                     <button onClick={(e) => handleEdit(song)}>Submit</button>
                                 </div>
                             }
-                            <button>Delete</button>
+                            <button
+                                id={song?.id}
+                                onClick={(e) => handleDelete(e.target.id)}>Delete</button>
                         </div>)
                     }
                 </div>
