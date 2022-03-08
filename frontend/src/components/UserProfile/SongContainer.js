@@ -70,7 +70,10 @@ const SongContainer = () => {
 
     return (
         <>
-        <ProfileNav />
+        <ProfileNav
+            userId={userId}
+            sessionUser={sessionUser}
+        />
         <div className="song-list-container">
                 {songsList?.map((song) => (
                     <div>
