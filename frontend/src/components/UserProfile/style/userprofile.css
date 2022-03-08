@@ -83,3 +83,15 @@ body {
 } .playlist {
     height: 18px;
 }
+
+.playlist-modal {
+    background-color: aquamarine;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    right: 35%;
+    bottom: 15%;
+    border: none;
+    outline: none;
+}
+
