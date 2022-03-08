@@ -85,7 +85,11 @@ const SongContainer = () => {
                                     setVisible(true)
                                     setHoveredSong(e.target.id)}}
                                 ></img>
-                                <SongButtons visible={visible} id={song?.id} hoveredSong={hoveredSong}
+                                <SongButtons
+                                    song={song}
+                                    visible={visible}
+                                    id={song?.id}
+                                    hoveredSong={hoveredSong}
                                 />
                             </div>
                             <button

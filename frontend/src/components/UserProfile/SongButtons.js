@@ -1,5 +1,8 @@
-const SongButtons = ({visible, id, hoveredSong}) => {
+import { useSong } from "../../Context/SongContext";
 
+const SongButtons = ({visible, id, hoveredSong, song}) => {
+    const { setCurrentSong } = useSong();
+    console.log(song);
     return (
         <div
             id={id}
@@ -8,7 +11,8 @@ const SongButtons = ({visible, id, hoveredSong}) => {
             <div className="song-play-button">
                 <img
                     className="song-image"
-                    src={require('./style/images/play-button.png')}></img>
+                    src={require('./style/images/play-button.png')}
+                    onClick={() => setCurrentSong([song?.title, song?.url])}></img>
             </div>
             <div className="song-edit-button">
                 <img
