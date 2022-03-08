@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
 import './style/userprofile.css';
-import { putSong, deleteSong } from "../../store/songs";
+
 import SongButtons from './SongButtons';
 
 const SongContainer = () => {
@@ -12,22 +12,9 @@ const SongContainer = () => {
     const { userId } = useParams();
     const dispatch = useDispatch();
     const songsList = useSelector((state) => Object.values(state.songs));
-    const sessionUser = useSelector((state) => state.session.user);
-    const [showEdit, setShowEdit] = useState(false);
-    const [editSong, setEditSong] = useState(null);
-    const [newTitle, setNewTitle] = useState(null);
-    const [errors, setErrors] = useState([]);
     const [visible, setVisible] = useState(false);
     const [hoveredSong, setHoveredSong] = useState(null);
 
-    useEffect(() => {
-        const errors = [];
-        if (!newTitle) errors.push('Please provide a value for new Title.')
-        if (newTitle) {
-            if (newTitle.length > 100) errors.push('Please provide a Title less than 100 characters.');
-        };
-        setErrors(errors);
-    }, [newTitle]);
 
     useEffect(() => {
         const retrive = async () => {
@@ -43,30 +30,6 @@ const SongContainer = () => {
         dispatch(getSongs(userId));
     }, []);
 
-    const handleEdit = (song) => {
-        if (errors.length) {
-            return alert('Provide new Title less than 100 characters long.')
-        };
-        const { userId, url, imgUrl, id } = song;
-        const newSong = {
-            id,
-            userId,
-            title: newTitle,
-            url,
-            imgUrl
-        };
-        console.log(newSong);
-        dispatch(putSong(newSong));
-        setShowEdit(false);
-        setNewTitle(null);
-    };
-
-    const handleDelete = (songId) => {
-        if (songId) {
-            dispatch(deleteSong(songId));
-            return;
-        }
-    }
 
     return (
         <>
@@ -91,28 +54,6 @@ const SongContainer = () => {
                                 />
                             </div>
                         </div>
-                        {song?.userId === sessionUser?.id && (
-                            <div>
-                                <button id={song?.id}
-                                    onClick={() => {
-                                        setShowEdit(!showEdit)
-                                        setEditSong(song?.id)
-                                        setNewTitle(song?.title)
-                                    }}>Edit</button>
-                                {showEdit && editSong === song?.id &&
-                                    <div>
-                                        <input
-                                            type="text"
-                                            value={newTitle}
-                                            onChange={(e) => setNewTitle(e.target.value)} />
-                                        <button onClick={(e) => handleEdit(song)}>Submit</button>
-                                    </div>
-                                }
-                                <button
-                                    id={song?.id}
-                                    onClick={(e) => handleDelete(e.target.id)}>Delete</button>
-                            </div>)
-                        }
                     </div>
                 ))}
             </div>
