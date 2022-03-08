@@ -87,11 +87,10 @@ body {
 .playlist-modal {
     background-color: aquamarine;
     position: absolute;
-    top: 15%;
-    left: 35%;
-    right: 35%;
-    bottom: 15%;
+    top: 20%;
+    left: 40%;
+    right: 40%;
+    bottom: 20%;
     border: none;
     outline: none;
 }
-
