@@ -19,10 +19,15 @@ const ProfileNav = ({userId, sessionUser}) => {
                 onClick={() => setAllActive(!allActive)}>Playlists</div>
             <div
                 onClick={() => setVisible(!visible)}> + </div>
-            <input
-                type="text"
-                className={visible ? "playlist-entry" : "hidden"}
-                placeholder="New Playlist Name"></input>
+            <div className={visible ? "playlist-entry" : "hidden"}>
+                <input
+                    type="text"
+                    placeholder="New Playlist Name">
+                </input>
+                <div className='playlist-create-button'>
+                    create
+                </div>
+            </div>
         </>
         )
     } else {
