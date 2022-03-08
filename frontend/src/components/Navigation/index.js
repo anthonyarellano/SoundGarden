@@ -1,12 +1,11 @@
 import React from 'react';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './style/navbar.css';
 import * as sessionActions from '../../store/session';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const logout = () => {
