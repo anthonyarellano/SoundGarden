@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-around;
     font-family: 'Interstate Light Cond';
+    padding-bottom: 50px;
 
 }
 
@@ -116,7 +117,13 @@ body {
     cursor: pointer;
 } .playlist-create-button:hover {
     box-shadow: 1px 1px 6px 1px lightgrey;
+} .playlist-dropdown {
+    color: white;
+} .playlist-title-container:hover {
+    background-color: aquamarine;
+    cursor: pointer;
 }
+
 @media (prefers-reduced-motion: no-preference) {
     .modal-img {
       animation: App-logo-spin infinite 20s linear;

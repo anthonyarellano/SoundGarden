@@ -2,17 +2,22 @@ import { useSong } from "../../Context/SongContext";
 import { useDispatch, useSelector } from 'react-redux';
 import { putSong, deleteSong } from "../../store/songs";
 import { useState, useEffect } from "react";
+import { getPlaylists } from '../../store/playlists';
 
 const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [playlistsVisible, setPlaylistsVisible] = useState(false);
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
+    const playlists = useSelector((state) => Object.values(state.playlists));
     const { setCurrentSong } = useSong();
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getPlaylists(sessionUser.id))
+    }, [dispatch])
 
     useEffect(() => {
         const errors = [];
@@ -63,7 +68,16 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                 <img
                     className="song-image playlist"
                     src={require('./style/images/playlist-button.png')}
-                    ></img>
+                    onClick={() => setPlaylistsVisible(!playlistsVisible)}
+                    >
+                </img>
+                <div
+                    className={playlistsVisible ? "playlist-dropdown" : "hidden"}>
+                    {playlists?.map((playlist) => (
+                        <div
+                            className="playlist-title-container">{playlist?.title}</div>
+                    ))}
+                </div>
             </div>
             {song?.userId === sessionUser?.id &&
             <>

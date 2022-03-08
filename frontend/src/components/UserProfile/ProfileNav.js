@@ -2,12 +2,16 @@ import './style/userprofile.css';
 import { useState, useEffect } from 'react';
 import SongContainer from './SongContainer';
 import PlaylistContainer from './PlaylistContainer';
+import { useDispatch } from 'react-redux';
+import { createPlaylist } from '../../store/playlists';
 
 const ProfileNav = ({userId, sessionUser}) => {
     const [allActive, setAllActive] = useState(true);
     const [visible, setVisible] = useState(false);
     const [newPlaylistTitle, setNewPlaylistTitle] = useState(null);
     const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         const errors = [];
@@ -18,8 +22,14 @@ const ProfileNav = ({userId, sessionUser}) => {
     }, [newPlaylistTitle])
 
     const handleSubmit = () => {
-        if (!errors) {
-            console.log("no errors!");
+        if (!errors.length) {
+            const playlist = {
+                title: newPlaylistTitle,
+                userId: sessionUser.id
+            };
+            dispatch(createPlaylist(playlist));
+            setErrors([]);
+            setNewPlaylistTitle(null);
             return;
         }
         return alert(errors)
@@ -67,7 +77,7 @@ const ProfileNav = ({userId, sessionUser}) => {
             </div>
             {allActive ?
                 <SongContainer /> :
-                <PlaylistContainer />
+                <PlaylistContainer sessionUser={sessionUser}/>
             }
         </>
     )
