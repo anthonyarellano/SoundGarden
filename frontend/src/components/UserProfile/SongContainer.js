@@ -92,11 +92,6 @@ const SongContainer = () => {
                                     hoveredSong={hoveredSong}
                                 />
                             </div>
-                            <button
-                                onClick={() => setCurrentSong([song.title, song.url])}
-                            >
-                                Play
-                            </button>
                         </div>
                         {song?.userId === sessionUser?.id && (
                             <div>
