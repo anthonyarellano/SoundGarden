@@ -4,7 +4,8 @@
 
 .song-list-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    font-family: 'Interstate Light Cond';
 }
 
 .user-profile-container {
@@ -48,6 +49,7 @@ body {
 } .profile-nav-button {
     margin-right: 20px;
     font-family: 'Interstate Light Cond';
+    font-weight: bold;
     cursor: pointer;
 }
 
@@ -62,6 +64,7 @@ body {
     padding: 5px;
     display: inline-block;
     background-color: rgba(128, 128, 128, .3);
+    box-shadow: 2px 5px 5px black;
     position: absolute;
     left: 0;
 
