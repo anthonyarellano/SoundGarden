@@ -54,3 +54,19 @@ body {
 .selected {
     border-bottom: 1px solid black;
 }
+
+.song-button-container {
+    display: inline-block;
+    background-color: rgba(128, 128, 128, .3);
+}
+.song-image {
+    height: 25px;
+}
+
+.edit {
+    height: 17px;
+} .delete {
+    height: 22px;
+} .playlist {
+    height: 23px;
+}
