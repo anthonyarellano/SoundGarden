@@ -14,7 +14,6 @@ const SongContainer = () => {
     const dispatch = useDispatch();
     const songsList = useSelector((state) => Object.values(state.songs));
     const sessionUser = useSelector((state) => state.session.user);
-    const { setCurrentSong } = useSong();
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
