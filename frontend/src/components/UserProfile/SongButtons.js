@@ -75,7 +75,9 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                     className={playlistsVisible ? "playlist-dropdown" : "hidden"}>
                     {playlists?.map((playlist) => (
                         <div
-                            className="playlist-title-container">{playlist?.title}</div>
+                            className="playlist-title-container"
+                        >{playlist?.title}
+                        </div>
                     ))}
                 </div>
             </div>
