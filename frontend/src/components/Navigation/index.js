@@ -24,8 +24,6 @@ function Navigation({ isLoaded }){
             alt="profile-image">
           </img>
         </NavLink>
-        {/* <button
-          onClick={() => history.push(`/users/${sessionUser.id}`)}>Profile</button> */}
     </>
     );
   } else {
@@ -44,7 +42,7 @@ function Navigation({ isLoaded }){
             <p className='navbar-logo-text-2'>garden</p>
           </div>
           <div className='navbar-lower'>
-            <NavLink className='navbar-link' exact to="/">
+            <NavLink exact to="/">
               <img
                 className='navbar-image'
                 src={require('./style/images/home-image.png')}>
