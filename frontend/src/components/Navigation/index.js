@@ -1,11 +1,17 @@
 import React from 'react';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import './style/navbar.css';
+import * as sessionActions from '../../store/session';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(sessionActions.logout());
+    return;
+  }
 
   let sessionLinks;
   if (sessionUser) {
@@ -13,14 +19,24 @@ function Navigation({ isLoaded }){
     <>
         <NavLink to="/upload">
           <img className='navbar-image'
-                src={require('./style/images/upload-image.png')}>
+                src={require('./style/images/upload-image.png')}
+                alt="upload-image">
           </img>
         </NavLink>
         <NavLink to={`/users/${sessionUser.id}`}>
-          Profile
+          <img
+            className='navbar-image'
+            src={require('./style/images/profile-image.png')}
+            alt="profile-image">
+          </img>
         </NavLink>
-        {/* <button
-          onClick={() => history.push(`/users/${sessionUser.id}`)}>Profile</button> */}
+        <div>
+          <img
+          className='navbar-image'
+          src={require('./style/images/logout-image.png')}
+          alt="logout-image"
+          onClick={logout}></img>
+        </div>
     </>
     );
   } else {
@@ -39,7 +55,7 @@ function Navigation({ isLoaded }){
             <p className='navbar-logo-text-2'>garden</p>
           </div>
           <div className='navbar-lower'>
-            <NavLink className='navbar-link' exact to="/">
+            <NavLink exact to="/">
               <img
                 className='navbar-image'
                 src={require('./style/images/home-image.png')}>
