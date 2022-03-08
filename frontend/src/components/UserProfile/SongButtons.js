@@ -66,8 +66,12 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                className="playlist-modal">
-                
+                className="playlist-modal"
+            >
+                <img
+                    src={require("../SplashPage/style/splashRing.png")}
+                    className="modal-img">
+                </img>
             </Modal>
             <div className="song-play-button">
                 <img

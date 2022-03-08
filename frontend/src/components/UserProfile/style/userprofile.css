@@ -93,4 +93,18 @@ body {
     bottom: 20%;
     border: none;
     outline: none;
-}
+    overflow: hidden;
+} 
+@media (prefers-reduced-motion: no-preference) {
+    .modal-img {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
