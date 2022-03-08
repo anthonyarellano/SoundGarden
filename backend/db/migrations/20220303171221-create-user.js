@@ -24,11 +24,9 @@ module.exports = {
       },
       imgUrl: {
         type: Sequelize.STRING(256),
-        allowNull: false
       },
       bannerUrl: {
         type: Sequelize.STRING(256),
-        allowNull: false
       },
       createdAt: {
         allowNull: false,

@@ -32,11 +32,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     imgUrl: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     bannerUrl: {
       type: DataTypes.STRING,
-      allowNull: false
     }
   },
   {
