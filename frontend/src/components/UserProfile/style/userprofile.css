@@ -5,3 +5,35 @@
 .song-list-container {
     display: flex;
 }
+
+.user-profile-container {
+    display: inline-block;
+    flex-direction: column;
+    background-color: white;
+    margin-top: 2%;
+    align-items: center;
+    position: relative;
+}
+
+body {
+    background-color: #F2F2F2;
+    text-align: center;
+}
+
+.profile-profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    position: absolute;
+    top: 10%;
+    left: 5%
+}
+
+.profile-banner-name {
+    position: absolute;
+    top: 8%;
+    left: 20%;
+    color: white;
+    font-family: 'Interstate Regular Italic';
+    font-size: 50px;
+}

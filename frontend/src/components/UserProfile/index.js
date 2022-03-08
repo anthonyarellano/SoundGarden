@@ -7,20 +7,20 @@ import { getSongs } from '../../store/songs';
 import { useSong } from "../../Context/SongContext";
 import './style/userprofile.css';
 import { putSong, deleteSong } from "../../store/songs";
+import ProfileBanner from "./ProfileBanner";
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
     const songsList = useSelector((state) => Object.values(state.songs));
-    const { currentSong, setCurrentSong } = useSong();
     const sessionUser = useSelector((state) => state.session.user);
+    const { setCurrentSong } = useSong();
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
     const [errors, setErrors] = useState([]);
 
-    console.log(songsList);
     useEffect(() => {
         const errors = [];
         if (!newTitle) errors.push('Please provide a value for new Title.')
@@ -70,9 +70,8 @@ const UserProfile = () => {
     }
 
     return (
-        <>
-            {currentUser &&
-                <h1>Welcome to {currentUser.user.username}'s profile, </h1>}
+        <div className="user-profile-container">
+        <ProfileBanner userProfile={currentUser}/>
             <div className="song-list-container">
                 {songsList?.map((song) => (
                     <div>
@@ -112,7 +111,7 @@ const UserProfile = () => {
             </div>
             {!currentUser &&
                 <PageNotFound />}
-        </>
+        </div>
     )
 };
 
