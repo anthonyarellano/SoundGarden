@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AWS from 'aws-sdk'
 import './style/upload-page.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { uploadSong } from '../../store/songs';
+import { uploadSong, getSongs } from '../../store/songs';
 import { useHistory, Redirect } from 'react-router-dom';
 
 export const UploadPage = () => {
@@ -74,6 +74,7 @@ export const UploadPage = () => {
               };
               console.log(song);
               dispatch(uploadSong(song));
+              dispatch(getSongs(sessionUser.id))
               setProgress(0);
               setSelectedFile(null);
               history.push(`/users/${sessionUser.id}`)
