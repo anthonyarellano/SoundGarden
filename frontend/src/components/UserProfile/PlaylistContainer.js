@@ -21,9 +21,9 @@ const PlaylistContainer = ({sessionUser}) => {
                 <p
                     id={playlist?.id}
                 >
-                    {playlist.title}
+                    {playlist?.title}
                 </p>
-                <SongContainer playlistSongs={playlist.Songs ? playlist.Songs : null}/>
+                <SongContainer playlistSongs={playlist?.Songs ? playlist?.Songs : null}/>
             </>
             ))}
         </div>
