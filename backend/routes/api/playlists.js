@@ -45,7 +45,7 @@ router.put(
             songId
         });
         if (join) {
-            console.log(join);
+            res.json(join);
         }
 
     })
