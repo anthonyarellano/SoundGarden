@@ -75,4 +75,23 @@ router.put(
 
     })
 )
+
+router.delete(
+    '/',
+    asyncHandler(async (req, res) => {
+        const { playlistId } = req.body;
+        await SongPlayListJoin.destroy({
+            where :{
+                playlistId
+            }
+        });
+        await Playlist.destroy({
+            where: {
+                id: playlistId
+            }
+        });
+        const ok = { "response": "Success" }
+        res.json(ok)
+    })
+)
 module.exports = router;

@@ -3,7 +3,7 @@ import { useSong } from '../../Context/SongContext';
 import { removeFromPlaylist } from '../../store/playlists';
 import { useDispatch } from 'react-redux';
 
-const PlaylistCard = ({songs, playlistId}) => {
+const PlaylistCard = ({songs, playlistId, toggle}) => {
     const { setCurrentSong } = useSong();
     const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const PlaylistCard = ({songs, playlistId}) => {
                     <img src={song?.imgUrl} style={{height: "25px"}}></img>
                     <p className='playlist-card-song-title'>{song?.title}</p>
                     <div
-                        className='playlist-song-remove-button'
+                        className={!toggle ? 'playlist-song-remove-button' : 'hidden'}
                         onClick={() => handleRemove(song?.id, playlistId)}>
                         &nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;

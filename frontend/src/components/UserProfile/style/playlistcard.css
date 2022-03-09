@@ -25,10 +25,34 @@
         cursor: pointer;
     } .playlist-title {
         font-family: 'Interstate Light Cond';
+        display: inline-block;
     } .playlist-song-remove-button {
         font-family: 'Interstate Light Cond';
         color: #b1b1b1;
     } .playlist-song-remove-button:hover {
         color: red;
         font-weight: bold;
+        cursor: pointer;
+        background-color: #F5F5F5;
+    }
+
+    .playlist-delete-button {
+        display: inline-block;
+        height: 30px;
+        cursor: pointer;
+    } .playlist-edit {
+        height: 10px;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+
+    .playlist-title-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } .playlist-delete {
+        height: 12px;
+        background-color: red;
+        margin-left: 20px;
+        cursor: pointer;
     }
