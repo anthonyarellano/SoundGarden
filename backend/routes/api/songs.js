@@ -23,7 +23,7 @@ router.post(
     asyncHandler(async (req, res) => {
         const { song } = req.body;
         const { userId, title, url, imgUrl } = song;
-        console.log(userId, title, url, imgUrl);
+
         const createdSong = await Song.create({
             userId,
             title,

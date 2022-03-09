@@ -2,17 +2,22 @@ import { useSong } from "../../Context/SongContext";
 import { useDispatch, useSelector } from 'react-redux';
 import { putSong, deleteSong } from "../../store/songs";
 import { useState, useEffect } from "react";
+import { getPlaylists, addToPlaylist } from '../../store/playlists';
 
 const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [playlistsVisible, setPlaylistsVisible] = useState(false);
     const [errors, setErrors] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
+    const playlists = useSelector((state) => Object.values(state.playlists));
     const { setCurrentSong } = useSong();
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getPlaylists(sessionUser.id))
+    }, [dispatch])
 
     useEffect(() => {
         const errors = [];
@@ -46,7 +51,16 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
             dispatch(deleteSong(songId));
             return;
         }
-    }
+    };
+
+    const handlePlaylistAdd = (playlistId, songId) => {
+        const args = {
+            playlistId,
+            songId
+        };
+        dispatch(addToPlaylist(args));
+        return;
+    };
 
     return (
         <div
@@ -63,7 +77,20 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                 <img
                     className="song-image playlist"
                     src={require('./style/images/playlist-button.png')}
-                    ></img>
+                    onClick={() => setPlaylistsVisible(!playlistsVisible)}
+                    >
+                </img>
+                <div
+                    className={playlistsVisible ? "playlist-dropdown" : "hidden"}>
+                    {playlists?.map((playlist) => (
+                        <div
+                            id={playlist?.id}
+                            className="playlist-title-container"
+                            onClick={() => handlePlaylistAdd(playlist?.id, song?.id)}
+                        >{playlist?.title}
+                        </div>
+                    ))}
+                </div>
             </div>
             {song?.userId === sessionUser?.id &&
             <>

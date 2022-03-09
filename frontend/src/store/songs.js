@@ -50,11 +50,12 @@ export const putSong = (song) => async (dispatch) => {
 
 export const getSongs = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/songs/${userId}`);
-    const data = await response.json();
-   const { user } = data;
-   console.log(user.Songs);
-    dispatch(loadSongs(user.Songs));
-    return data;
+    if (response.ok) {
+        const data = await response.json();
+       const { user } = data;
+        dispatch(loadSongs(user.Songs));
+        return data;
+    }
 };
 
 export const uploadSong = (song) => async (dispatch) => {
