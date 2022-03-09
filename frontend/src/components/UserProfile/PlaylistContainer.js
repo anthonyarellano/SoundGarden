@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getPlaylists, deletePlaylist } from '../../store/playlists';
 import { useDispatch, useSelector } from 'react-redux';
 import PlaylistCard from './PlaylistCard';
@@ -7,6 +7,7 @@ import './style/playlistcard.css'
 const PlaylistContainer = ({sessionUser}) => {
     const dispatch = useDispatch();
     const playlists = useSelector((state) => Object.values(state.playlists));
+    const [toggle, setToggle] = useState(true);
 
     useEffect(() => {
         dispatch(getPlaylists(sessionUser.id))
@@ -18,6 +19,7 @@ const PlaylistContainer = ({sessionUser}) => {
         }
     };
 
+
     return (
         <div>
             {playlists?.map((playlist) => (
@@ -26,9 +28,17 @@ const PlaylistContainer = ({sessionUser}) => {
                 <div className='playlist-title-wrapper'>
                     <p className='playlist-title'>{playlist?.title}</p>
                     <img
-                        className="playlist-delete"
+                        className={!toggle ? "playlist-delete" : "hidden"}
                         src={require('./style/images/delete-button.png')}
-                        onClick={() => handleDelete(playlist?.id)}></img>
+                        onClick={() => {
+                            handleDelete(playlist?.id)
+                            setToggle(!toggle)}}>
+                    </img>
+                    <img
+                        className={toggle ? "playlist-edit" : "hidden"}
+                        src={require("./style/images/playlist-edit-button.png")}
+                        onClick={() => setToggle(!toggle)}>
+                     </img>
                 </div>
                 <PlaylistCard
                     songs={playlist?.Songs ? playlist?.Songs : null}

@@ -39,6 +39,9 @@
     .playlist-delete-button {
         display: inline-block;
         height: 30px;
+    } .playlist-edit {
+        height: 12px;
+        margin-left: 20px;
     }
 
     .playlist-title-wrapper {
