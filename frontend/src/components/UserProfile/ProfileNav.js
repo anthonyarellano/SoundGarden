@@ -50,6 +50,7 @@ const ProfileNav = ({userId, sessionUser}) => {
             <div className={visible ? "playlist-entry" : "hidden"}>
                 <input
                     type="text"
+                    className='new-playlist-input'
                     placeholder="New Playlist Name"
                     onChange={(e) => setNewPlaylistTitle(e.target.value)}>
                 </input>
