@@ -16,11 +16,7 @@ const PlaylistContainer = ({sessionUser}) => {
         <div>
             {playlists?.map((playlist) => (
             <>
-                {/* <p
-                    id={playlist?.id}
-                >
-                    {playlist?.title}
-                </p> */}
+                
                 <PlaylistCard songs={playlist?.Songs ? playlist?.Songs : null} />
                 {/* <SongContainer playlistSongs={playlist?.Songs ? playlist?.Songs : null}/> */}
             </>
