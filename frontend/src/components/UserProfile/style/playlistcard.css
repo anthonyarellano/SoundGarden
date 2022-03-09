@@ -6,9 +6,7 @@
     margin-right: 40%;
     margin-left: 40%;
     border: .5px solid #F5F5F5;
-}
-
-.playlist-card {
+} .playlist-card {
     display: grid;
     grid-template-columns: 20% 60% 20%;
     grid-template-areas:
@@ -18,7 +16,6 @@
     border-bottom: .5px solid #F5F5F5;
     margin: none;
     padding: 3px;
-
     } .playlist-card-song-title {
         margin: 0px;
         margin-left: 10px;
@@ -28,5 +25,9 @@
         cursor: pointer;
     } .playlist-title {
         font-family: 'Interstate Light Cond';
+    } .playlist-song-remove-button {
+        font-family: 'Interstate Light Cond';
+        color: #b1b1b1;
+    } .playlist-song-remove-button:hover {
+        color: red;
     }
-

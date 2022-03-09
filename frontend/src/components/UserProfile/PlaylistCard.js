@@ -17,7 +17,8 @@ const PlaylistCard = ({songs}) => {
                     <div className='playlist-song-remove-button'>
                         &nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
-                        - </div>
+                        -
+                    </div>
                 </div>
             </>
             ))}
