@@ -7,7 +7,7 @@ const PlaylistCard = ({songs, playlistId, toggle}) => {
     const { setCurrentSong } = useSong();
     const dispatch = useDispatch();
 
-    console.log(songs);
+
 
     const handleRemove = (songId, playlistId) => {
         if (songId && playlistId) {
