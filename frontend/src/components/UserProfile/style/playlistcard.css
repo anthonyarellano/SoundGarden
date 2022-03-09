@@ -1,0 +1,34 @@
+.playlist-card-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: left;
+    margin-right: 40%;
+    margin-left: 40%;
+    border: .5px solid #F5F5F5;
+} .playlist-card {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-areas:
+    "a b c";
+    font-family: 'Interstate Light Cond';
+    align-items: center;
+    border-bottom: .5px solid #F5F5F5;
+    margin: none;
+    padding: 3px;
+    } .playlist-card-song-title {
+        margin: 0px;
+        margin-left: 10px;
+        justify-self: left;
+    } .playlist-card:hover {
+        background-color: #F5F5F5;
+        cursor: pointer;
+    } .playlist-title {
+        font-family: 'Interstate Light Cond';
+    } .playlist-song-remove-button {
+        font-family: 'Interstate Light Cond';
+        color: #b1b1b1;
+    } .playlist-song-remove-button:hover {
+        color: red;
+        font-weight: bold;
+    }

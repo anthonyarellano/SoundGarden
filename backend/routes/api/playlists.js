@@ -29,7 +29,6 @@ router.get(
             }
         });
         if (playlists) {
-            console.log(playlists[0].Songs);
             res.json(playlists)
         }
     })
@@ -51,4 +50,29 @@ router.put(
     })
 )
 
+router.put(
+    '/remove',
+    asyncHandler(async (req, res) => {
+        const { data } = req.body;
+        const { songId, playlistId } = data;
+        const join = await SongPlayListJoin.findOne({
+            where: {
+                songId,
+                playlistId
+            }
+        });
+        if (join) {
+            await join.destroy();
+            const updatedPlaylist = await Playlist.findByPk(playlistId, {
+                include: {
+                    model: Song
+                }
+            });
+            if (updatedPlaylist) {
+                res.json(updatedPlaylist)
+            };
+        };
+
+    })
+)
 module.exports = router;
