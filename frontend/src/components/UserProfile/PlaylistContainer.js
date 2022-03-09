@@ -18,7 +18,19 @@ const PlaylistContainer = ({sessionUser}) => {
             dispatch(deletePlaylist(playlistId))
         }
     };
+    let alteredPlaylist;
+    if (playlists) {
+        playlists.forEach((playlist) => {
+            playlist.urls = [];
+        })
+        playlists.forEach((playlist, i) => {
 
+            playlist.Songs.forEach((song) => {
+                playlist.urls.push(song.url)
+            })
+        })
+        alteredPlaylist = [...playlists];
+    }
 
     return (
         <div>
