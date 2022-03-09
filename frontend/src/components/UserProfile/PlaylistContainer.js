@@ -26,7 +26,9 @@ const PlaylistContainer = ({sessionUser}) => {
 
     if (playlists?.length) {
         playlists?.forEach((playlist) => {
-            playlist?.urls = [];
+            if (playlist) {
+                playlist.urls = [];
+            }
         })
         playlists?.forEach((playlist, i) => {
 
@@ -36,7 +38,7 @@ const PlaylistContainer = ({sessionUser}) => {
         })
         alteredPlaylist = [...playlists];
     }
- 
+
     return (
         <div>
             {alteredPlaylist?.map((playlist) => (
