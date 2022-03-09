@@ -37,7 +37,7 @@ export const addToPlaylist = (args) => async (dispatch) => {
     })
     if (response.ok) {
         const join = await response.json();
-        console.log(join);
+        return join;
     }
 }
 

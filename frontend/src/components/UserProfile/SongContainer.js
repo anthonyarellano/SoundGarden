@@ -6,14 +6,17 @@ import { getSongs } from '../../store/songs';
 import './style/userprofile.css';
 import SongButtons from './SongButtons';
 
-const SongContainer = () => {
+const SongContainer = ({playlistSongs}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
-    const songsList = useSelector((state) => Object.values(state.songs));
+    let songsList = useSelector((state) => Object.values(state.songs));
     const [visible, setVisible] = useState(false);
     const [hoveredSong, setHoveredSong] = useState(null);
-
+    
+    if (playlistSongs) {
+        songsList = playlistSongs;
+    }
 
     useEffect(() => {
         const retrive = async () => {
