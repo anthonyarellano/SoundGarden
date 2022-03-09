@@ -7,6 +7,7 @@ import App from './App';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
 import { SongProvider } from './Context/SongContext';
+import { PlaylistProvider } from './Context/PlaylistContext';
 
 import configureStore from './store';
 
@@ -27,11 +28,13 @@ if (process.env.NODE_ENV !== 'production') {
 function Root() {
   return (
     <Provider store={store}>
+      <PlaylistProvider>
         <SongProvider>
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </SongProvider>
+      </PlaylistProvider>
     </Provider>
   );
 }

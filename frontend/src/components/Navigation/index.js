@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './style/navbar.css';
 import * as sessionActions from '../../store/session';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -16,11 +16,19 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-    <>
+      <>
+        <NavLink to="/discover">
+          <img
+            className='navbar-image'
+            src={require('./style/images/discover-image.png')}
+            alt="discover-image">
+          </img>
+        </NavLink>
         <NavLink to="/upload">
-          <img className='navbar-image'
-                src={require('./style/images/upload-image.png')}
-                alt="upload-image">
+          <img
+            className='navbar-image'
+            src={require('./style/images/upload-image.png')}
+            alt="upload-image">
           </img>
         </NavLink>
         <NavLink to={`/users/${sessionUser.id}`}>
@@ -32,12 +40,12 @@ function Navigation({ isLoaded }){
         </NavLink>
         <div>
           <img
-          className='navbar-image'
-          src={require('./style/images/logout-image.png')}
-          alt="logout-image"
-          onClick={logout}></img>
+            className='navbar-image'
+            src={require('./style/images/logout-image.png')}
+            alt="logout-image"
+            onClick={logout}></img>
         </div>
-    </>
+      </>
     );
   } else {
     sessionLinks = (
@@ -49,21 +57,21 @@ function Navigation({ isLoaded }){
   }
 
   return (
-        <div>
-          <div className='navbar-upper'>
-            <p className='navbar-logo-text-1'>Sound</p>
-            <p className='navbar-logo-text-2'>garden</p>
-          </div>
-          <div className='navbar-lower'>
-            <NavLink exact to="/">
-              <img
-                className='navbar-image'
-                src={require('./style/images/home-image.png')}>
-              </img>
-            </NavLink>
-            {isLoaded && sessionLinks}
-          </div>
-        </div>
+    <div>
+      <div className='navbar-upper'>
+        <p className='navbar-logo-text-1'>Sound</p>
+        <p className='navbar-logo-text-2'>garden</p>
+      </div>
+      <div className='navbar-lower'>
+        <NavLink exact to="/">
+          <img
+            className='navbar-image'
+            src={require('./style/images/home-image.png')}>
+          </img>
+        </NavLink>
+        {isLoaded && sessionLinks}
+      </div>
+    </div>
 
   );
 }
