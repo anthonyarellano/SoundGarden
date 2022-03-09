@@ -31,7 +31,7 @@ const PlaylistContainer = ({sessionUser}) => {
         playlists.forEach((playlist, i) => {
 
             playlist.Songs.forEach((song) => {
-                playlist.urls.push([song.title, song.url])
+                playlist.urls.push([song.title, song.url, playlist.title])
             })
         })
         alteredPlaylist = [...playlists];
