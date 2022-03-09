@@ -1,6 +1,6 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
-const { User, Playlist, SongPlayListJoin } = require('../../db/models');
+const { User, Playlist, SongPlayListJoin, Song } = require('../../db/models');
 
 const router = express.Router();
 
@@ -22,11 +22,14 @@ router.get(
         const { userId } = req.params;
         const playlists = await Playlist.findAll({
             where: {
-                userId
+                userId,
+            },
+            include: {
+                model: Song
             }
         });
         if (playlists) {
-            console.log(playlists);
+            console.log(playlists[0].Songs);
             res.json(playlists)
         }
     })

@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
   Playlist.associate = function(models) {
     Playlist.belongsTo(models.User, { foreignKey: 'userId' });
     const columnMapping = {
-      through: 'SongPlaylistJoin',
+      through: 'SongPlayListJoin',
       otherKey: 'songId',
       foreignKey: 'playlistId'
     };
-    Playlist.belongsToMany(models.Song, columnMapping); 
+    Playlist.belongsToMany(models.Song, columnMapping);
   };
   return Playlist;
 };
