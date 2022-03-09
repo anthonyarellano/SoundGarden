@@ -35,14 +35,15 @@ const PlaylistContainer = ({sessionUser}) => {
                             setToggle(!toggle)}}>
                     </img>
                     <img
-                        className={toggle ? "playlist-edit" : "hidden"}
+                        className={"playlist-edit"}
                         src={require("./style/images/playlist-edit-button.png")}
                         onClick={() => setToggle(!toggle)}>
                      </img>
                 </div>
                 <PlaylistCard
                     songs={playlist?.Songs ? playlist?.Songs : null}
-                    playlistId={playlist?.id} />
+                    playlistId={playlist?.id}
+                    toggle={toggle} />
             </>
             ))}
         </div>

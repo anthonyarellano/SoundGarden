@@ -39,9 +39,11 @@
     .playlist-delete-button {
         display: inline-block;
         height: 30px;
+        cursor: pointer;
     } .playlist-edit {
-        height: 12px;
+        height: 10px;
         margin-left: 20px;
+        cursor: pointer;
     }
 
     .playlist-title-wrapper {
@@ -52,4 +54,5 @@
         height: 12px;
         background-color: red;
         margin-left: 20px;
+        cursor: pointer;
     }
