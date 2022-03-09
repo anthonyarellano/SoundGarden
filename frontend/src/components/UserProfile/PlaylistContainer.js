@@ -3,6 +3,7 @@ import { getPlaylists } from '../../store/playlists';
 import { useDispatch, useSelector } from 'react-redux';
 import SongContainer from './SongContainer';
 import PlaylistCard from './PlaylistCard';
+import './style/playlistcard.css'
 
 const PlaylistContainer = ({sessionUser}) => {
     const dispatch = useDispatch();
@@ -16,7 +17,8 @@ const PlaylistContainer = ({sessionUser}) => {
         <div>
             {playlists?.map((playlist) => (
             <>
-                
+                {/* TODO component that will rnder a collage of the pictures */}
+                <p className='playlist-title'>{playlist?.title}</p>
                 <PlaylistCard songs={playlist?.Songs ? playlist?.Songs : null} />
                 {/* <SongContainer playlistSongs={playlist?.Songs ? playlist?.Songs : null}/> */}
             </>

@@ -20,4 +20,6 @@
     } .playlist-card:hover {
         background-color: #F5F5F5;
         cursor: pointer;
+    } .playlist-title {
+        font-family: 'Interstate Light Cond';
     }
