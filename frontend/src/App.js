@@ -11,6 +11,7 @@ import "./index.css";
 import UserProfile from "./components/UserProfile";
 import PageNotFound from "./components/404Page";
 import Player from "./components/Player";
+import DiscoverPage from "./components/DiscoverPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ function App() {
             <Route path="/discover">
               {/* todo ADD DISCOVER PAGE COMPONENT */}
               <Navigation isLoaded={isLoaded} />
-              <h1>Welcome to discover page</h1>
+              <DiscoverPage />
               <Player />
             </Route>
             <Route path="/">

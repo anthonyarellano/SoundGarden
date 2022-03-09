@@ -7,7 +7,7 @@ import { getSongs } from '../../store/songs';
 import './style/userprofile.css';
 import ProfileBanner from "./ProfileBanner";
 import ProfileNav from "./ProfileNav";
-
+import { Redirect } from "react-router-dom";
 
 
 const UserProfile = () => {
@@ -15,7 +15,6 @@ const UserProfile = () => {
     const { userId } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-
 
     useEffect(() => {
         const retrive = async () => {
@@ -26,6 +25,10 @@ const UserProfile = () => {
         retrive();
         dispatch(getSongs(userId));
     }, [userId]);
+
+    if (!sessionUser) {
+        return <Redirect to="/login" />
+    }
 
     return (
         <>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './style/navbar.css';
 import * as sessionActions from '../../store/session';
@@ -10,7 +10,7 @@ function Navigation({ isLoaded }){
 
   const logout = () => {
     dispatch(sessionActions.logout());
-    return;
+    return <Redirect to="/" />
   }
 
   let sessionLinks;

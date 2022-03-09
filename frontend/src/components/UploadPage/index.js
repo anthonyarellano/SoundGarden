@@ -6,18 +6,18 @@ import { uploadSong, getSongs } from '../../store/songs';
 import { useHistory, Redirect } from 'react-router-dom';
 
 export const UploadPage = () => {
-    const S3_BUCKET = process.env.REACT_APP_BUCKET;
-    const REGION = process.env.REACT_APP_REGION;
+  const S3_BUCKET = process.env.REACT_APP_BUCKET;
+  const REGION = process.env.REACT_APP_REGION;
 
-    AWS.config.update({
-      accessKeyId: process.env.REACT_APP_ACCESS_KEY,
-      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS
-    });
+  AWS.config.update({
+    accessKeyId: process.env.REACT_APP_ACCESS_KEY,
+    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS
+  });
 
-    const myBucket = new AWS.S3({
-      params: { Bucket: S3_BUCKET },
-      region: REGION,
-    })
+  const myBucket = new AWS.S3({
+    params: { Bucket: S3_BUCKET },
+    region: REGION,
+  })
 
   const [progress, setProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -59,26 +59,26 @@ export const UploadPage = () => {
             Key: file.name
           };
           myBucket.upload(params)
-          .on('httpUploadProgress', (evt) => {
-            setProgress(Math.round((evt.loaded / evt.total) * 100))
-          })
-          .send((err, data) => {
-            if (err) return console.log(err);
-            if (data) {
-              const { Location, key } = data;
-              const song = {
-                userId: sessionUser.id,
-                title: title,
-                url: Location,
-                imgUrl: imgUrl
+            .on('httpUploadProgress', (evt) => {
+              setProgress(Math.round((evt.loaded / evt.total) * 100))
+            })
+            .send((err, data) => {
+              if (err) return console.log(err);
+              if (data) {
+                const { Location, key } = data;
+                const song = {
+                  userId: sessionUser.id,
+                  title: title,
+                  url: Location,
+                  imgUrl: imgUrl
+                };
+                dispatch(uploadSong(song));
+                dispatch(getSongs(sessionUser.id))
+                setProgress(0);
+                setSelectedFile(null);
+                return history.push(`/users/${sessionUser.id}`)
               };
-              dispatch(uploadSong(song));
-              dispatch(getSongs(sessionUser.id))
-              setProgress(0);
-              setSelectedFile(null);
-              return history.push(`/users/${sessionUser.id}`)
-            };
-          });
+            });
         };
       };
       return;
@@ -86,23 +86,26 @@ export const UploadPage = () => {
     return;
   };
 
+  if (!sessionUser) {
+    return <Redirect to="/login" />
+  }
 
   return (
     <div className='upload-page-container'>
       {!sessionUser &&
-      <Redirect to="/signup" />}
+        <Redirect to="/signup" />}
       {errors &&
-      errors.map((error) => (
-        <p key={error}>
-          {error}
-        </p>
-      ))}
+        errors.map((error) => (
+          <p key={error}>
+            {error}
+          </p>
+        ))}
       <div> Upload Progress is {progress}%</div>
       <input type="file" onChange={handleFileInput} />
       <label htmlFor="title">Song Title</label>
-      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)}/>
+      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)} />
       <label htmlFor="imgUrl">Cover Art URL</label>
-      <input type="text"name="imgUrl" onChange={(e) => setImgUrl(e.target.value)}></input>
+      <input type="text" name="imgUrl" onChange={(e) => setImgUrl(e.target.value)}></input>
       <button onClick={() => uploadFile(selectedFile)}> Upload Song</button>
     </div>
   )
