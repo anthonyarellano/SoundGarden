@@ -58,9 +58,15 @@ const PlaylistContainer = ({sessionUser}) => {
                         src={require("./style/images/playlist-edit-button.png")}
                         onClick={() => setToggle(!toggle)}>
                      </img>
-                     <div onClick={() => setCurrentPlaylist(playlist.urls)}>
+                     {/* <div onClick={() => setCurrentPlaylist(playlist.urls)}>
                          play
-                     </div>
+                     </div> */}
+                     <img
+                        src={require('./style/images/playlist-play-button.png')}
+                        className={"playlist-edit"}
+                        onClick={() => setCurrentPlaylist(playlist.urls)}
+                        >
+                     </img>
                 </div>
                 <PlaylistCard
                     songs={playlist?.Songs ? playlist?.Songs : null}
