@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { getPlaylists } from '../../store/playlists';
 import { useDispatch, useSelector } from 'react-redux';
 import SongContainer from './SongContainer';
+import PlaylistCard from './PlaylistCard';
 
 const PlaylistContainer = ({sessionUser}) => {
     const dispatch = useDispatch();
@@ -15,12 +16,13 @@ const PlaylistContainer = ({sessionUser}) => {
         <div>
             {playlists?.map((playlist) => (
             <>
-                <p
+                {/* <p
                     id={playlist?.id}
                 >
                     {playlist?.title}
-                </p>
-                <SongContainer playlistSongs={playlist?.Songs ? playlist?.Songs : null}/>
+                </p> */}
+                <PlaylistCard songs={playlist?.Songs ? playlist?.Songs : null} />
+                {/* <SongContainer playlistSongs={playlist?.Songs ? playlist?.Songs : null}/> */}
             </>
             ))}
         </div>

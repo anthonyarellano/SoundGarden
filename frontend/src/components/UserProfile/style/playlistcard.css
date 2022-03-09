@@ -1,0 +1,24 @@
+.playlist-card-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: left;
+    margin-right: 40%;
+    margin-left: 40%;
+}
+
+.playlist-card-wrapper {
+    display: block;
+}
+
+.playlist-card {
+    display: flex;
+    align-items: center;
+    margin: none;
+
+}
+
+.playlist-card-song-title {
+    margin: 0px;
+    margin-left: 10px;
+}
