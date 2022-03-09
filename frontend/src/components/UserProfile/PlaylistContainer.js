@@ -18,7 +18,10 @@ const PlaylistContainer = ({sessionUser}) => {
             {playlists?.map((playlist) => (
             <>
                 {/* TODO component that will rnder a collage of the pictures */}
-                <p className='playlist-title'>{playlist?.title}</p>
+                <div className='playlist-title-wrapper'>
+                    <p className='playlist-title'>{playlist?.title}</p>
+                    <img className="playlist-delete" src={require('./style/images/delete-button.png')}></img>
+                </div>
                 <PlaylistCard
                     songs={playlist?.Songs ? playlist?.Songs : null}
                     playlistId={playlist?.id} />
