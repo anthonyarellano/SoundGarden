@@ -79,3 +79,6 @@
     }
 
 
+    *::-webkit-scrollbar {
+        background: aquamarine;        /* color of the tracking area */
+      }
