@@ -24,19 +24,19 @@ const PlaylistContainer = ({sessionUser}) => {
         }
     };
 
-    if (playlists) {
-        playlists.forEach((playlist) => {
-            playlist.urls = [];
+    if (playlists?.length) {
+        playlists?.forEach((playlist) => {
+            playlist?.urls = [];
         })
-        playlists.forEach((playlist, i) => {
+        playlists?.forEach((playlist, i) => {
 
-            playlist.Songs.forEach((song) => {
-                playlist.urls.push([song.title, song.url, playlist.title])
+            playlist?.Songs?.forEach((song) => {
+                playlist?.urls?.push([song.title, song.url, playlist.title])
             })
         })
         alteredPlaylist = [...playlists];
     }
-    console.log(alteredPlaylist, "-----------------------");
+ 
     return (
         <div>
             {alteredPlaylist?.map((playlist) => (
