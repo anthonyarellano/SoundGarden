@@ -11,6 +11,7 @@ export const UploadPage = ({setAllActive}) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [title, setTitle] = useState(null);
   const [imgUrl, setImgUrl] = useState(null);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState([]);
   const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g
@@ -36,6 +37,7 @@ export const UploadPage = ({setAllActive}) => {
     const errors = [];
     if (!title) errors.push('Please provide a value for Song Title.');
     if (!imgUrl) errors.push('Please provide a value for Cover Art URL.');
+    if (!selectedFile) errors.push('Please select a song to upload.')
     if (selectedFile) {
       if (selectedFile.type !== "audio/wav" && selectedFile.type !== "audio/mpeg") {
         errors.push('Unsupported file type.')
@@ -52,6 +54,7 @@ export const UploadPage = ({setAllActive}) => {
   }
 
   const uploadFile = (file) => {
+    setHasSubmitted(true);
     if (errors.length === 0) {
 
       if (file) {
@@ -79,6 +82,7 @@ export const UploadPage = ({setAllActive}) => {
                 dispatch(getSongs(sessionUser.id))
                 setProgress(0);
                 setSelectedFile(null);
+                setHasSubmitted(false); 
                 if (setAllActive) {
                   setAllActive('all')
                 }
@@ -105,11 +109,11 @@ export const UploadPage = ({setAllActive}) => {
       }}>
       {!sessionUser &&
         <Redirect to="/signup" />}
-      {errors &&
-        errors.map((error) => (
+      {hasSubmitted &&
+        errors?.map((error) => (
           <p
             key={error}
-            style={{margin: "0px", marginBottom: "10px", marginTop: "10px"}}>
+            style={{margin: "0px", marginBottom: "5px", marginTop: "5px"}}>
             {error}
           </p>
         ))}
