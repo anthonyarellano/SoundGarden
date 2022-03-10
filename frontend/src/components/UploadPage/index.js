@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AWS from 'aws-sdk'
 import './style/upload-page.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,6 +7,17 @@ import { useHistory, Redirect } from 'react-router-dom';
 import { colors, codes } from '../../Data/data.js';
 
 export const UploadPage = ({setAllActive}) => {
+  const [progress, setProgress] = useState(0);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [imgUrl, setImgUrl] = useState(null);
+  const sessionUser = useSelector((state) => state.session.user);
+  const [errors, setErrors] = useState([]);
+  const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const fileRef = useRef();
+
   const S3_BUCKET = process.env.REACT_APP_BUCKET;
   const REGION = process.env.REACT_APP_REGION;
 
@@ -20,15 +31,6 @@ export const UploadPage = ({setAllActive}) => {
     region: REGION,
   })
 
-  const [progress, setProgress] = useState(0);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [title, setTitle] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
-  const sessionUser = useSelector((state) => state.session.user);
-  const [errors, setErrors] = useState([]);
-  const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g
-  const history = useHistory();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const errors = [];
@@ -109,8 +111,20 @@ export const UploadPage = ({setAllActive}) => {
             {error}
           </p>
         ))}
-      <div> Upload Progress is {progress}%</div>
-      <input type="file" onChange={handleFileInput} />
+      <div>{progress}%</div>
+      <div>
+        <div onClick={() => fileRef.current.click()}>
+          Hi
+        </div>
+        <p>{selectedFile?.name}</p>
+        <input
+          ref={fileRef}
+          className="fileInput"
+          type="file"
+          onChange={handleFileInput}
+          hidden
+        />
+      </div>
       <label htmlFor="title">Song Title</label>
       <input type="text" name="title" onChange={(e) => setTitle(e.target.value)} />
       <label htmlFor="imgUrl">Cover Art URL</label>
