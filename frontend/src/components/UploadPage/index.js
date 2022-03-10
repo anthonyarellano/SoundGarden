@@ -4,7 +4,7 @@ import './style/upload-page.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { uploadSong, getSongs } from '../../store/songs';
 import { useHistory, Redirect } from 'react-router-dom';
-import SpinningRing from '../UserProfile/SpinningRing';
+import { colors, codes } from '../../Data/data.js';
 
 export const UploadPage = ({setAllActive}) => {
   const S3_BUCKET = process.env.REACT_APP_BUCKET;
@@ -95,7 +95,12 @@ export const UploadPage = ({setAllActive}) => {
   }
 
   return (
-    <div className='upload-page-container'>
+    <div
+      className='upload-page-container'
+      style={{
+        backgroundColor: colors[progress % colors.length],
+        transition: 'background-color .4s'
+      }}>
       {!sessionUser &&
         <Redirect to="/signup" />}
       {errors &&
