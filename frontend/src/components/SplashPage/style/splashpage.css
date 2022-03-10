@@ -29,6 +29,7 @@ body, html {
     height: 740px;
     border-radius: 100%;
     position: fixed;
+    overflow: hidden;
 
   } #splash-page-text {
       font-family: 'Interstate Black Cond';
@@ -46,6 +47,8 @@ body, html {
       z-index: 1;
   }
 
+
+
   .splash-page-link {
     font-family: 'Interstate Black Cond';
     text-decoration: none;
@@ -59,13 +62,15 @@ body, html {
   .playlist-modal {
     background-color: aquamarine;
     position: absolute;
-    top: 15%;
-    left: 35%;
-    right: 35%;
-    bottom: 15%;
+    top: 20%;
+    left: 40%;
+    right: 40%;
+    bottom: 20%;
     border: none;
     outline: none;
+    overflow: hidden;
   }
+
 
   @media (prefers-reduced-motion: no-preference) {
     .splash-page-img {

@@ -18,7 +18,7 @@ const SplashPage = () => {
 
     const closeModal = () => {
         setIsOpen(false);
-        setToggle(false); 
+        setToggle(false);
         return
     }
 
@@ -54,9 +54,13 @@ const SplashPage = () => {
             <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
-                    className="playlist-modal">
-
-
+                    className="playlist-modal"
+            >
+                <img
+                    src={require("./style/splashRing.png")}
+                    className="modal-img"
+                    >
+                </img>
             </Modal>
             <div className='splash-page'>
                 <div className='splash-page-header'>
