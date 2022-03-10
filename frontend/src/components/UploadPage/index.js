@@ -1,12 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AWS from 'aws-sdk'
 import './style/upload-page.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { uploadSong, getSongs } from '../../store/songs';
 import { useHistory, Redirect } from 'react-router-dom';
-import SpinningRing from '../UserProfile/SpinningRing';
+import { colors, codes } from '../../Data/data.js';
 
 export const UploadPage = ({setAllActive}) => {
+  const [progress, setProgress] = useState(0);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [imgUrl, setImgUrl] = useState(null);
+  const sessionUser = useSelector((state) => state.session.user);
+  const [errors, setErrors] = useState([]);
+  const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const fileRef = useRef();
+
   const S3_BUCKET = process.env.REACT_APP_BUCKET;
   const REGION = process.env.REACT_APP_REGION;
 
@@ -20,15 +31,6 @@ export const UploadPage = ({setAllActive}) => {
     region: REGION,
   })
 
-  const [progress, setProgress] = useState(0);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [title, setTitle] = useState(null);
-  const [imgUrl, setImgUrl] = useState(null);
-  const sessionUser = useSelector((state) => state.session.user);
-  const [errors, setErrors] = useState([]);
-  const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g
-  const history = useHistory();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const errors = [];
@@ -95,22 +97,58 @@ export const UploadPage = ({setAllActive}) => {
   }
 
   return (
-    <div className='upload-page-container'>
+    <div
+      className='upload-page-container'
+      style={{
+        backgroundColor: colors[progress % colors.length],
+        transition: 'background-color .4s'
+      }}>
       {!sessionUser &&
         <Redirect to="/signup" />}
       {errors &&
         errors.map((error) => (
-          <p key={error}>
+          <p
+            key={error}
+            style={{margin: "0px", marginBottom: "10px", marginTop: "10px"}}>
             {error}
           </p>
         ))}
-      <div> Upload Progress is {progress}%</div>
-      <input type="file" onChange={handleFileInput} />
+      <div>{progress}%</div>
+      <div>
+        <div
+          className='upload-page-upload-button'
+          onClick={() => fileRef.current.click()}>
+          Select Song File
+        </div>
+        <p>{selectedFile?.name}</p>
+        <input
+          ref={fileRef}
+          className="fileInput"
+          type="file"
+          onChange={handleFileInput}
+          hidden
+        />
+      </div>
       <label htmlFor="title">Song Title</label>
-      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)} />
+      <input
+        type="text"
+        name="title"
+        className='upload-page-text-input'
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <label htmlFor="imgUrl">Cover Art URL</label>
-      <input type="text" name="imgUrl" onChange={(e) => setImgUrl(e.target.value)}></input>
-      <button onClick={() => uploadFile(selectedFile)}> Upload Song</button>
+      <input
+        type="text"
+        name="imgUrl"
+        className='upload-page-text-input'
+        onChange={(e) => setImgUrl(e.target.value)}
+      />
+      <div
+        className='upload-page-upload-button'
+        onClick={() => uploadFile(selectedFile)}
+      >
+      Upload Song
+      </div>
     </div>
   )
 

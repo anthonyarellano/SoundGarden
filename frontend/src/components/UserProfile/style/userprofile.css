@@ -119,6 +119,7 @@ body {
     cursor: pointer;
 } .playlist-create-button:hover {
     box-shadow: 1px 1px 6px 1px lightgrey;
+    transition: box-shadow 1s;
 } .playlist-dropdown {
     color: white;
 } .playlist-title-container:hover {
@@ -127,6 +128,11 @@ body {
 }
 .new-playlist-input {
     font-family: 'Interstate Light Cond';
+    border: .5px solid #cfcfcf;
+} .new-playlist-input:focus {
+    font-family: 'Interstate Light Cond';
+    border: 3px solid aquamarine;
+    outline: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
