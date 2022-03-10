@@ -22,4 +22,7 @@
     border: .5px solid #cfcfcf;
     font-family: "Interstate Light Cond";
     margin: 5px;
+} .upload-page-text-input:focus {
+    border: 3px solid aquamarine;
+    outline: none;
 }
