@@ -40,6 +40,7 @@ body, html {
   } #splash-page-text-2 {
     font-family: 'Interstate Black Cond';
     margin: 0px;
+    cursor: pointer;
 
 } .splash-page-text-container {
       display: flex;
