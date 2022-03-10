@@ -24,6 +24,18 @@ function LoginFormPage() {
       });
   }
 
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    setCredential("demo@user.io");
+    setPassword("dualwield")
+    return dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <ul>
@@ -48,6 +60,11 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      <div
+        onClick={handleDemo}
+      >
+        Demo User
+      </div>
     </form>
   );
 }
