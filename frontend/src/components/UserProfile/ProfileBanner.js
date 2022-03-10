@@ -13,6 +13,7 @@ const ProfileBanner = ({userProfile}) => {
                 {user &&
                 <>
                     <img
+                        className='profile-banner-img-file'
                         src={user.bannerUrl}></img>
                     <div>
                         <img

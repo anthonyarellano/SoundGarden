@@ -10,8 +10,8 @@ module.exports = {
           email: 'demo@user.io',
           username: 'VarianWrynn',
           hashedPassword: bcrypt.hashSync('dualwield'),
-          imgUrl: "https://static.wikia.nocookie.net/wowwiki/images/5/53/Varian_Wrynn.jpg/revision/latest/scale-to-width-down/1000?cb=20151108215419",
-          bannerUrl: "https://i.pinimg.com/originals/7b/d5/df/7bd5df5ea4c35fae72d6b0dff4907503.jpg"
+          imgUrl: "https://64.media.tumblr.com/05a585eb3defcb06ddd56432051f5567/tumblr_nxf2rhqB6c1s844l2o1_500.jpg",
+          bannerUrl: "https://wallpaperaccess.com/full/5632970.jpg"
         },
         {
           email: 'anthonyarellano@user.io',

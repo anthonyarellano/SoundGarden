@@ -33,6 +33,17 @@ body {
     text-align: center;
     overflow: hidden;
 }
+.profile-banner-container {
+    width: 1240px;
+    height: 260px;
+    overflow: hidden;
+}
+.profile-banner-img-file {
+    width: 1240px;
+    height: 260px;
+    object-fit: cover;
+}
+
 
 .profile-profile-pic {
     width: 150px;
