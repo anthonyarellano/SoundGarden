@@ -56,6 +56,17 @@ body, html {
     color: black;
   }
 
+  .playlist-modal {
+    background-color: aquamarine;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    right: 35%;
+    bottom: 15%;
+    border: none;
+    outline: none;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .splash-page-img {
       animation: App-logo-spin infinite 20s linear;
