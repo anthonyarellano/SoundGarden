@@ -24,7 +24,11 @@ const PlaylistCard = ({songs, playlistId, toggle}) => {
                 <div
                     className='playlist-card'
                     onClick={() => setCurrentSong([song?.title, song?.url, "Song"])}>
-                    <img src={song?.imgUrl} style={{height: "25px"}}></img>
+                    <img
+                        className='playlist-card-image'
+                        src={song?.imgUrl}
+                        style={{height: "25px"}}>
+                    </img>
                     <p className='playlist-card-song-title'>{song?.title}</p>
                     <div
                         className={!toggle ? 'playlist-song-remove-button' : 'hidden'}
