@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { createPlaylist } from '../../store/playlists';
 
 const ProfileNav = ({userId, sessionUser}) => {
-    const [allActive, setAllActive] = useState(true);
+    const [allActive, setAllActive] = useState('all');
     const [visible, setVisible] = useState(false);
     const [newPlaylistTitle, setNewPlaylistTitle] = useState(null);
     const [errors, setErrors] = useState([]);
@@ -40,11 +40,15 @@ const ProfileNav = ({userId, sessionUser}) => {
         links = (
         <>
             <div
-                className={allActive ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive(!allActive)}>All Music</div>
+                className={allActive === "all" ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => setAllActive("all")}>All Music</div>
             <div
-                className={!allActive ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive(!allActive)}>Playlists</div>
+                className={allActive === "upload" ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => setAllActive("upload")}
+                >Upload</div>
+            <div
+                className={allActive === "playlist" ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => setAllActive("playlist")}>Playlists</div>
             <div
                 onClick={() => setVisible(!visible)}> + </div>
             <div className={visible ? "playlist-entry" : "hidden"}>
@@ -76,9 +80,11 @@ const ProfileNav = ({userId, sessionUser}) => {
             <div className="profile-nav-wrapper">
                 {links}
             </div>
-            {allActive ?
-                <SongContainer /> :
-                <PlaylistContainer sessionUser={sessionUser}/>
+            {allActive === "all" ?
+                <SongContainer /> : allActive === "playlist" ?
+                <PlaylistContainer sessionUser={sessionUser}/> :
+                allActive === "upload" ?
+                <h1>upload</h1> : null
             }
         </>
     )

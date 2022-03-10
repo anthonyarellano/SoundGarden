@@ -40,10 +40,6 @@ const UserProfile = () => {
                         <PageNotFound />}
             </div>
             <SpinningRing />
-            {/* <img
-                    src={require("../SplashPage/style/splashRing.png")}
-                    className="user-profile-spinning-img modal-img">
-            </img> */}
         </div>
         </>
 
