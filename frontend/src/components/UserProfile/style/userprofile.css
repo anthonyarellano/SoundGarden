@@ -128,6 +128,7 @@ body {
 }
 .new-playlist-input {
     font-family: 'Interstate Light Cond';
+    border: .5px solid #cfcfcf;
 } .new-playlist-input:focus {
     font-family: 'Interstate Light Cond';
     border: 3px solid aquamarine;
