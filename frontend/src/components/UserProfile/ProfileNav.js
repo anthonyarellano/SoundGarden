@@ -51,7 +51,8 @@ const ProfileNav = ({userId, sessionUser}) => {
                 className={allActive === "playlist" ? 'profile-nav-button selected' : 'profile-nav-button'}
                 onClick={() => setAllActive("playlist")}>Playlists</div>
             <div
-                onClick={() => setVisible(!visible)}> + </div>
+                onClick={() => setVisible(!visible)}
+                style={{cursor: "pointer"}}> + </div>
             <div className={visible ? "playlist-entry" : "hidden"}>
                 <input
                     type="text"
