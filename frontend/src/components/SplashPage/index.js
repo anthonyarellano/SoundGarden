@@ -3,13 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import Modal from 'react-modal';
+import LoginFormPage from '../LoginFormPage';
+import SignupFormPage from '../SignupFormPage';
 
 const SplashPage = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [modalIsOpen, setIsOpen] = useState(false);
     const [toggle, setToggle] = useState(false);
-
+    const [loginToggle, setLoginToggle] = useState(null);
     let sessionLinks;
     const openModal = () => {
         setIsOpen(true);
@@ -43,17 +45,30 @@ const SplashPage = () => {
                 <p
                     id='splash-page-text-2'
                     className={toggle ? "hidden" : 'splash-page-link'}
+                    onClick={() => setLoginToggle(true)}
                 >
                     Login /
                 </p>
                 <p
                     id='splash-page-text-2'
                     className={toggle ? "hidden" : 'splash-page-link'}
+                    onClick={() => setLoginToggle(false)}
                 >
                     / Signup
                 </p>
             </div>
         </>
+        )
+    }
+
+    let loginSignup;
+    if (loginToggle) {
+        loginSignup = (
+            <LoginFormPage />
+        )
+    } else {
+        loginSignup = (
+            <SignupFormPage />
         )
     }
 
@@ -65,6 +80,7 @@ const SplashPage = () => {
                     onRequestClose={closeModal}
                     className="playlist-modal"
             >
+                {loginSignup}
                 <img
                     src={require("./style/splashRing.png")}
                     className="modal-img"
