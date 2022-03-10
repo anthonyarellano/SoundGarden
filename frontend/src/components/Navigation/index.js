@@ -24,13 +24,13 @@ function Navigation({ isLoaded }) {
             alt="discover-image">
           </img>
         </NavLink>
-        <NavLink to="/upload">
+        {/* <NavLink to="/upload">
           <img
             className='navbar-image'
             src={require('./style/images/upload-image.png')}
             alt="upload-image">
           </img>
-        </NavLink>
+        </NavLink> */}
         <NavLink to={`/users/${sessionUser.id}`}>
           <img
             className='navbar-image'
