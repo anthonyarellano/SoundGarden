@@ -40,7 +40,18 @@ const SplashPage = () => {
                     setToggle(true)
                 }}
             >
-                <p className={toggle ? "hidden" : 'login-text'}>Login</p>
+                <p
+                    id='splash-page-text-2'
+                    className={toggle ? "hidden" : 'splash-page-link'}
+                >
+                    Login /
+                </p>
+                <p
+                    id='splash-page-text-2'
+                    className={toggle ? "hidden" : 'splash-page-link'}
+                >
+                    / Signup
+                </p>
                 {/* <NavLink className='splash-page-link' exact to='/login'>Login /</NavLink>
                 <NavLink className='splash-page-link' exact to='/signup'> Sign up</NavLink> */}
             </div>
