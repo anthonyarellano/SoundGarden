@@ -19,7 +19,9 @@ const ProfileBanner = ({userProfile}) => {
                         <img
                             src={user.imgUrl}
                             className='profile-profile-pic'></img>
-                            <p className='profile-banner-name'>{user.username}</p>
+                            <p className='profile-banner-name'>
+                                {user.username}
+                            </p>
                     </div>
                 </>
                 }

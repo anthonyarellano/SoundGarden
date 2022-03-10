@@ -13,7 +13,7 @@ const SongContainer = ({playlistSongs}) => {
     let songsList = useSelector((state) => Object.values(state.songs));
     const [visible, setVisible] = useState(false);
     const [hoveredSong, setHoveredSong] = useState(null);
-    
+
     if (playlistSongs) {
         songsList = playlistSongs;
     }
@@ -43,7 +43,8 @@ const SongContainer = ({playlistSongs}) => {
                             <div className="image-button-container">
                                 <img
                                 id={song?.id}
-                                className="album-artwork" src={song?.imgUrl}
+                                className="album-artwork"
+                                src={song?.imgUrl}
                                 onMouseEnter={(e) => {
                                     setVisible(true)
                                     setHoveredSong(e.target.id)}}
