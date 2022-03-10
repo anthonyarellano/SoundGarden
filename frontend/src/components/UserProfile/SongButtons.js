@@ -71,15 +71,19 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                 <img
                     className="song-image"
                     src={require('./style/images/play-button.png')}
-                    onClick={() => setCurrentSong([song?.title, song?.url, currentUser?.user.username])}></img>
+                    onClick={() => setCurrentSong([song?.title, song?.url, currentUser?.user.username])}
+                    onMouseEnter={(e) => e.target.src = (require('./style/images/play-button-transition.png'))}
+                    onMouseLeave={(e) => e.target.src = (require('./style/images/play-button.png'))}
+                />
             </div>
             <div className="create-playlist-button">
                 <img
                     className="song-image playlist"
                     src={require('./style/images/playlist-button.png')}
                     onClick={() => setPlaylistsVisible(!playlistsVisible)}
-                    >
-                </img>
+                    onMouseEnter={(e) => e.target.src = (require('./style/images/playlist-button-transition.png'))}
+                    onMouseLeave={(e) => e.target.src = (require('./style/images/playlist-button.png'))}
+                />
                 <div
                     className={playlistsVisible ? "playlist-dropdown" : "hidden"}>
                     {playlists?.map((playlist) => (
@@ -99,6 +103,8 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                         id={song?.id}
                         className="song-image edit"
                         src={require('./style/images/edit-button.png')}
+                        onMouseEnter={(e) => e.target.src = (require('./style/images/edit-button-transition.png'))}
+                        onMouseLeave={(e) => e.target.src = (require('./style/images/edit-button.png'))}
                         onClick={() => {
                             setShowEdit(!showEdit)
                             setEditSong(song?.id)
@@ -119,6 +125,8 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                         id={song?.id}
                         className="song-image delete"
                         src={require('./style/images/delete-button.png')}
+                        onMouseEnter={(e) => e.target.src = (require('./style/images/delete-button-transition.png'))}
+                        onMouseLeave={(e) => e.target.src = (require('./style/images/delete-button.png'))}
                         onClick={(e) => handleDelete(e.target.id)}></img>
                 </div>
             </>
