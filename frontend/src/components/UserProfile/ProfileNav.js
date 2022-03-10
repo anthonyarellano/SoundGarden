@@ -30,7 +30,7 @@ const ProfileNav = ({userId, sessionUser}) => {
             };
             dispatch(createPlaylist(playlist));
             setErrors([]);
-            setNewPlaylistTitle(null);
+            setNewPlaylistTitle("");
             return;
         }
         return alert(errors)
@@ -58,6 +58,7 @@ const ProfileNav = ({userId, sessionUser}) => {
                     type="text"
                     className='new-playlist-input'
                     placeholder="New Playlist Name"
+                    value={newPlaylistTitle}
                     onChange={(e) => setNewPlaylistTitle(e.target.value)}>
                 </input>
                 <div
