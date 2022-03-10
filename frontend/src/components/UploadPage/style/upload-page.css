@@ -6,13 +6,20 @@
     flex-direction: column;
     margin-left: 40%;
     margin-right: 40%;
-    height: 40px;
+    height: 50px;
     font-family: "Interstate Light Cond";
-} .fileInput {
+} .upload-page-upload-button {
+    cursor: pointer;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: .5px solid #cfcfcf;
+    padding: 3px;
+    margin-top: 10px;
+} .upload-page-upload-button:hover {
+    background-color: #F5F5F5;
+    transition: background-color 1s;
+} .upload-page-text-input {
+    border: .5px solid #cfcfcf;
     font-family: "Interstate Light Cond";
-}
-
-
-input[type=file] {
-    
+    margin: 5px;
 }

@@ -107,14 +107,18 @@ export const UploadPage = ({setAllActive}) => {
         <Redirect to="/signup" />}
       {errors &&
         errors.map((error) => (
-          <p key={error}>
+          <p
+            key={error}
+            style={{margin: "0px", marginBottom: "10px", marginTop: "10px"}}>
             {error}
           </p>
         ))}
       <div>{progress}%</div>
       <div>
-        <div onClick={() => fileRef.current.click()}>
-          Hi
+        <div
+          className='upload-page-upload-button'
+          onClick={() => fileRef.current.click()}>
+          Select Song File
         </div>
         <p>{selectedFile?.name}</p>
         <input
@@ -126,10 +130,25 @@ export const UploadPage = ({setAllActive}) => {
         />
       </div>
       <label htmlFor="title">Song Title</label>
-      <input type="text" name="title" onChange={(e) => setTitle(e.target.value)} />
+      <input
+        type="text"
+        name="title"
+        className='upload-page-text-input'
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <label htmlFor="imgUrl">Cover Art URL</label>
-      <input type="text" name="imgUrl" onChange={(e) => setImgUrl(e.target.value)}></input>
-      <button onClick={() => uploadFile(selectedFile)}> Upload Song</button>
+      <input
+        type="text"
+        name="imgUrl"
+        className='upload-page-text-input'
+        onChange={(e) => setImgUrl(e.target.value)}
+      />
+      <div
+        className='upload-page-upload-button'
+        onClick={() => uploadFile(selectedFile)}
+      >
+      Upload Song
+      </div>
     </div>
   )
 
