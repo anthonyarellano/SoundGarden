@@ -21,20 +21,17 @@ function Navigation({ isLoaded }) {
           <img
             className='navbar-image'
             src={require('./style/images/discover-image.png')}
+            onMouseEnter={(e) => e.target.src = (require('./style/images/discover-image-transition.png'))}
+            onMouseLeave={(e) => e.target.src = (require('./style/images/discover-image.png'))}
             alt="discover-image">
           </img>
         </NavLink>
-        {/* <NavLink to="/upload">
-          <img
-            className='navbar-image'
-            src={require('./style/images/upload-image.png')}
-            alt="upload-image">
-          </img>
-        </NavLink> */}
         <NavLink to={`/users/${sessionUser.id}`}>
           <img
             className='navbar-image'
             src={require('./style/images/profile-image.png')}
+            onMouseEnter={(e) => e.target.src = (require('./style/images/profile-image-transition.png'))}
+            onMouseLeave={(e) => e.target.src = (require('./style/images/profile-image.png'))}
             alt="profile-image">
           </img>
         </NavLink>
@@ -42,6 +39,8 @@ function Navigation({ isLoaded }) {
           <img
             className='navbar-image'
             src={require('./style/images/logout-image.png')}
+            onMouseEnter={(e) => e.target.src = (require('./style/images/logout-image-transition.png'))}
+            onMouseLeave={(e) => e.target.src = (require('./style/images/logout-image.png'))}
             alt="logout-image"
             onClick={logout}></img>
         </div>
@@ -66,8 +65,10 @@ function Navigation({ isLoaded }) {
         <NavLink exact to="/">
           <img
             className='navbar-image'
-            src={require('./style/images/home-image.png')}>
-          </img>
+            src={require('./style/images/home-image.png')}
+            onMouseEnter={(e) => e.target.src = (require('./style/images/home-image-transition.png'))}
+            onMouseLeave={(e) => e.target.src = (require('./style/images/home-image.png'))}
+          />
         </NavLink>
         {isLoaded && sessionLinks}
       </div>
