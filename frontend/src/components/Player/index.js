@@ -2,10 +2,15 @@ import AudioPlayer from 'react-h5-audio-player';
 import './style/player.css';
 import { useSong } from '../../Context/SongContext';
 import { usePlaylist } from '../../Context/PlaylistContext';
+import { useEffect } from 'react';
 
 const Player = () => {
   const { currentSong, setCurrentSong } = useSong();
   const { currentPlaylist } = usePlaylist();
+
+  useEffect(() => {
+    playlist(); 
+  }, [currentPlaylist])
 
   const playlist = () => {
     if (currentPlaylist) {
