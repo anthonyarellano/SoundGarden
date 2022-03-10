@@ -11,6 +11,7 @@ const PlaylistCard = ({songs, playlistId, toggle}) => {
 
     const handleRemove = (songId, playlistId) => {
         if (songId && playlistId) {
+
             dispatch(removeFromPlaylist(songId, playlistId))
             return;
         }
@@ -19,7 +20,7 @@ const PlaylistCard = ({songs, playlistId, toggle}) => {
     return (
         <div className="playlist-card-container">
             {songs?.map((song) => (
-            <>
+            <div>
                 <div
                     className='playlist-card'
                     onClick={() => setCurrentSong([song?.title, song?.url, "Song"])}>
@@ -27,13 +28,16 @@ const PlaylistCard = ({songs, playlistId, toggle}) => {
                     <p className='playlist-card-song-title'>{song?.title}</p>
                     <div
                         className={!toggle ? 'playlist-song-remove-button' : 'hidden'}
-                        onClick={() => handleRemove(song?.id, playlistId)}>
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleRemove(song?.id, playlistId)}
+                        }>
                         &nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
                         -
                     </div>
                 </div>
-            </>
+            </div>
             ))}
         </div>
     )
