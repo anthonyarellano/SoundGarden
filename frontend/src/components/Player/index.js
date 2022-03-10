@@ -13,7 +13,6 @@ const Player = () => {
       console.log(song[0], song[1], 'YEEEEEEEEEEEEEEEEE');
       console.log("SONG!!", song);
       setCurrentSong([song[0], song[1], `Playing from playlist: ${song[2]}`]);
-
     }
   };
 

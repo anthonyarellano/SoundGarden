@@ -6,7 +6,7 @@ import { uploadSong, getSongs } from '../../store/songs';
 import { useHistory, Redirect } from 'react-router-dom';
 import SpinningRing from '../UserProfile/SpinningRing';
 
-export const UploadPage = () => {
+export const UploadPage = ({setAllActive}) => {
   const S3_BUCKET = process.env.REACT_APP_BUCKET;
   const REGION = process.env.REACT_APP_REGION;
 
@@ -77,6 +77,9 @@ export const UploadPage = () => {
                 dispatch(getSongs(sessionUser.id))
                 setProgress(0);
                 setSelectedFile(null);
+                if (setAllActive) {
+                  setAllActive('all')
+                }
                 return history.push(`/users/${sessionUser.id}`)
               };
             });
@@ -93,7 +96,6 @@ export const UploadPage = () => {
 
   return (
     <div className='upload-page-container'>
-      <SpinningRing />
       {!sessionUser &&
         <Redirect to="/signup" />}
       {errors &&
