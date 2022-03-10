@@ -1,15 +1,19 @@
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import SpinningRing from '../UserProfile/SpinningRing';
 
 const DiscoverPage = () => {
     const sessionUser = useSelector(state => state.session.user);
-    
+
     if (!sessionUser) {
         return <Redirect to="/login" />
     }
 
     return (
-        <h1>Welcome to Discover Page</h1>
+        <>
+            <SpinningRing />
+            <h1>Welcome to Discover Page</h1>
+        </>
     )
 };
 

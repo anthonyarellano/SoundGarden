@@ -14,7 +14,7 @@ const PlaylistContainer = ({sessionUser}) => {
 
     useEffect(() => {
         dispatch(getPlaylists(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch]);
 
 
 
@@ -37,7 +37,7 @@ const PlaylistContainer = ({sessionUser}) => {
             })
         })
         alteredPlaylist = [...playlists];
-    }
+    };
 
     return (
         <div>
@@ -58,9 +58,6 @@ const PlaylistContainer = ({sessionUser}) => {
                         src={require("./style/images/playlist-edit-button.png")}
                         onClick={() => setToggle(!toggle)}>
                      </img>
-                     {/* <div onClick={() => setCurrentPlaylist(playlist.urls)}>
-                         play
-                     </div> */}
                      <img
                         src={require('./style/images/playlist-play-button.png')}
                         className={"playlist-edit"}

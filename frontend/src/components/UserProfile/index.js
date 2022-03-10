@@ -8,7 +8,7 @@ import './style/userprofile.css';
 import ProfileBanner from "./ProfileBanner";
 import ProfileNav from "./ProfileNav";
 import { Redirect } from "react-router-dom";
-
+import SpinningRing from "./SpinningRing";
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -39,10 +39,11 @@ const UserProfile = () => {
                     {!currentUser &&
                         <PageNotFound />}
             </div>
-            <img
+            <SpinningRing />
+            {/* <img
                     src={require("../SplashPage/style/splashRing.png")}
                     className="user-profile-spinning-img modal-img">
-            </img>
+            </img> */}
         </div>
         </>
 
