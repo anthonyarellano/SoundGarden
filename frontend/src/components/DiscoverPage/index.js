@@ -6,7 +6,7 @@ const DiscoverPage = () => {
     const sessionUser = useSelector(state => state.session.user);
 
     if (!sessionUser) {
-        return <Redirect to="/login" />
+        return <Redirect to="/" />
     }
 
     return (

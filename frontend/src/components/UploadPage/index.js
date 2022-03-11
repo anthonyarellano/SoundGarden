@@ -82,7 +82,7 @@ export const UploadPage = ({setAllActive}) => {
                 dispatch(getSongs(sessionUser.id))
                 setProgress(0);
                 setSelectedFile(null);
-                setHasSubmitted(false); 
+                setHasSubmitted(false);
                 if (setAllActive) {
                   setAllActive('all')
                 }
@@ -97,7 +97,7 @@ export const UploadPage = ({setAllActive}) => {
   };
 
   if (!sessionUser) {
-    return <Redirect to="/login" />
+    return <Redirect to="/" />
   }
 
   return (
