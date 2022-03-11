@@ -102,7 +102,9 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 <SongContainer /> : allActive === "playlist" ?
                 <PlaylistContainer sessionUser={sessionUser}/> :
                 allActive === "upload" ?
-                <UploadPage setAllActive={setAllActive}/> : null
+                <UploadPage setAllActive={setAllActive}/> :
+                allActive === "discover" ?
+                <h1>Discover!</h1> : null
             }
         </>
     )
