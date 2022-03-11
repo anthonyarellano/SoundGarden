@@ -5,6 +5,7 @@ import PlaylistContainer from './PlaylistContainer';
 import { useDispatch } from 'react-redux';
 import { createPlaylist } from '../../store/playlists';
 import { UploadPage } from '../UploadPage';
+import DiscoverPage from '../DiscoverPage';
 
 const ProfileNav = ({userId, sessionUser, setStyle}) => {
     const [allActive, setAllActive] = useState('all');
@@ -104,7 +105,7 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 allActive === "upload" ?
                 <UploadPage setAllActive={setAllActive}/> :
                 allActive === "discover" ?
-                <h1>Discover!</h1> : null
+                <DiscoverPage /> : null
             }
         </>
     )

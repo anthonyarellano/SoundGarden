@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink to="/discover">
+        {/* <NavLink to="/discover">
           <img
             className='navbar-image'
             src={require('./style/images/discover-image.png')}
@@ -25,7 +25,7 @@ function Navigation({ isLoaded }) {
             onMouseLeave={(e) => e.target.src = (require('./style/images/discover-image.png'))}
             alt="discover-image">
           </img>
-        </NavLink>
+        </NavLink> */}
         <NavLink to={`/users/${sessionUser.id}`}>
           <img
             className='navbar-image'
