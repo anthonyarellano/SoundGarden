@@ -32,43 +32,51 @@ function SignupFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
+      <div className="form-container">
+        <p
+          className='login-text'>Email</p>
+          <input
+            type="text"
+            className='login-form-text-input'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        <p
+          className='login-text'>Username</p>
+          <input
+            type="text"
+            className='login-form-text-input'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+
+          <p
+            className='login-text'>Password</p>
+          <input
+            type="password"
+            className='login-form-text-input'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <p
+            className='login-text'>Confirm Password</p>
+          <input
+            type="password"
+            className='login-form-text-input'
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          <div
+          className='login-button'
+          onClick={handleSubmit}
+        >
+          Sign Up
+        </div>
+      </div>
     </form>
   );
 }

@@ -54,6 +54,7 @@ function LoginFormPage() {
           <input
             type="password"
             value={password}
+            className='login-form-text-input'
             onChange={(e) => setPassword(e.target.value)}
             required
           />

@@ -45,7 +45,6 @@ function App() {
               <Player />
             </Route>
             <Route path="/users/:userId">
-              {/* todo ADD USER PROFILE COMPONENT*/}
               <Navigation isLoaded={isLoaded} />
               <UserProfile />
               <Player />
