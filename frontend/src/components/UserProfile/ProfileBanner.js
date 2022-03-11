@@ -23,7 +23,8 @@ const ProfileBanner = ({userProfile}) => {
     const [bannerPicToggle, setBannerPicToggle] = useState(false);
     const [imgUrl, setImgUrl] = useState("");
     const [bannerUrl, setBannerUrl] = useState("");
-    const [newbanner, setnewBanner] = useState(null);
+    const [newBanner, setNewBanner] = useState(null);
+    const [newProfile, setNewProfile] = useState(null);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const dispatch = useDispatch();
 
@@ -36,13 +37,14 @@ const ProfileBanner = ({userProfile}) => {
     //     bannerEdit = true;
     // }
 
-    console.log(user);
+
     const handleNewProPic = () => {
         const newPic = {
             userId: sessionUser.id,
             imgUrl
         };
-        dispatch(addNewPic(newPic))
+        dispatch(addNewPic(newPic));
+        setNewProfile(imgUrl);
     };
 
     const handleNewBanner = () => {
@@ -50,9 +52,9 @@ const ProfileBanner = ({userProfile}) => {
             userId: sessionUser.id,
             bannerUrl
         };
-        dispatch(addNewPic(newBanner))
-        setnewBanner(bannerUrl)
-    }
+        dispatch(addNewPic(newBanner));
+        setNewBanner(bannerUrl);
+    };
 
     return (
         <div className='profile-banner-container'>
@@ -87,10 +89,10 @@ const ProfileBanner = ({userProfile}) => {
                     </div>
                     <img
                         className='profile-banner-img-file'
-                        src={newbanner ? newbanner : user?.bannerUrl}></img>
+                        src={newBanner ? newBanner : user?.bannerUrl}></img>
                     <div>
                         <img
-                            src={user.imgUrl}
+                            src={newProfile ? newProfile : user?.imgUrl}
                             className='profile-profile-pic'></img>
                             <p className='profile-banner-name'>
                                 {user.username}
