@@ -107,7 +107,7 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
                             className={proEdit ? "profile-edit-button" : "hidden"}
                         >
                             <img
-                                className='profile-edit-button'
+                                className={style === "profile-banner-container" ? 'profile-edit-button' : 'img-transition'}
                                 src={require('./style/images/edit-button.png')}
                             />
                         </div>
