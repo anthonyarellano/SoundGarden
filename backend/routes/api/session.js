@@ -26,7 +26,6 @@ router.post(
         const { credential, password } = req.body;
 
         const user = await User.login({ credential, password });
-
         if (!user) {
             const err = new Error('Login failed');
             err.status = 401;
@@ -41,6 +40,18 @@ router.post(
             user
         });
     })
+);
+
+router.post(
+  '/demo',
+  asyncHandler(async (req, res, next) => {
+      const { credential, password } = req.body;
+      const user = await User.findByPk(1);
+      await setTokenCookie(res, user);
+      return res.json({
+          user
+      });
+  })
 );
 
 router.delete(
