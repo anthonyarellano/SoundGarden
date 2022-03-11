@@ -46,6 +46,7 @@ body {
     width: 1240px;
     height: 260px;
     overflow: hidden;
+    position: relative;
 }
 .profile-banner-img-file {
     width: 1240px;
@@ -60,13 +61,13 @@ body {
     object-fit: cover;
     border-radius: 100%;
     position: absolute;
-    top: 10%;
+    top: 27.5%;
     left: 5%
 }
 
 .profile-banner-name {
     position: absolute;
-    top: 8%;
+    top: 20%;
     left: 20%;
     color: white;
     font-family: 'Interstate Regular Italic';
@@ -179,6 +180,8 @@ body {
 } #profile-submit-button:hover {
     color: red;
     transition: 1s;
+} .profile-edit-button {
+
 }
 
 @media (prefers-reduced-motion: no-preference) {

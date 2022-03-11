@@ -93,6 +93,10 @@ const ProfileBanner = ({userProfile}) => {
                             className={bannerPicToggle ? "profile-picture-input" : "hidden"}
                             onClick={handleNewBanner}>Submit</div>
                     </div>
+                    <div
+                        className="profile-edit-button">
+                        EDIT
+                    </div>
                     <img
                         className='profile-banner-img-file'
                         src={newBanner ? newBanner : user?.bannerUrl}></img>
