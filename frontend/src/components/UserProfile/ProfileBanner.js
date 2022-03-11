@@ -1,17 +1,86 @@
 import './style/userprofile.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react'
+import { addNewPic } from '../../store/session';
 
 const ProfileBanner = ({userProfile}) => {
+    const sessionUser = useSelector((state) => state.session.user);
+    const [profilePicToggle, setProfilePicToggle] = useState(false);
+    const [bannerPicToggle, setBannerPicToggle] = useState(false);
+    const [imgUrl, setImgUrl] = useState("");
+    const [bannerUrl, setBannerUrl] = useState("");
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const dispatch = useDispatch();
+
     let user;
     if (userProfile) {
         user = userProfile.user
-        console.log(user);
     };
+
+    let proEdit;
+    if (sessionUser?.id === user?.id) {
+        proEdit = true;
+    }
+    let bannerEdit;
+    if (sessionUser?.id === user?.id) {
+        bannerEdit = true;
+    }
+
+    // if (user?.imgUrl === null && sessionUser?.id === user?.id) {
+    //     proEdit = true;
+    // }
+    // let bannerEdit;
+    // if (user?.bannerUrl === null & sessionUser?.id === user?.id) {
+    //     bannerEdit = true;
+    // }
+    console.log(user);
+    const handleNewProPic = () => {
+        const newPic = {
+            userId: sessionUser.id,
+            imgUrl
+        };
+        dispatch(addNewPic(newPic))
+    };
+
+    const handleNewBanner = () => {
+        const newBanner = {
+            userId: sessionUser.id,
+            bannerUrl
+        };
+        dispatch(addNewPic(newBanner))
+    }
 
     return (
         <div className='profile-banner-container'>
             <div className='profile-banner-img'>
                 {user &&
                 <>
+                    <div className='user-profile-prompts'>
+                        <div
+                            className={proEdit ? 'add-profile-pic' : "hidden"}
+                            onClick={() => setProfilePicToggle(!profilePicToggle)}>
+                                Edit Profile Picture
+                        </div>
+                        <input
+                            type='text'
+                            onChange={(e) => setImgUrl(e.target.value)}
+                            className={profilePicToggle ? "profile-picture-input" : "hidden"}/>
+                        <div
+                            className={profilePicToggle ? "profile-picture-input" : "hidden"}
+                            onClick={handleNewProPic}>Submit</div>
+                        <div
+                            className={bannerEdit ? 'add-profile-pic' : "hidden"}
+                            onClick={() => setBannerPicToggle(!bannerPicToggle)}>
+                                Edit Banner Image
+                        </div>
+                        <input
+                            type='text'
+                            onChange={(e) => setBannerUrl(e.target.value)}
+                            className={bannerPicToggle ? "profile-picture-input" : "hidden"}/>
+                        <div
+                            className={bannerPicToggle ? "profile-picture-input" : "hidden"}
+                            onClick={handleNewBanner}>Submit</div>
+                    </div>
                     <img
                         className='profile-banner-img-file'
                         src={user.bannerUrl}></img>

@@ -44,6 +44,20 @@ export const loginDemo = (user) => async (dispatch) => {
   return response;
 };
 
+export const addNewPic = (newPic) => async (dispatch) => {
+  const response = await csrfFetch('/api/users', {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({newPic})
+  });
+  if (response.ok) {
+    const res = await response.json();
+    console.log(res);
+  }
+};
+
 export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
   const response = await csrfFetch("/api/users", {

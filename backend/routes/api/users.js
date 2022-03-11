@@ -27,6 +27,26 @@ const validateSignup = [
   handleValidationErrors
 ];
 
+router.put(
+  '/',
+  asyncHandler(async (req, res) => {
+    // const { newPic } = req.body;
+    const { newPic } = req.body;
+    const { userId, imgUrl, bannerUrl } = newPic;
+    const user = await User.findByPk(userId);
+    if (imgUrl) {
+      await user.update({
+        imgUrl
+      });
+    }
+    if (bannerUrl) {
+      await user.update({
+        bannerUrl
+      });
+    }
+  })
+)
+
 router.post(
     '/',
     validateSignup,
@@ -51,7 +71,7 @@ router.get(
     if (user) {
       return res.json({ user })
     }
-    
+
   })
 )
 module.exports = router;

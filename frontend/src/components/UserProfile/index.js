@@ -16,15 +16,16 @@ const UserProfile = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
+    let user;
     useEffect(() => {
         const retrive = async () => {
-            const user = getUser(userId);
+            user = getUser(userId);
             const userInfo = await user();
             setCurrentUser(userInfo)
         };
         retrive();
         dispatch(getSongs(userId));
-    }, [userId]);
+    }, [userId, user]);
 
     if (!sessionUser) {
         return <Redirect to="/" />
