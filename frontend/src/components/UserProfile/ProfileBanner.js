@@ -4,12 +4,13 @@ import { useState } from 'react'
 import { addNewPic } from '../../store/session';
 import { useEffect } from 'react'
 
-const ProfileBanner = ({userProfile}) => {
+const ProfileBanner = ({ userProfile }) => {
+    const sessionUser = useSelector((state) => state.session.user);
+
     let user;
     if (userProfile) {
         user = userProfile.user
     };
-    const sessionUser = useSelector((state) => state.session.user);
 
     let proEdit;
     if (sessionUser?.id === user?.id) {
@@ -25,6 +26,7 @@ const ProfileBanner = ({userProfile}) => {
     const [bannerUrl, setBannerUrl] = useState("");
     const [newBanner, setNewBanner] = useState(null);
     const [newProfile, setNewProfile] = useState(null);
+    const [editBannerToggle, setEditBannerToggle] = useState(false);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const dispatch = useDispatch();
 
@@ -60,58 +62,64 @@ const ProfileBanner = ({userProfile}) => {
         <div className='profile-banner-container'>
             <div className='profile-banner-img'>
                 {user &&
-                <>
-                    <div className='user-profile-prompts'>
-                        <div
-                            className={proEdit ? 'add-profile-pic' : "hidden"}
-                            onClick={() => setProfilePicToggle(!profilePicToggle)}>
+                    <>
+                        <div className={editBannerToggle ? "user-profile-prompts" : "hidden"}>
+                            <div
+                                className={proEdit ? 'add-profile-pic' : "hidden"}
+                                onClick={() => setProfilePicToggle(!profilePicToggle)}
+                            >
                                 Edit Profile Picture
-                        </div>
-                        <input
-                            type='text'
-                            placeholder={"Profile Picture Url"}
-                            onChange={(e) => setImgUrl(e.target.value)}
-                            className={profilePicToggle ? "profile-picture-input" : "hidden"}/>
-                        <div
-                            style={{marginLeft: "20px"}}
-                            id="profile-submit-button"
-                            className={profilePicToggle ? "profile-picture-input" : "hidden"}
-                            onClick={handleNewProPic}>Submit</div>
-                        <div
-                            className={bannerEdit ? 'add-profile-pic' : "hidden"}
-                            onClick={() => setBannerPicToggle(!bannerPicToggle)}>
+                            </div>
+                            <input
+                                className={profilePicToggle ? "profile-picture-input" : "hidden"}
+                                type='text'
+                                placeholder={"Profile Picture Url"}
+                                onChange={(e) => setImgUrl(e.target.value)}
+                            />
+                            <div
+                                className={profilePicToggle ? "profile-picture-input" : "hidden"}
+                                style={{ marginLeft: "20px" }}
+                                id="profile-submit-button"
+                                onClick={handleNewProPic}>Submit</div>
+                            <div
+                                className={bannerEdit ? 'add-profile-pic' : "hidden"}
+                                onClick={() => setBannerPicToggle(!bannerPicToggle)}>
                                 Edit Banner Image
+                            </div>
+                            <input
+                                className={bannerPicToggle ? "profile-picture-input" : "hidden"}
+                                type='text'
+                                placeholder={"Banner Url"}
+                                onChange={(e) => setBannerUrl(e.target.value)}
+                            />
+                            <div
+                                className={bannerPicToggle ? "profile-picture-input" : "hidden"}
+                                style={{ marginLeft: "20px" }}
+                                id="profile-submit-button"
+                                onClick={handleNewBanner}>Submit</div>
                         </div>
-                        <input
-                            type='text'
-                            placeholder={"Banner Url"}
-                            onChange={(e) => setBannerUrl(e.target.value)}
-                            className={bannerPicToggle ? "profile-picture-input" : "hidden"}/>
                         <div
-                            style={{marginLeft: "20px"}}
-                            id="profile-submit-button"
-                            className={bannerPicToggle ? "profile-picture-input" : "hidden"}
-                            onClick={handleNewBanner}>Submit</div>
-                    </div>
-                    <div
-                        className="profile-edit-button"
-                    >
+                            onClick={() => setEditBannerToggle(!editBannerToggle)}
+                            className={proEdit ? "profile-edit-button" : "hidden"}
+                        >
+                            <img
+                                className='profile-edit-button'
+                                src={require('./style/images/edit-button.png')}
+                            />
+                        </div>
                         <img
-                            src={require('./style/images/edit-button.png')}
-                            className='profile-edit-button'></img>
-                    </div>
-                    <img
-                        className='profile-banner-img-file'
-                        src={newBanner ? newBanner : user?.bannerUrl}></img>
-                    <div>
-                        <img
-                            src={newProfile ? newProfile : user?.imgUrl}
-                            className='profile-profile-pic'></img>
+                            className='profile-banner-img-file'
+                            src={newBanner ? newBanner : user?.bannerUrl}></img>
+                        <div>
+                            <img
+                                className='profile-profile-pic'
+                                src={newProfile ? newProfile : user?.imgUrl}
+                            />
                             <p className='profile-banner-name'>
                                 {user.username}
                             </p>
-                    </div>
-                </>
+                        </div>
+                    </>
                 }
             </div>
         </div>
