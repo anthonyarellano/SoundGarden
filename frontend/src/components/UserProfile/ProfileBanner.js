@@ -2,7 +2,6 @@ import './style/userprofile.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react'
 import { addNewPic } from '../../store/session';
-import { useEffect } from 'react'
 
 const ProfileBanner = ({ userProfile, style, setStyle }) => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -29,17 +28,6 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
     const [editBannerToggle, setEditBannerToggle] = useState(false);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const dispatch = useDispatch();
-    // const style =
-    //     "profile-banner-transition";
-
-
-    // if (user?.imgUrl === null && sessionUser?.id === user?.id) {
-    //     proEdit = true;
-    // }
-    // let bannerEdit;
-    // if (user?.bannerUrl === null & sessionUser?.id === user?.id) {
-    //     bannerEdit = true;
-    // }
 
 
     const handleNewProPic = () => {
@@ -70,7 +58,6 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
                         <div className={editBannerToggle ? "user-profile-prompts" : "hidden"}>
                             <div
                                 className={proEdit ? 'add-profile-pic' : "hidden"}
-                                // onClick={() => setStyle('profile-banner-transition')}
                             >
                                 Edit Profile Picture
                             </div>
@@ -119,7 +106,7 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
                                 className={style === "profile-banner-container" ? 'profile-profile-pic' : 'img-transition'}
                                 src={newProfile ? newProfile : user?.imgUrl}
                             />
-                            <p className='profile-banner-name'>
+                            <p className={style === "profile-banner-container" ? "profile-banner-name" : 'img-transition'}>
                                 {user.username}
                             </p>
                         </div>

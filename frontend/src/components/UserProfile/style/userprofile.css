@@ -51,6 +51,7 @@ body {
     left: 5%;
     height: 0px;
     transition: height .4s;
+    font-size: 0px;
 }
 
 
