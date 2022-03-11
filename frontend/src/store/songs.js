@@ -16,21 +16,21 @@ const addSong = (song) => {
     return {
         type: ADD_SONG,
         song
-    }
+    };
 };
 
 const updateSong = (song) => {
     return {
         type: UPDATE_SONG,
         song
-    }
+    };
 };
 
 const removeSong = (songId) => {
     return {
         type: DELETE_SONG,
         songId
-    }
+    };
 };
 
 export const putSong = (song) => async (dispatch) => {

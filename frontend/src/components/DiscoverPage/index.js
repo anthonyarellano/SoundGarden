@@ -1,5 +1,6 @@
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ArtistCard from './ArtistCard';
 
 const DiscoverPage = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -10,7 +11,7 @@ const DiscoverPage = () => {
 
     return (
         <>
-            <h1>Welcome to Discover Page</h1>
+            <ArtistCard />
         </>
     )
 };
