@@ -156,15 +156,29 @@ body {
     outline: none;
 }
 
+.profile-picture-input {
+    font-family: 'Interstate Light Cond';
+    border: aquamarine;
+    outline: aquamarine;
+    cursor: pointer;
+}
+
 .user-profile-prompts {
     display: flex;
     justify-content: center;
     font-family: 'Interstate Light Cond';
     background-color: aquamarine;
-    color: #F5F5F5
+    color: white;
 } .add-profile-pic {
     margin-left: 30px;
     margin-right: 30px;
+    cursor: pointer;
+} .add-profile-pic:hover {
+    color: #F5F5F5;
+    transition: color 1s;
+} #profile-submit-button:hover {
+    color: red;
+    transition: 1s;
 }
 
 @media (prefers-reduced-motion: no-preference) {

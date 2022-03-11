@@ -69,9 +69,12 @@ const ProfileBanner = ({userProfile}) => {
                         </div>
                         <input
                             type='text'
+                            placeholder={"Profile Picture Url"}
                             onChange={(e) => setImgUrl(e.target.value)}
                             className={profilePicToggle ? "profile-picture-input" : "hidden"}/>
                         <div
+                            style={{marginLeft: "20px"}}
+                            id="profile-submit-button"
                             className={profilePicToggle ? "profile-picture-input" : "hidden"}
                             onClick={handleNewProPic}>Submit</div>
                         <div
@@ -81,9 +84,12 @@ const ProfileBanner = ({userProfile}) => {
                         </div>
                         <input
                             type='text'
+                            placeholder={"Banner Url"}
                             onChange={(e) => setBannerUrl(e.target.value)}
                             className={bannerPicToggle ? "profile-picture-input" : "hidden"}/>
                         <div
+                            style={{marginLeft: "20px"}}
+                            id="profile-submit-button"
                             className={bannerPicToggle ? "profile-picture-input" : "hidden"}
                             onClick={handleNewBanner}>Submit</div>
                     </div>
