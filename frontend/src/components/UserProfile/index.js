@@ -45,6 +45,7 @@ const UserProfile = () => {
                         <PageNotFound />}
             </div>
             <SpinningRing />
+            <SpinningRing identifier={"2"}/>
         </div>
         </>
 

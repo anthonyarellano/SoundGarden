@@ -56,7 +56,7 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div>
+    <div class="navbar-container">
       <div className='navbar-upper'>
         <p className='navbar-logo-text-1'>Sound</p>
         <p className='navbar-logo-text-2'>garden</p>

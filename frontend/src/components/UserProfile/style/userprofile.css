@@ -126,6 +126,12 @@ body {
     top: 30%;
     z-index: 0;
     height: 1500px;
+} .user-profile-spinning-img-2 {
+    position:absolute;
+    right: -50%;
+    top: -80%;
+    z-index: -1;
+    height: 1500px;
 }
 
 .playlist-entry {
