@@ -43,7 +43,6 @@ export const getPlaylists = (userId) => async (dispatch) => {
 }
 
 export const addToPlaylist = (args) => async (dispatch) => {
-    console.log(args);
     const response = await csrfFetch('/api/playlists', {
         method: "PUT",
         headers: {
@@ -123,7 +122,7 @@ const sessionReducer = (state = initialState, action) => {
         case REMOVE_PLAYLIST: {
             const newState = {...state};
             newState[action.playlistId] = null;
-            return newState; 
+            return newState;
         }
         default:
             return state;

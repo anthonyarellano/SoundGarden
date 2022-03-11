@@ -9,14 +9,12 @@ const Player = () => {
   const { currentPlaylist } = usePlaylist();
 
   useEffect(() => {
-    playlist(); 
+    playlist();
   }, [currentPlaylist])
 
   const playlist = () => {
     if (currentPlaylist) {
       let song = currentPlaylist.shift()
-      console.log(song[0], song[1], 'YEEEEEEEEEEEEEEEEE');
-      console.log("SONG!!", song);
       setCurrentSong([song[0], song[1], `Playing from playlist: ${song[2]}`]);
     }
   };
@@ -32,14 +30,6 @@ const Player = () => {
         header={currentSong && `${currentSong[2]} - ${currentSong[0]}`}
         onClickNext={playlist}
         showSkipControls={true}
-      //   footer={
-      //       <div className='playbackContainer'>
-      //           <img className="albumPhoto" src="https://picsum.photos/200/300"></img>
-      //           <div className='pBox'>
-      //             <p>songName</p>
-      //           </div>
-      //       </div>}
-      // other props here
       >
       </AudioPlayer>
     </div>
