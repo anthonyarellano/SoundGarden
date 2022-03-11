@@ -31,6 +31,9 @@ const ArtistCard = () => {
                             className="artist-card-image"
                             src={artist?.imgUrl}
                        />
+                       <p
+                        className="artist-card-username"
+                        >{artist?.username}</p>
                    </div>
                ))}
             </div>

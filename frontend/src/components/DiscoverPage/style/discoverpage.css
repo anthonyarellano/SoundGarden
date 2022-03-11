@@ -13,8 +13,35 @@
     height: 300px;
     border: .5px solid #F5F5F5;
     margin: 10px;
+    cursor: pointer;
+} .artist-card:hover {
+    background-color: #F5F5F5;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+    background-color: aquamarine;
+    outline: aquamarine;
+    border: 1px solid aquamarine;
+    transition: background-color 1s,
+    box-shadow 1s,
+    background-color 1s;
+} .artist-card:hover .artist-card-image {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+    outline: aquamarine;
+    transition: background-color 1s,
+    box-shadow 1s,
+    background-color 1s;
 } .discover-page-header {
     font-family: 'Interstate Light Cond';
     font-weight: bold;
     font-size: 40px;
+} .artist-card-username {
+    font-family: 'Interstate Light Cond';
+    font-size: 25px;
 }
