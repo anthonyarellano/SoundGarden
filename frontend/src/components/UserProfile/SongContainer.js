@@ -36,9 +36,9 @@ const SongContainer = ({playlistSongs}) => {
     return (
         <>
         <div className="song-list-container">
-                {songsList?.map((song) => (
+                {songsList?.map((song, i) => (
                     <div>
-                        <div>
+                        <div style={{margin: "0px 5px 0px 5px"}}>
                             <p>{song?.title}</p>
                             <div className="image-button-container">
                                 <img
