@@ -27,7 +27,7 @@ const UserProfile = () => {
     }, [userId]);
 
     if (!sessionUser) {
-        return <Redirect to="/login" />
+        return <Redirect to="/" />
     }
 
     return (

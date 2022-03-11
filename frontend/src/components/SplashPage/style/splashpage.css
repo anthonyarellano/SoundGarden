@@ -64,6 +64,8 @@ body, html {
 
   .login-form-text-input {
     font-family: 'Interstate Light Cond';
+    outline-color: white;
+    border: .4px solid #F5F5F5;
   } .login-button {
     outline: .4px solid #F5F5F5;
     cursor: pointer;
