@@ -181,7 +181,16 @@ body {
     color: red;
     transition: 1s;
 } .profile-edit-button {
-
+    position: absolute;
+    right: 2%;
+    top: 10%;
+    height: 25px;
+    background-color: rgba(128,128,128, .4);
+    cursor: pointer;
+    border-radius: 100%;
+} .profile-edit-button:hover {
+    background-color: black;
+    transition: 1s;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -94,8 +94,11 @@ const ProfileBanner = ({userProfile}) => {
                             onClick={handleNewBanner}>Submit</div>
                     </div>
                     <div
-                        className="profile-edit-button">
-                        EDIT
+                        className="profile-edit-button"
+                    >
+                        <img
+                            src={require('./style/images/edit-button.png')}
+                            className='profile-edit-button'></img>
                     </div>
                     <img
                         className='profile-banner-img-file'
