@@ -2,20 +2,14 @@ import './style/userprofile.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react'
 import { addNewPic } from '../../store/session';
+import { useEffect } from 'react'
 
 const ProfileBanner = ({userProfile}) => {
-    const sessionUser = useSelector((state) => state.session.user);
-    const [profilePicToggle, setProfilePicToggle] = useState(false);
-    const [bannerPicToggle, setBannerPicToggle] = useState(false);
-    const [imgUrl, setImgUrl] = useState("");
-    const [bannerUrl, setBannerUrl] = useState("");
-    const [hasSubmitted, setHasSubmitted] = useState(false);
-    const dispatch = useDispatch();
-
     let user;
     if (userProfile) {
         user = userProfile.user
     };
+    const sessionUser = useSelector((state) => state.session.user);
 
     let proEdit;
     if (sessionUser?.id === user?.id) {
@@ -25,6 +19,14 @@ const ProfileBanner = ({userProfile}) => {
     if (sessionUser?.id === user?.id) {
         bannerEdit = true;
     }
+    const [profilePicToggle, setProfilePicToggle] = useState(false);
+    const [bannerPicToggle, setBannerPicToggle] = useState(false);
+    const [imgUrl, setImgUrl] = useState("");
+    const [bannerUrl, setBannerUrl] = useState("");
+    const [newbanner, setnewBanner] = useState(null);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const dispatch = useDispatch();
+
 
     // if (user?.imgUrl === null && sessionUser?.id === user?.id) {
     //     proEdit = true;
@@ -33,6 +35,7 @@ const ProfileBanner = ({userProfile}) => {
     // if (user?.bannerUrl === null & sessionUser?.id === user?.id) {
     //     bannerEdit = true;
     // }
+
     console.log(user);
     const handleNewProPic = () => {
         const newPic = {
@@ -48,6 +51,7 @@ const ProfileBanner = ({userProfile}) => {
             bannerUrl
         };
         dispatch(addNewPic(newBanner))
+        setnewBanner(bannerUrl)
     }
 
     return (
@@ -83,7 +87,7 @@ const ProfileBanner = ({userProfile}) => {
                     </div>
                     <img
                         className='profile-banner-img-file'
-                        src={user.bannerUrl}></img>
+                        src={newbanner ? newbanner : user?.bannerUrl}></img>
                     <div>
                         <img
                             src={user.imgUrl}
