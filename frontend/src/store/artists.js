@@ -14,7 +14,9 @@ export const getArtists = () => async (dispatch) => {
 
     if (response.ok) {
         const artists = await response.json();
-        console.log(artists);
+        const { realArtists } = artists;
+        dispatch(loadArtists(realArtists));
+        return artists;
     }
 };
 
