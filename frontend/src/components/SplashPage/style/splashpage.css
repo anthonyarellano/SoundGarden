@@ -29,6 +29,7 @@ body, html {
     height: 740px;
     border-radius: 100%;
     position: fixed;
+    overflow: hidden;
 
   } #splash-page-text {
       font-family: 'Interstate Black Cond';
@@ -36,14 +37,41 @@ body, html {
       font-size: 40px;
       margin: 30px 0px 15px 0px;
 
-  } .splash-page-text-container {
+  } #splash-page-text-2 {
+    font-family: 'Interstate Black Cond';
+    margin: 0px;
+    cursor: pointer;
+
+} .splash-page-text-container {
       display: flex;
       flex-direction: column;
       align-items: center;
   }
 
   .splash-page-button-container {
+      margin: 0px 0px 0px 0px;
+      padding: 0px;
       z-index: 1;
+      display: flex;
+  }
+  .form-container {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .login-form-text-input {
+    font-family: 'Interstate Light Cond';
+  } .login-button {
+    outline: .4px solid #F5F5F5;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'Interstate Light Cond';
+    padding: 5px;
+  } .login-text {
+    font-family: 'Interstate Light Cond';
   }
 
   .splash-page-link {
@@ -55,6 +83,24 @@ body, html {
     text-decoration: none;
     color: black;
   }
+
+  .playlist-modal {
+    background-color: aquamarine;
+    position: absolute;
+    top: 20%;
+    left: 42%;
+    right: 42%;
+    bottom: 20%;
+    border: none;
+    overflow: hidden;
+    outline-color: white;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+  }
+
 
   @media (prefers-reduced-motion: no-preference) {
     .splash-page-img {

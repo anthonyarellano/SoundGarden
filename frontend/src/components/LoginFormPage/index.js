@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './style/loginform.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -25,11 +26,8 @@ function LoginFormPage() {
   }
 
   const handleDemo = (e) => {
-    e.preventDefault();
     setErrors([]);
-    setCredential("demo@user.io");
-    setPassword("dualwield")
-    return dispatch(sessionActions.login({ credential, password }))
+    return dispatch(sessionActions.loginDemo({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -41,29 +39,44 @@ function LoginFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
-        Username or Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-      <div
-        onClick={handleDemo}
-      >
-        Demo User
+      <div className='form-container'>
+        <p
+          className='login-text'>Username or Email</p>
+          <input
+            type="text"
+            className='login-form-text-input'
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            required
+          />
+          <p
+            className='login-text'>Password</p>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        <div
+          className='login-button'
+          onClick={handleSubmit}
+        >
+          Login
+        </div>
+
+        {/* <button
+          type="submit"
+          className='login-button'
+        >Log In</button> */}
+        <div
+          className='login-button'
+          onClick={(e) => {
+            setCredential("VarianWrynn");
+            setPassword("dualwield")
+            handleDemo()}}
+        >
+          Demo User
+        </div>
       </div>
     </form>
   );
