@@ -58,6 +58,7 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
                         <div className={editBannerToggle ? "user-profile-prompts" : "hidden"}>
                             <div
                                 className={proEdit ? 'add-profile-pic' : "hidden"}
+                                onClick={() => setProfilePicToggle(!profilePicToggle)}
                             >
                                 Edit Profile Picture
                             </div>
