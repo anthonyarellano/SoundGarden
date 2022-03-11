@@ -38,16 +38,19 @@ body {
     text-align: center;
     overflow: hidden;
 }
-.profile-banner-container {
-    width: 1240px;
-    height: 260px;
-    overflow: hidden;
-    position: relative;
-}
+
 .profile-banner-img-file {
     width: 1240px;
     height: 260px;
     object-fit: cover;
+}
+.img-transition {
+    position: absolute;
+    border-radius: 100%;
+    top: 10%;
+    left: 5%;
+    height: 0px;
+    transition: height .4s;
 }
 
 
@@ -58,7 +61,7 @@ body {
     border-radius: 100%;
     position: absolute;
     top: 21%;
-    left: 5%
+    left: 5%;
 }
 
 .profile-banner-name {
@@ -187,6 +190,20 @@ body {
 } .profile-edit-button:hover {
     background-color: black;
     transition: 1s;
+}
+
+
+ .profile-banner-transition {
+     overflow: hidden;
+     height: 0px;
+     transition: height 1s;
+ }
+ .profile-banner-container {
+    width: 1240px;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    transition: height 1s;
 }
 
 @media (prefers-reduced-motion: no-preference) {

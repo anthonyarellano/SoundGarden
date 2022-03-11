@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { addNewPic } from '../../store/session';
 import { useEffect } from 'react'
 
-const ProfileBanner = ({ userProfile }) => {
+const ProfileBanner = ({ userProfile, style, setStyle }) => {
     const sessionUser = useSelector((state) => state.session.user);
 
     let user;
@@ -29,6 +29,8 @@ const ProfileBanner = ({ userProfile }) => {
     const [editBannerToggle, setEditBannerToggle] = useState(false);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const dispatch = useDispatch();
+    // const style =
+    //     "profile-banner-transition";
 
 
     // if (user?.imgUrl === null && sessionUser?.id === user?.id) {
@@ -59,14 +61,16 @@ const ProfileBanner = ({ userProfile }) => {
     };
 
     return (
-        <div className='profile-banner-container'>
+        <div
+            className={style}
+        >
             <div className='profile-banner-img'>
                 {user &&
                     <>
                         <div className={editBannerToggle ? "user-profile-prompts" : "hidden"}>
                             <div
                                 className={proEdit ? 'add-profile-pic' : "hidden"}
-                                onClick={() => setProfilePicToggle(!profilePicToggle)}
+                                // onClick={() => setStyle('profile-banner-transition')}
                             >
                                 Edit Profile Picture
                             </div>
@@ -112,7 +116,7 @@ const ProfileBanner = ({ userProfile }) => {
                             src={newBanner ? newBanner : user?.bannerUrl}></img>
                         <div>
                             <img
-                                className='profile-profile-pic'
+                                className={style === "profile-banner-container" ? 'profile-profile-pic' : 'img-transition'}
                                 src={newProfile ? newProfile : user?.imgUrl}
                             />
                             <p className='profile-banner-name'>

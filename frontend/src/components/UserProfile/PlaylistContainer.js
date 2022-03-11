@@ -40,7 +40,7 @@ const PlaylistContainer = ({sessionUser}) => {
     };
 
     return (
-        <div>
+        <div className='playlist-container'>
             {alteredPlaylist?.map((playlist) => (
             <>
                 {/* TODO component that will rnder a collage of the pictures */}

@@ -12,6 +12,7 @@ import SpinningRing from "./SpinningRing";
 
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
+    const [style, setStyle] = useState('profile-banner-container');
     const { userId } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -35,8 +36,11 @@ const UserProfile = () => {
         <>
         <div>
             <div className="user-profile-container">
-                <ProfileBanner userProfile={currentUser}/>
-                <ProfileNav userId={userId} sessionUser={sessionUser}/>
+                <ProfileBanner
+                    userProfile={currentUser}
+                    setStyle={setStyle}
+                    style={style}/>
+                <ProfileNav userId={userId} sessionUser={sessionUser} setStyle={setStyle}/>
                     {!currentUser &&
                         <PageNotFound />}
             </div>

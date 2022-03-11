@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { createPlaylist } from '../../store/playlists';
 import { UploadPage } from '../UploadPage';
 
-const ProfileNav = ({userId, sessionUser}) => {
+const ProfileNav = ({userId, sessionUser, setStyle}) => {
     const [allActive, setAllActive] = useState('all');
     const [visible, setVisible] = useState(false);
     const [newPlaylistTitle, setNewPlaylistTitle] = useState(null);
@@ -42,14 +42,29 @@ const ProfileNav = ({userId, sessionUser}) => {
         <>
             <div
                 className={allActive === "all" ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive("all")}>All Music</div>
+                onClick={() => {
+                    setAllActive("all")
+                    setStyle('profile-banner-container')}}
+                >All Music</div>
             <div
                 className={allActive === "upload" ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive("upload")}
+                onClick={() => {
+                    setAllActive("upload")
+                    setStyle('profile-banner-container')}}
                 >Upload</div>
             <div
-                className={allActive === "playlist" ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive("playlist")}>Playlists</div>
+                className={allActive === "discover" ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("discover")
+                    setStyle('profile-banner-transition')}}>
+                Discover
+            </div>
+            <div
+                className={allActive === "playlist" ? 'profile-nav-button selected playlist' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("playlist")
+                    setStyle('profile-banner-container')}}
+                >Playlists</div>
             <div
                 onClick={() => setVisible(!visible)}
                 style={{cursor: "pointer"}}> + </div>
