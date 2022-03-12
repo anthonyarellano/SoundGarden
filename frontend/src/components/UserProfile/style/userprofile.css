@@ -27,7 +27,7 @@
     0 4px 4px rgba(0,0,0,0.12),
     0 8px 8px rgba(0,0,0,0.12),
     0 16px 16px rgba(0,0,0,0.12);
-    height: 65vh;
+    height: 72vh;
     width: 1240px;
     overflow-x: hidden;
 
@@ -38,16 +38,20 @@ body {
     text-align: center;
     overflow: hidden;
 }
-.profile-banner-container {
-    width: 1240px;
-    height: 260px;
-    overflow: hidden;
-    position: relative;
-}
+
 .profile-banner-img-file {
     width: 1240px;
     height: 260px;
     object-fit: cover;
+}
+.img-transition {
+    position: absolute;
+    border-radius: 100%;
+    top: 10%;
+    left: 5%;
+    height: 0px;
+    transition: height .4s;
+    font-size: 0px;
 }
 
 
@@ -58,7 +62,7 @@ body {
     border-radius: 100%;
     position: absolute;
     top: 21%;
-    left: 5%
+    left: 5%;
 }
 
 .profile-banner-name {
@@ -123,13 +127,18 @@ body {
     top: 30%;
     z-index: 0;
     height: 1500px;
+} .user-profile-spinning-img-2 {
+    position:absolute;
+    right: -50%;
+    top: -80%;
+    z-index: -1;
+    height: 1500px;
 }
 
 .playlist-entry {
     display: flex;
-    margin-left: 10px;
     position: absolute;
-    left: 27%;
+    left: 33%;
     font-family: 'Interstate Light Cond';
 } .playlist-create-button {
     margin-left: 10px;
@@ -166,6 +175,8 @@ body {
     font-family: 'Interstate Light Cond';
     background-color: aquamarine;
     color: white;
+    height: 18px;
+    transition: height 1s;
 } .add-profile-pic {
     margin-left: 30px;
     margin-right: 30px;
@@ -187,6 +198,20 @@ body {
 } .profile-edit-button:hover {
     background-color: black;
     transition: 1s;
+}
+
+
+ .profile-banner-transition {
+     overflow: hidden;
+     height: 0px;
+     transition: height 1s;
+ }
+ .profile-banner-container {
+    width: 1240px;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    transition: height 1s;
 }
 
 @media (prefers-reduced-motion: no-preference) {

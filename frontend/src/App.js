@@ -49,12 +49,6 @@ function App() {
               <UserProfile />
               <Player />
             </Route>
-            <Route path="/discover">
-              {/* todo ADD DISCOVER PAGE COMPONENT */}
-              <Navigation isLoaded={isLoaded} />
-              <DiscoverPage />
-              <Player />
-            </Route>
             <Route path="/">
               <Navigation isLoaded={isLoaded} />
               <PageNotFound />

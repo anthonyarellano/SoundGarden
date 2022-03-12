@@ -2,9 +2,8 @@ import './style/userprofile.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react'
 import { addNewPic } from '../../store/session';
-import { useEffect } from 'react'
 
-const ProfileBanner = ({ userProfile }) => {
+const ProfileBanner = ({ userProfile, style, setStyle }) => {
     const sessionUser = useSelector((state) => state.session.user);
 
     let user;
@@ -31,15 +30,6 @@ const ProfileBanner = ({ userProfile }) => {
     const dispatch = useDispatch();
 
 
-    // if (user?.imgUrl === null && sessionUser?.id === user?.id) {
-    //     proEdit = true;
-    // }
-    // let bannerEdit;
-    // if (user?.bannerUrl === null & sessionUser?.id === user?.id) {
-    //     bannerEdit = true;
-    // }
-
-
     const handleNewProPic = () => {
         const newPic = {
             userId: sessionUser.id,
@@ -59,7 +49,9 @@ const ProfileBanner = ({ userProfile }) => {
     };
 
     return (
-        <div className='profile-banner-container'>
+        <div
+            className={style}
+        >
             <div className='profile-banner-img'>
                 {user &&
                     <>
@@ -103,7 +95,7 @@ const ProfileBanner = ({ userProfile }) => {
                             className={proEdit ? "profile-edit-button" : "hidden"}
                         >
                             <img
-                                className='profile-edit-button'
+                                className={style === "profile-banner-container" ? 'profile-edit-button' : 'img-transition'}
                                 src={require('./style/images/edit-button.png')}
                             />
                         </div>
@@ -112,10 +104,10 @@ const ProfileBanner = ({ userProfile }) => {
                             src={newBanner ? newBanner : user?.bannerUrl}></img>
                         <div>
                             <img
-                                className='profile-profile-pic'
+                                className={style === "profile-banner-container" ? 'profile-profile-pic' : 'img-transition'}
                                 src={newProfile ? newProfile : user?.imgUrl}
                             />
-                            <p className='profile-banner-name'>
+                            <p className={style === "profile-banner-container" ? "profile-banner-name" : 'img-transition'}>
                                 {user.username}
                             </p>
                         </div>

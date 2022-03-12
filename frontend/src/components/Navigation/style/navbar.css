@@ -35,3 +35,6 @@
     text-decoration: none;
     color: white;
   }
+.navbar-container {
+    z-index: 2;
+}

@@ -5,8 +5,9 @@ import PlaylistContainer from './PlaylistContainer';
 import { useDispatch } from 'react-redux';
 import { createPlaylist } from '../../store/playlists';
 import { UploadPage } from '../UploadPage';
+import DiscoverPage from '../DiscoverPage';
 
-const ProfileNav = ({userId, sessionUser}) => {
+const ProfileNav = ({userId, sessionUser, setStyle}) => {
     const [allActive, setAllActive] = useState('all');
     const [visible, setVisible] = useState(false);
     const [newPlaylistTitle, setNewPlaylistTitle] = useState(null);
@@ -42,14 +43,29 @@ const ProfileNav = ({userId, sessionUser}) => {
         <>
             <div
                 className={allActive === "all" ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive("all")}>All Music</div>
+                onClick={() => {
+                    setAllActive("all")
+                    setStyle('profile-banner-container')}}
+                >My Music</div>
             <div
                 className={allActive === "upload" ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive("upload")}
+                onClick={() => {
+                    setAllActive("upload")
+                    setStyle('profile-banner-container')}}
                 >Upload</div>
             <div
-                className={allActive === "playlist" ? 'profile-nav-button selected' : 'profile-nav-button'}
-                onClick={() => setAllActive("playlist")}>Playlists</div>
+                className={allActive === "discover" ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("discover")
+                    setStyle('profile-banner-transition')}}>
+                Discover
+            </div>
+            <div
+                className={allActive === "playlist" ? 'profile-nav-button selected playlist' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("playlist")
+                    setStyle('profile-banner-container')}}
+                >Playlists</div>
             <div
                 onClick={() => setVisible(!visible)}
                 style={{cursor: "pointer"}}> + </div>
@@ -73,7 +89,47 @@ const ProfileNav = ({userId, sessionUser}) => {
     } else {
         links = (
         <>
-            <div className='profile-nav-button'>All Music</div>
+            <div
+                className={allActive === "all" ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("all")
+                    setStyle('profile-banner-container')}}
+            >
+                All Music
+            </div>
+            <div
+                onClick={() => {
+                    setAllActive('backToDiscover')
+                    setStyle('profile-banner-transition')
+                }}
+                className={allActive === "backToDiscover" ? 'profile-nav-button selected' : 'profile-nav-button'}
+            >
+                Back to Discover
+            </div>
+            <div
+                className={allActive === "playlist" ? 'profile-nav-button selected playlist' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("playlist")
+                    setStyle('profile-banner-container')}}
+                >Playlists</div>
+            <div
+                onClick={() => setVisible(!visible)}
+                style={{cursor: "pointer"}}> + </div>
+            <div className={visible ? "playlist-entry" : "hidden"}>
+                <input
+                    type="text"
+                    className='new-playlist-input'
+                    placeholder="New Playlist Name"
+                    value={newPlaylistTitle}
+                    onChange={(e) => setNewPlaylistTitle(e.target.value)}>
+                </input>
+                <div
+                    className='playlist-create-button'
+                    onClick={handleSubmit}
+                >
+                    create
+                </div>
+            </div>
         </>
         )
     }
@@ -87,7 +143,12 @@ const ProfileNav = ({userId, sessionUser}) => {
                 <SongContainer /> : allActive === "playlist" ?
                 <PlaylistContainer sessionUser={sessionUser}/> :
                 allActive === "upload" ?
-                <UploadPage setAllActive={setAllActive}/> : null
+                <UploadPage setAllActive={setAllActive}/> :
+                allActive === "discover" ?
+                <DiscoverPage setAllActive={setAllActive} setStyle={setStyle}/> :
+                allActive === "backToDiscover" ?
+                <DiscoverPage setAllActive={setAllActive} setStyle={setStyle}/> :
+                null
             }
         </>
     )

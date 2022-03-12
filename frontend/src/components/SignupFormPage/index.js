@@ -12,7 +12,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/discover" />;
+  if (sessionUser) return <Redirect to={`/users/${sessionUser.id}`} />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

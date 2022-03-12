@@ -1,8 +1,8 @@
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import SpinningRing from '../UserProfile/SpinningRing';
+import ArtistCard from './ArtistCard';
 
-const DiscoverPage = () => {
+const DiscoverPage = ({setAllActive, setStyle}) => {
     const sessionUser = useSelector(state => state.session.user);
 
     if (!sessionUser) {
@@ -11,8 +11,7 @@ const DiscoverPage = () => {
 
     return (
         <>
-            <SpinningRing />
-            <h1>Welcome to Discover Page</h1>
+            <ArtistCard setAllActive={setAllActive} setStyle={setStyle}/>
         </>
     )
 };
