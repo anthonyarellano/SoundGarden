@@ -37,6 +37,7 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
         };
         dispatch(addNewPic(newPic));
         setNewProfile(imgUrl);
+        setImgUrl("");
     };
 
     const handleNewBanner = () => {
@@ -46,6 +47,7 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
         };
         dispatch(addNewPic(newBanner));
         setNewBanner(bannerUrl);
+        setBannerUrl("");
     };
 
     return (
@@ -65,6 +67,7 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
                             <input
                                 className={profilePicToggle ? "profile-picture-input" : "hidden"}
                                 type='text'
+                                value={imgUrl}
                                 placeholder={"Profile Picture Url"}
                                 onChange={(e) => setImgUrl(e.target.value)}
                             />
@@ -101,11 +104,11 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
                         </div>
                         <img
                             className='profile-banner-img-file'
-                            src={newBanner ? newBanner : user?.bannerUrl}></img>
+                            src={user?.id === sessionUser?.id && newBanner ? newBanner : user?.bannerUrl}></img>
                         <div>
                             <img
                                 className={style === "profile-banner-container" ? 'profile-profile-pic' : 'img-transition'}
-                                src={newProfile ? newProfile : user?.imgUrl}
+                                src={user?.id === sessionUser?.id && newProfile ? newProfile : user?.imgUrl}
                             />
                             <p className={style === "profile-banner-container" ? "profile-banner-name" : 'img-transition'}>
                                 {user.username}
