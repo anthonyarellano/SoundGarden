@@ -84,6 +84,7 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
                             <input
                                 className={bannerPicToggle ? "profile-picture-input" : "hidden"}
                                 type='text'
+                                value={bannerUrl}
                                 placeholder={"Banner Url"}
                                 onChange={(e) => setBannerUrl(e.target.value)}
                             />
