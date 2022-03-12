@@ -48,6 +48,10 @@ const SongContainer = ({playlistSongs}) => {
                                 onMouseEnter={(e) => {
                                     setVisible(true)
                                     setHoveredSong(e.target.id)}}
+                                onMouseLeave={() => {
+                                    setVisible(false)
+                                    setHoveredSong(null)
+                                }}
                                 ></img>
                                 <SongButtons
                                     song={song}
