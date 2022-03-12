@@ -44,4 +44,9 @@
 } .artist-card-username {
     font-family: 'Interstate Light Cond';
     font-size: 25px;
+} * {
+    text-decoration: none;
+} a:visited {
+    text-decoration: none;
+    color: black;
 }

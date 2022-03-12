@@ -2,8 +2,8 @@ import { getArtists } from "../../store/artists";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react';
 import './style/discoverpage.css';
-
-const ArtistCard = () => {
+import { Link } from 'react-router-dom';
+const ArtistCard = ({setAllActive, setStyle}) => {
     const artists = useSelector((state) => Object.values(state.artists));
     const dispatch = useDispatch();
 
@@ -24,17 +24,23 @@ const ArtistCard = () => {
                <h1
                 className="discover-page-header">Loading Artists...</h1>}
                {artists?.map((artist) => (
-                   <div
-                    className="artist-card"
-                   >
-                       <img
-                            className="artist-card-image"
-                            src={artist?.imgUrl}
-                       />
-                       <p
-                        className="artist-card-username"
-                        >{artist?.username}</p>
-                   </div>
+                   <Link
+                    to={`/users/${artist?.id}`}
+                    onClick={() => {
+                        setAllActive('all')
+                        setStyle('profile-banner-container')}}>
+                    <div
+                        className="artist-card"
+                    >
+                        <img
+                                className="artist-card-image"
+                                src={artist?.imgUrl}
+                        />
+                        <p
+                            className="artist-card-username"
+                            >{artist?.username}</p>
+                    </div>
+                   </Link>
                ))}
             </div>
         </>

@@ -46,7 +46,7 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 onClick={() => {
                     setAllActive("all")
                     setStyle('profile-banner-container')}}
-                >All Music</div>
+                >My Music</div>
             <div
                 className={allActive === "upload" ? 'profile-nav-button selected' : 'profile-nav-button'}
                 onClick={() => {
@@ -89,7 +89,47 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
     } else {
         links = (
         <>
-            <div className='profile-nav-button'>All Music</div>
+            <div
+                className={allActive === "all" ? 'profile-nav-button selected' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("all")
+                    setStyle('profile-banner-container')}}
+            >
+                All Music
+            </div>
+            <div
+                onClick={() => {
+                    setAllActive('backToDiscover')
+                    setStyle('profile-banner-transition')
+                }}
+                className={allActive === "backToDiscover" ? 'profile-nav-button selected' : 'profile-nav-button'}
+            >
+                Back to Discover
+            </div>
+            <div
+                className={allActive === "playlist" ? 'profile-nav-button selected playlist' : 'profile-nav-button'}
+                onClick={() => {
+                    setAllActive("playlist")
+                    setStyle('profile-banner-container')}}
+                >Playlists</div>
+            <div
+                onClick={() => setVisible(!visible)}
+                style={{cursor: "pointer"}}> + </div>
+            <div className={visible ? "playlist-entry" : "hidden"}>
+                <input
+                    type="text"
+                    className='new-playlist-input'
+                    placeholder="New Playlist Name"
+                    value={newPlaylistTitle}
+                    onChange={(e) => setNewPlaylistTitle(e.target.value)}>
+                </input>
+                <div
+                    className='playlist-create-button'
+                    onClick={handleSubmit}
+                >
+                    create
+                </div>
+            </div>
         </>
         )
     }
@@ -105,7 +145,10 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 allActive === "upload" ?
                 <UploadPage setAllActive={setAllActive}/> :
                 allActive === "discover" ?
-                <DiscoverPage /> : null
+                <DiscoverPage setAllActive={setAllActive} setStyle={setStyle}/> :
+                allActive === "backToDiscover" ?
+                <DiscoverPage setAllActive={setAllActive} setStyle={setStyle}/> :
+                null
             }
         </>
     )

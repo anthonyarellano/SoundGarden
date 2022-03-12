@@ -176,6 +176,8 @@ body {
     font-family: 'Interstate Light Cond';
     background-color: aquamarine;
     color: white;
+    height: 18px;
+    transition: height 1s;
 } .add-profile-pic {
     margin-left: 30px;
     margin-right: 30px;
