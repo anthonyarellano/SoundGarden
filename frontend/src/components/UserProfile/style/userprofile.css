@@ -137,7 +137,6 @@ body {
 
 .playlist-entry {
     display: flex;
-    margin-left: 10px;
     position: absolute;
     left: 33%;
     font-family: 'Interstate Light Cond';
