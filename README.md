@@ -29,3 +29,9 @@ SoundGarden is an application for sharing music with other local Artists.
   "proxy": "http://localhost:5000"
   ```
 * You can use the Demo user or create an account to begin using SoundGarden
+
+# Features 
+Logged in users can perform the following: 
+*  Upload, View, Update, and Delete audio files. 
+*  Create, View, Update, and Delete personal song playlists. 
+*  Use the Discover tabs search functionality to find other artists on the platform. 
