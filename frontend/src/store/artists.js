@@ -14,8 +14,12 @@ export const searchArtists = (term) => async (dispatch) => {
     const response = await csrfFetch(`/api/artists/${urlTerm}`);
 
     if (response.ok) {
-        const artists = await response.json();
-        console.log(artists);
+        const res = await response.json();
+        const { realArtists } = res;
+        if (realArtists) {
+            dispatch(loadArtists(realArtists));
+            return realArtists;
+        }
     }
 };
 

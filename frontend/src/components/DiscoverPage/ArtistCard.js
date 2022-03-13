@@ -16,21 +16,29 @@ const ArtistCard = ({setAllActive, setStyle}) => {
     }, [dispatch])
 
     const handleSearch = (e) => {
-        if (term) {
-            dispatch(searchArtists(term))
+        setTerm(e.target.value)
+        const tempTerm = e.target.value
+
+        if (tempTerm) {
+            dispatch(searchArtists(tempTerm))
+        } else {
+            dispatch(getArtists());
         }
+
 
     };
 
     return (
         <>
             <input
+                className="new-playlist-input"
                 type="text"
                 placeholder="Search SoundGarden"
                 value={term}
                 onChange={(e) => {
-                    setTerm(e.target.value)
-                    handleSearch()}}
+                    // console.log(e.target.value);
+                    // setTerm(e.target.value)
+                    handleSearch(e)}}
             />
             <p
                 className="discover-page-header"

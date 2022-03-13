@@ -36,11 +36,20 @@ router.get(
             where: {
                 username: {
                     [Op.iLike] : `%${urlTerm}%`
-                }
+                },
+            },
+            include: {
+                model: Song
             }
         })
         if (artists) {
-            return res.json({ artists });
+            const realArtists = []
+            artists.forEach((artist) => {
+                if (artist.Songs.length > 0) {
+                    realArtists.push(artist);
+                }
+            })
+            return res.json({ realArtists });
         }
     })
 )
