@@ -9,6 +9,16 @@ const loadArtists = (artists) => {
     };
 };
 
+export const searchArtists = (term) => async (dispatch) => {
+    const urlTerm = term.replace(/\s/g, "-");
+    const response = await csrfFetch(`/api/artists/${urlTerm}`);
+
+    if (response.ok) {
+        const artists = await response.json();
+        console.log(artists);
+    }
+};
+
 export const getArtists = () => async (dispatch) => {
     const response = await csrfFetch('/api/artists');
 
