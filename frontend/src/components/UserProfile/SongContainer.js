@@ -36,8 +36,9 @@ const SongContainer = ({playlistSongs}) => {
     return (
         <>
         <div className="song-list-container">
-                {songsList?.map((song, i) => (
-                    <div>
+                {songsList?.map((song) => (
+                    <div
+                        key={`${song?.id}`}>
                         <div
                             id={song?.id}
                             style={{margin: "0px 5px 0px 5px"}}
@@ -55,9 +56,6 @@ const SongContainer = ({playlistSongs}) => {
                                 id={song?.id}
                                 className="album-artwork"
                                 src={song?.imgUrl}
-                                // onMouseEnter={(e) => {
-                                //     setVisible(true)
-                                //     setHoveredSong(e.target.id)}}
                                 ></img>
                                 <SongButtons
                                     song={song}

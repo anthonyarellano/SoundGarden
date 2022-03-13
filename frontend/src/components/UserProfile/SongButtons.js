@@ -89,6 +89,7 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
                     {playlists?.map((playlist) => (
                         <div
                             id={playlist?.id}
+                            key={`${playlist?.id}`}
                             className="playlist-title-container"
                             onClick={() => handlePlaylistAdd(playlist?.id, song?.id)}
                         >{playlist?.title}
