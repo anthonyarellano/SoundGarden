@@ -1,6 +1,6 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
-const { User, Song } = require('../../db/models');
+const { User, Song, Sequelize } = require('../../db/models');
 
 const router = express.Router();
 
@@ -25,6 +25,25 @@ router.get(
     })
 )
 
+router.get(
+    '/:term',
+    asyncHandler(async (req, res) => {
+        const { term } = req.params
+        const urlTerm = term.replace(/\-/g, " ");
+
+        const Op = Sequelize.Op
+        const artists = await User.findAll({
+            where: {
+                username: {
+                    [Op.iLike] : `%${urlTerm}%`
+                }
+            }
+        })
+        if (artists) {
+            return res.json({ artists });
+        }
+    })
+)
 
 
 
