@@ -10,5 +10,8 @@ SoundGarden is an application for sharing music with other local Artists.
 
 # Getting Started
 1. Clone this repo
-  <code>git@github.com:badjub1es/SoundGarden.git <code>
+2. 
+  <code>
+  git@github.com:badjub1es/SoundGarden.git
+  <code>
 
