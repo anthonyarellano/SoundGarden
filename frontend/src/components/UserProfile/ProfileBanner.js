@@ -26,28 +26,35 @@ const ProfileBanner = ({ userProfile, style, setStyle }) => {
     const [newBanner, setNewBanner] = useState(null);
     const [newProfile, setNewProfile] = useState(null);
     const [editBannerToggle, setEditBannerToggle] = useState(false);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
     const dispatch = useDispatch();
 
 
     const handleNewProPic = () => {
-        const newPic = {
-            userId: sessionUser.id,
-            imgUrl
-        };
-        dispatch(addNewPic(newPic));
-        setNewProfile(imgUrl);
-        setImgUrl("");
+        if (imgUrl) {
+            const newPic = {
+                userId: sessionUser.id,
+                imgUrl
+            };
+            dispatch(addNewPic(newPic));
+            setNewProfile(imgUrl);
+            setImgUrl("");
+            return;
+        }
+        return alert('Please enter value for Profile Picture URL. ')
     };
 
     const handleNewBanner = () => {
-        const newBanner = {
-            userId: sessionUser.id,
-            bannerUrl
+        if (bannerUrl) {
+            const newBanner = {
+                userId: sessionUser.id,
+                bannerUrl
+            };
+            dispatch(addNewPic(newBanner));
+            setNewBanner(bannerUrl);
+            setBannerUrl("");
+            return
         };
-        dispatch(addNewPic(newBanner));
-        setNewBanner(bannerUrl);
-        setBannerUrl("");
+        return alert('Please enter value for Banner URL.')
     };
 
     return (

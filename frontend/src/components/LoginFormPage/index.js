@@ -64,11 +64,6 @@ function LoginFormPage() {
         >
           Login
         </div>
-
-        {/* <button
-          type="submit"
-          className='login-button'
-        >Log In</button> */}
         <div
           className='login-button'
           onClick={(e) => {
