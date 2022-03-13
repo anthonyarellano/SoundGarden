@@ -9,6 +9,20 @@ const loadArtists = (artists) => {
     };
 };
 
+export const searchArtists = (term) => async (dispatch) => {
+    const urlTerm = term.replace(/\s/g, "-");
+    const response = await csrfFetch(`/api/artists/${urlTerm}`);
+
+    if (response.ok) {
+        const res = await response.json();
+        const { realArtists } = res;
+        if (realArtists) {
+            dispatch(loadArtists(realArtists));
+            return realArtists;
+        }
+    }
+};
+
 export const getArtists = () => async (dispatch) => {
     const response = await csrfFetch('/api/artists');
 

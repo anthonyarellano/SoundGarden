@@ -1,10 +1,13 @@
-import { getArtists } from "../../store/artists";
+import { getArtists, searchArtists } from "../../store/artists";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react';
 import './style/discoverpage.css';
 import { Link } from 'react-router-dom';
+import { useState } from "react";
+
 const ArtistCard = ({setAllActive, setStyle}) => {
     const artists = useSelector((state) => Object.values(state.artists));
+    const [term, setTerm] = useState("");
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -12,9 +15,31 @@ const ArtistCard = ({setAllActive, setStyle}) => {
         console.log(artists);
     }, [dispatch])
 
+    const handleSearch = (e) => {
+        setTerm(e.target.value)
+        const tempTerm = e.target.value
+
+        if (tempTerm) {
+            dispatch(searchArtists(tempTerm))
+        } else {
+            dispatch(getArtists());
+        }
+
+
+    };
 
     return (
         <>
+            <input
+                className="new-playlist-input"
+                type="text"
+                placeholder="Search SoundGarden"
+                value={term}
+                onChange={(e) => {
+                    // console.log(e.target.value);
+                    // setTerm(e.target.value)
+                    handleSearch(e)}}
+            />
             <p
                 className="discover-page-header"
                 >Browse our Artists</p>
