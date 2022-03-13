@@ -2,7 +2,7 @@
 SoundGarden is a SoundCloud inspired music sharing application. Access the [SoundGarden MVP](https://github.com/badjub1es/SoundGarden/wiki/MVP).
 SoundGarden is an application for sharing music with other local Artists. 
 
-#Index
+# Index
 | [MVP Feature List](https://github.com/badjub1es/SoundGarden/wiki/MVP) | [Database Schema](https://github.com/badjub1es/SoundGarden/wiki/Database-Schema)
 
 # Technologies Used
