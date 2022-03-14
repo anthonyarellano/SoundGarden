@@ -215,6 +215,35 @@ body {
     transition: height 1s;
 }
 
+.info-card-button {
+    position: absolute;
+    right: 3%;
+    bottom: 12%;
+} .about-icon {
+    width: 30px;
+    border-radius: 100%;
+    cursor: pointer;
+} .about-icon:hover {
+    background-color: aquamarine;
+    transition: background-color 1s;
+} .about-link-1 {
+    width: 37px;
+    background-color: aquamarine;
+    border-radius: 100%;
+} .about-link-2 {
+    width: 35px;
+    background-color: aquamarine;
+    border-radius: 30%;
+    margin-left: 20px;
+} .info-card {
+    background-color: rgba(128, 128, 128, .4);
+    border-radius: 10px;
+    padding: 7px;
+    margin-bottom: 10px;
+} .info-card-text {
+    font-family: "Interstate Light Cond";
+    color: white;
+}
 @media (prefers-reduced-motion: no-preference) {
     .modal-img {
       animation: App-logo-spin infinite 20s linear;
