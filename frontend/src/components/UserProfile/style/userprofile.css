@@ -225,6 +225,7 @@ body {
     cursor: pointer;
 } .about-icon:hover {
     background-color: aquamarine;
+    transition: background-color 1s;
 } .about-link-1 {
     width: 37px;
     background-color: aquamarine;

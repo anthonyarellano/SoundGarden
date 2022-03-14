@@ -13,6 +13,7 @@ import SpinningRing from "./SpinningRing";
 const UserProfile = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const [style, setStyle] = useState('profile-banner-container');
+    const [toggle, setToggle] = useState(false);
     const { userId } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -45,9 +46,10 @@ const UserProfile = () => {
                         <PageNotFound />}
             </div>
             <div
-                className="info-card-button">
+                className="info-card-button"
+                onClick={() => setToggle(!toggle)}>
                 <div
-                    className="info-card"
+                    className={toggle ? "info-card" : "hidden"}
                 >
                     <p
                         className="info-card-text">Developer: Anthony Arellano</p>
