@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getUser } from "../../store/session";
 import { useEffect, useState } from "react";
 import PageNotFound from "../404Page";
@@ -43,6 +43,29 @@ const UserProfile = () => {
                 <ProfileNav userId={userId} sessionUser={sessionUser} setStyle={setStyle}/>
                     {!currentUser &&
                         <PageNotFound />}
+            </div>
+            <div
+                className="info-card-button">
+                <div
+                    className="info-card"
+                >
+                    <p
+                        className="info-card-text">Developer: Anthony Arellano</p>
+                    <Link to={{ pathname: "https://github.com/badjub1es" }} target="_blank">
+                        <img
+                            className="about-link-1"
+                            src={require('./style/images/github-icon.png')}></img>
+                    </Link>
+                    <Link to={{ pathname: "https://www.linkedin.com/in/antarellano/" }} target="_blank">
+                        <img
+                            className="about-link-2"
+                            src={require('./style/images/linkedin-logoo.png')}></img>
+                    </Link>
+                </div>
+                <img
+                    className="about-icon"
+                    src={require('./style/images/about-icon.jpg')}>
+                </img>
             </div>
             <SpinningRing />
             <SpinningRing identifier={"2"}/>
