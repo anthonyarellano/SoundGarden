@@ -16,7 +16,7 @@ SoundGarden is an application for sharing music with other local Artists.
   ```
 * Install dependencies from the root directory.
   ```sh
-  git clone git@github.com:badjub1es/SoundGarden.git
+  npm i
   ```
 * Create a POSTGRESQL user with CREATEDB and PASSWORD in PSQL.
   ```sh
