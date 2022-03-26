@@ -6,7 +6,7 @@ import { getSongs } from '../../store/songs';
 import './style/userprofile.css';
 import SongButtons from './SongButtons';
 
-const SongContainer = ({playlistSongs}) => {
+const SongContainer = ({playlistSongs, setAllActive}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -56,6 +56,7 @@ const SongContainer = ({playlistSongs}) => {
                                 id={song?.id}
                                 className="album-artwork"
                                 src={song?.imgUrl}
+                                onClick={() => setAllActive('song')}
                                 ></img>
                                 <SongButtons
                                     song={song}

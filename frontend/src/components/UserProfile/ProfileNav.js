@@ -61,6 +61,14 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 Discover
             </div>
             <div
+                className={allActive === "song" ? 'profile-nav-button selected' : 'hidden'}
+                onClick={() => {
+                    setAllActive("song")
+                    setStyle('profile-banner-container')}}
+                >
+                Song
+            </div>
+            <div
                 className={allActive === "playlist" ? 'profile-nav-button selected playlist' : 'profile-nav-button'}
                 onClick={() => {
                     setAllActive("playlist")
@@ -107,6 +115,14 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 Back to Discover
             </div>
             <div
+                className={allActive === "song" ? 'profile-nav-button selected' : 'hidden'}
+                onClick={() => {
+                    setAllActive("song")
+                    setStyle('profile-banner-container')}}
+                >
+                Song
+            </div>
+            <div
                 className={allActive === "playlist" ? 'profile-nav-button selected playlist' : 'profile-nav-button'}
                 onClick={() => {
                     setAllActive("playlist")
@@ -140,7 +156,7 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 {links}
             </div>
             {allActive === "all" ?
-                <SongContainer /> : allActive === "playlist" ?
+                <SongContainer setAllActive={setAllActive}/> : allActive === "playlist" ?
                 <PlaylistContainer sessionUser={sessionUser}/> :
                 allActive === "upload" ?
                 <UploadPage setAllActive={setAllActive}/> :
