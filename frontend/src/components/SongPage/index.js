@@ -1,8 +1,20 @@
+import SongButtons from "../UserProfile/SongButtons"
 
 const SongPage = ({selectedSong}) => {
-    
+
     return (
-        <h1>Song Page!!</h1>
+        <div>
+            <h1>{selectedSong?.title}</h1>
+            <img
+                className="album-artwork"
+                src={selectedSong?.imgUrl}/>
+            <SongButtons
+                song={selectedSong}
+                visible={true}
+                id={selectedSong?.id}
+                hoveredSong={selectedSong}
+                ></SongButtons>
+        </div>
     )
 }
 

@@ -6,7 +6,7 @@ import { getSongs } from '../../store/songs';
 import './style/userprofile.css';
 import SongButtons from './SongButtons';
 
-const SongContainer = ({playlistSongs, setAllActive, setSelectedSong}) => {
+const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSong}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -16,6 +16,11 @@ const SongContainer = ({playlistSongs, setAllActive, setSelectedSong}) => {
 
     if (playlistSongs) {
         songsList = playlistSongs;
+    }
+
+    if (selectedSong) {
+        songsList = [selectedSong];
+        console.log(songsList);
     }
 
     useEffect(() => {

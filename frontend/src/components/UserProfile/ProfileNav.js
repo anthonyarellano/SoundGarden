@@ -168,7 +168,7 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 allActive === "backToDiscover" ?
                 <DiscoverPage setAllActive={setAllActive} setStyle={setStyle}/> :
                 allActive === "song" ?
-                <SongPage selectedSong={selectedSong}/> :
+                <SongContainer selectedSong={selectedSong}/> :
                 null
             }
         </>
