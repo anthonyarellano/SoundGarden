@@ -1,6 +1,6 @@
 
-const SongPage = () => {
-
+const SongPage = ({selectedSong}) => {
+    
     return (
         <h1>Song Page!!</h1>
     )

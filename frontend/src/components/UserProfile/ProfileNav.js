@@ -13,8 +13,8 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
     const [visible, setVisible] = useState(false);
     const [newPlaylistTitle, setNewPlaylistTitle] = useState(null);
     const [errors, setErrors] = useState([]);
+    const [selectedSong, setSelectedSong] = useState(null);
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         const errors = [];
@@ -157,7 +157,9 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 {links}
             </div>
             {allActive === "all" ?
-                <SongContainer setAllActive={setAllActive}/> : allActive === "playlist" ?
+                <SongContainer
+                    setAllActive={setAllActive}
+                    setSelectedSong={setSelectedSong}/> : allActive === "playlist" ?
                 <PlaylistContainer sessionUser={sessionUser}/> :
                 allActive === "upload" ?
                 <UploadPage setAllActive={setAllActive}/> :
@@ -166,7 +168,7 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 allActive === "backToDiscover" ?
                 <DiscoverPage setAllActive={setAllActive} setStyle={setStyle}/> :
                 allActive === "song" ?
-                <SongPage /> :
+                <SongPage selectedSong={selectedSong}/> :
                 null
             }
         </>
