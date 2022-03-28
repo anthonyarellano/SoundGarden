@@ -3,10 +3,12 @@ import { getUser } from "../../store/session";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
-import './style/userprofile.css';
 import SongButtons from './SongButtons';
+import CommentContainer from "./CommentContainer";
 
-const SongContainer = ({playlistSongs}) => {
+import './style/userprofile.css';
+
+const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSong, comments}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -16,6 +18,10 @@ const SongContainer = ({playlistSongs}) => {
 
     if (playlistSongs) {
         songsList = playlistSongs;
+    }
+
+    if (selectedSong) {
+        songsList = [selectedSong];
     }
 
     useEffect(() => {
@@ -56,6 +62,9 @@ const SongContainer = ({playlistSongs}) => {
                                 id={song?.id}
                                 className="album-artwork"
                                 src={song?.imgUrl}
+                                onClick={() => {
+                                    setAllActive('song')
+                                    setSelectedSong(song)}}
                                 ></img>
                                 <SongButtons
                                     song={song}
@@ -66,6 +75,8 @@ const SongContainer = ({playlistSongs}) => {
                                 />
                             </div>
                         </div>
+                        {comments &&
+                        <CommentContainer />}
                     </div>
                 ))}
             </div>
