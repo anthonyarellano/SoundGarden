@@ -1,6 +1,10 @@
+import './style/commentContainer.css';
+
 const CommentContainer = () => {
     return (
-        <h1>Comment Container!</h1>
+        <div className='comment-container'>
+            <h1>Comment Container!</h1>
+        </div>
     )
 };
 
