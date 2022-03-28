@@ -6,14 +6,14 @@ const CommentContainer = () => {
     const [comment, setComment] = useState("");
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
-    
+
     useEffect(() => {
         let errors = [];
         if (hasSubmitted) {
-            if (comment.length <= 0) errors.push('Please enter a value for comment.')
+            if (comment.length === 0) errors.push('Please enter a value for comment.')
         }
         setErrors(errors);
-    }, [comment])
+    }, [comment, hasSubmitted])
 
     const handleSubmit = () => {
         setHasSubmitted(true);
@@ -22,6 +22,9 @@ const CommentContainer = () => {
 
     return (
         <div className='comment-container'>
+            {errors && errors.map((error) => (
+                <p key={error}>{error}</p>
+            ))}
             <div
                 className='comment-input-container'
             >
