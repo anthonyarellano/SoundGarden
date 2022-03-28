@@ -3,10 +3,12 @@ import { getUser } from "../../store/session";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSongs } from '../../store/songs';
-import './style/userprofile.css';
 import SongButtons from './SongButtons';
+import CommentContainer from "./CommentContainer";
 
-const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSong}) => {
+import './style/userprofile.css';
+
+const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSong, comments}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const { userId } = useParams();
     const dispatch = useDispatch();
@@ -20,7 +22,6 @@ const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSo
 
     if (selectedSong) {
         songsList = [selectedSong];
-        console.log(songsList);
     }
 
     useEffect(() => {
@@ -74,6 +75,8 @@ const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSo
                                 />
                             </div>
                         </div>
+                        {comments &&
+                        <CommentContainer />}
                     </div>
                 ))}
             </div>

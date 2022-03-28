@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { createPlaylist } from '../../store/playlists';
 import { UploadPage } from '../UploadPage';
 import DiscoverPage from '../DiscoverPage';
-import SongPage from '../SongPage';
 
 const ProfileNav = ({userId, sessionUser, setStyle}) => {
     const [allActive, setAllActive] = useState('all');
@@ -168,7 +167,9 @@ const ProfileNav = ({userId, sessionUser, setStyle}) => {
                 allActive === "backToDiscover" ?
                 <DiscoverPage setAllActive={setAllActive} setStyle={setStyle}/> :
                 allActive === "song" ?
-                <SongContainer selectedSong={selectedSong}/> :
+                <SongContainer
+                    selectedSong={selectedSong}
+                    comments={true}/> :
                 null
             }
         </>
