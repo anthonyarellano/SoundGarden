@@ -20,8 +20,10 @@ const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSo
         songsList = playlistSongs;
     }
 
+    let bypass;
     if (selectedSong) {
         songsList = [selectedSong];
+        bypass = true;
     }
 
     useEffect(() => {
@@ -49,12 +51,14 @@ const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSo
                             id={song?.id}
                             style={{margin: "0px 5px 0px 5px"}}
                             onMouseEnter={(e) => {
+                                console.log('ENTER!')
                                 setVisible(true);
                                 setHoveredSong(e.target.id);
                             }}
-                            onMouseLeave={() => {
+                            onMouseLeave={(e) => {
+                                console.log("EXIT!")
                                 setVisible(false);
-                                setHoveredSong(null);
+                                setHoveredSong(false);
                             }}>
                             <p>{song?.title}</p>
                             <div className="image-button-container">
@@ -72,6 +76,7 @@ const SongContainer = ({playlistSongs, setAllActive, setSelectedSong, selectedSo
                                     id={song?.id}
                                     hoveredSong={hoveredSong}
                                     currentUser={currentUser}
+                                    bypass={bypass}
                                 />
                             </div>
                         </div>

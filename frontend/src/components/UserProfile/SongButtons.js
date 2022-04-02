@@ -4,7 +4,7 @@ import { putSong, deleteSong } from "../../store/songs";
 import { useState, useEffect } from "react";
 import { getPlaylists, addToPlaylist } from '../../store/playlists';
 
-const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
+const SongButtons = ({visible, id, hoveredSong, song, currentUser, bypass}) => {
     const [showEdit, setShowEdit] = useState(false);
     const [editSong, setEditSong] = useState(null);
     const [newTitle, setNewTitle] = useState(null);
@@ -65,7 +65,7 @@ const SongButtons = ({visible, id, hoveredSong, song, currentUser}) => {
     return (
         <div
             id={id}
-            className={visible && id === parseInt(hoveredSong) ? 'song-button-container' : 'hidden'}
+            className={bypass ? 'song-button-container' : visible && id == parseInt(hoveredSong) ? 'song-button-container' : 'hidden'}
         >
             <div className="song-play-button">
                 <img
